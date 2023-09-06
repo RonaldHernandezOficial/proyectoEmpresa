@@ -1,0 +1,115 @@
+body{
+    font-family: Arial, sans-serif;
+    margin-left: 10%;
+    margin-right: 10%;
+    padding: 5%;
+    align-items: center;
+    height: 100vh;
+    background: -webkit-linear-gradient(to right, #5e2129, #333333);  
+    background: linear-gradient(to right, #a50117, #333333); 
+    
+  }
+  
+  h1 {
+    font-size: 24px;
+    font-weight: 700;
+    margin-top: 0;
+    animation: fade-in 2s ease-in-out;
+  }
+  @keyframes fade-in {
+    0% {
+      opacity: 0;
+    }
+  
+    100% {
+      opacity: 1;
+    }
+  }
+  .contenedor {
+    width: 100%;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #ffffff;
+    animation: fade-in 1s ease-in-out;
+    align-items: center;
+  }
+  
+  .titulo {
+    text-align: center;
+  }
+  
+  .label {
+    display: block;
+    margin-bottom: 10px;
+  }
+  
+  .campo-numero {
+    width: 100px;
+  }
+  
+  .radio-boton {
+    width: 100px;
+    height: 30px;
+    border: 1px solid #ccc;
+    padding: 10px;
+  }
+  
+  .tabla {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.tabla th {
+    text-align: left;
+    background-color: #ccc;
+    color: #000000;
+}
+
+.tabla td {
+    padding: 10px;
+    position: relative;
+}
+
+.boton {
+    width: 80px;
+    height: 30px;
+    margin-right: 5px;
+    background-color: #a50117;
+    color: #ffffff;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    box-shadow: 0 0 5px #ccc;
+}
+
+.boton:hover {
+  background-color: #571f1f;
+}
+
+
+.titulo {
+    font-size: 24px;
+    font-weight: 700;
+    margin-top: 0;
+    text-align: center;
+    color: #eeeeee;
+    border-bottom: 1px solid #000000;
+  }
+
+
+  .return{
+    margin-right: 5px;
+    background-color: #a50117;
+    color: #ffffff;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    box-shadow: 0 0 5px #ccc;
+    animation: fade-in 1s ease-in-out;
+    padding-left: 50%;
+    padding-right: 50%;
+  }
+
+  .return:hover{
+    background-color: #3b0707;
+  }

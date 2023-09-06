@@ -1,0 +1,143 @@
+/* Estilos para la página de comentarios */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+}
+
+.comments-section {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    margin-left: 20px;
+}
+
+.comments-section h2 {
+    color: #333;
+}
+
+.comments {
+    margin-top: 20px;
+}
+
+.comment {
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    background-color: #f9f9f9;
+}
+
+.comment strong {
+    font-weight: bold;
+}
+
+.comment-form {
+    margin-top: 20px;
+}
+
+form {
+    background-color: #f5f5f5;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.form-group {
+    margin-bottom: 10px;
+}
+
+label {
+    font-weight: bold;
+}
+
+input[type="text"],
+textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.rating {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 100px;
+}
+
+.rating label {
+    font-size: 30px;
+    cursor: pointer;
+}
+
+button[type="submit"] {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+button[type="submit"]:hover {
+    background-color: #555;
+}
+#form p {
+    text-align: center;
+  }
+  
+  #form label {
+    font-size: 20px;
+  }
+  
+  input[type="radio"] {
+    display: none;
+  }
+  
+  label {
+    color: grey;
+  }
+  
+  .clasificacion {
+    direction: rtl;
+    unicode-bidi: bidi-override;
+  }
+  
+  label:hover,
+  label:hover ~ label {
+    color: orange;
+  }
+  
+  input[type="radio"]:checked ~ label {
+    color: orange;
+}
+.lol{
+padding-left: 50%; 
+margin-bottom: 20px;  
+}
+.bg-dark1{
+background-color: #333;
+margin-left: -100%;
+padding-left: -200%;
+}
+.advertising {
+    float: left; /* Coloca el aside a la izquierda */
+    width: 50%; /* Ancho de la publicidad */
+    margin-right: 20px; /* Espacio entre la publicidad y el contenido principal */
+    padding: 217px; /* Espacio interno de la publicidad */
+    background-color: #f0f0f0; /* Color de fondo de la publicidad */
+    border: 1px solid #ccc; /* Borde de la publicidad */
+
+}

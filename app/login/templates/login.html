@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Link para acceder a demas carpetas con estilos -->
+    <title>Fabriautomaticas</title>
+    <link rel="stylesheet" href="../../static/Css/login.css" />
+    <link rel="apple-touch-icon" href="../../static/img/logo.png" />
+    <link
+      rel="shortcut icon"
+      type="image/x-icon"
+      href="../../static/img/logo.png"
+    />
+  </head>
+  <body>
+    <!-- Inicio de pagina -->
+
+    <div class="fade-in-container">
+      <div class="login-container">
+        <!-- Encabezado -->
+        <header>
+          <h1>Login</h1>
+        </header>
+        <!-- Formulario de inicio de sesion -->
+        <form action="" method="post">
+          <label for="username">Usuario</label>
+          <input type="text" id="username" name="username" required />
+
+          <label for="password">Contraseña</label>
+          <input type="password" id="password" name="password" required />
+          <input type="submit" value="Iniciar sesión" />
+          <!-- Botones de retorno o ayuda -->
+          <a href="/login/forgot_password">Olvidaste tu contraseña</a>
+          <br />
+          <a href="/menu/menu">Retornar al menú</a>
+          <br />
+          <a href="/login/register_user">¿No tienes usuario?</a>
+        </form>
+        <!-- Fin del formulario -->
+      </div>
+    </div>
+    <!-- Fin de l pagina -->
+  </body>
+</html>

@@ -3,12 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nuevo Usuario</title>
+     <!-- Link para acceder a demas carpetas con estilos -->
+    <link rel="stylesheet" href="../../static/Css/RegistreUser.css">
+    <link rel="apple-touch-icon" href="../../static/img/logo.png">
+    <link rel="shortcut icon" type="image/x-icon" href="../../static/img/logo.png">
+    <title>Fabriautomaticas - Registro</title>
 </head>
 <body>
-    <h1>Nuevo Usuario</h1>
-    <form action="" method="post">
-        <input type="text" name="" id="" required autofocus>
+     <!-- Inicio del formulario para crear un usuario -->
+    <form  method="POST" action="/login/register_user" id="container">
+        <div id="container">
+            <h1>&bull; Regístrate ahora &bull;</h1>
+            <div class="underline">
+                <img src="../../static/img/logo.png" class="imagen">
+            </div>
+            <div class="icon_wrapper">
+            </div>
+            <form action="#" method="post" id="contact_form">
+                <div class="name">
+                    <label for="name"></label>
+                    <input type="text" placeholder="Nombre de usuario" name="nombre" id="name_input" required>
+                </div>
+                <div class="email">
+                    <label for="name"></label>
+                    <input type="text" placeholder="Apellido de usuario" name="apellido" id="email_input" required>
+                </div>
+                <div class="name">
+                    <label for="name"></label>
+                    <input type="text" placeholder="Telefono" name="telefono" id="name_input" required>
+                </div>
+                <div class="email">
+                    <label for="email"></label>
+                    <input type="email" placeholder="Correo Electronico" name="email" id="email_input" required>
+                </div>
+                <div class="name">
+                    <label for="password"></label>
+                    <input type="password" placeholder="Contraseña" name="contrasena" id="password" required>
+                </div>
+                <div class="name">
+                    <label for="password"></label>
+                    <input type="password" placeholder="Ingrese nuevamente su contraseña" name="confimacion_contrasena" id="password" required>
+                </div>
+                <div class="submit">
+                    <input type="submit" value="Enviar" id="form_button">
+                     <!-- Boton de para volver al login -->
+                    <button type="button" id="form_button2">Atrás</button>
+                </div>
+            </form>
+        </div>
     </form>
+
+    <script>
+        //Redireccion al login
+        document.getElementById("form_button2").addEventListener("click", function () {
+            window.location.href = "/login/login";
+        });
+    </script>
 </body>
 </html>

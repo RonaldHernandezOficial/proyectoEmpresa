@@ -16,7 +16,7 @@ header {
 .comments-section {
     max-width: 800px;
     margin: 0 auto;
-    padding: 20px;
+    padding: 22px;
     background-color: #fff;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
@@ -94,50 +94,66 @@ button[type="submit"] {
 button[type="submit"]:hover {
     background-color: #555;
 }
+
 #form p {
     text-align: center;
-  }
-  
-  #form label {
+}
+
+#form label {
     font-size: 20px;
-  }
-  
-  input[type="radio"] {
+}
+
+input[type="radio"] {
     display: none;
-  }
-  
-  label {
+}
+
+label {
     color: grey;
-  }
-  
-  .clasificacion {
+}
+
+.clasificacion {
     direction: rtl;
     unicode-bidi: bidi-override;
-  }
-  
-  label:hover,
-  label:hover ~ label {
-    color: orange;
-  }
-  
-  input[type="radio"]:checked ~ label {
-    color: orange;
 }
-.lol{
-padding-left: 50%; 
-margin-bottom: 20px;  
-}
-.bg-dark1{
-background-color: #333;
-margin-left: -100%;
-padding-left: -200%;
-}
-.advertising {
-    float: left; /* Coloca el aside a la izquierda */
-    width: 50%; /* Ancho de la publicidad */
-    margin-right: 20px; /* Espacio entre la publicidad y el contenido principal */
-    padding: 217px; /* Espacio interno de la publicidad */
-    background-color: #f0f0f0; /* Color de fondo de la publicidad */
-    border: 1px solid #ccc; /* Borde de la publicidad */
 
+label:hover,
+label:hover~label {
+    color: orange;
+}
+
+input[type="radio"]:checked~label {
+    color: orange;
+}
+
+.lol {
+    padding-left: 50%;
+    margin-bottom: 20px;
+}
+
+.bg-dark1 {
+    background-color: #333;
+    margin-left: -100%;
+    padding-left: -200%;
+}
+
+.advertising {
+    float: left;
+    /* Coloca el aside a la izquierda */
+    width: 50%;
+    /* Ancho de la publicidad */
+    margin-right: 20px;
+    /* Espacio entre la publicidad y el contenido principal */
+    padding: 261px;
+    /* Espacio interno de la publicidad */
+    background-color: #f0f0f0;
+    /* Color de fondo de la publicidad */
+    border: 1px solid #ccc;
+    /* Borde de la publicidad */
+
+}
+
+.img {
+    width: 50%;
+    margin: 10px;
+    margin-left: 27%;
 }

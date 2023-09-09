@@ -1,7 +1,7 @@
-app/__pycache__
+app/__pycache__/*
 venv/*
-app/login/__pycache__
-app/menu/__pycache__
-app/admin/__pycache__
-app/contactanos/__pycache__
-__pycache__
+app/login/__pycache__/*
+app/menu/__pycache__/*
+app/admin/__pycache__/*
+app/contactanos/__pycache__/*
+__pycache__/*

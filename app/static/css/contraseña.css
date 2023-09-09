@@ -1,0 +1,25 @@
+.form-gap {
+    padding-top: 30PX;
+
+}
+.btn {
+    width: 180px;
+    height: 50px;
+    border-radius: 25px;
+    margin-top: 50px;
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 1.15px;
+    background-color: black;
+    color: #8E8686;
+    box-shadow: 8px 8px 16px #8E8686, -8px -8px 16px #f9f9f9;
+    border: none;
+    outline: none;
+  }
+  .btn:hover{
+    background-color: #8E8686 ; /* Color de fondo al pasar el cursor */
+    color: black; /* Color de texto al pasar el cursor */
+  }
+  .img{
+    width: 50%;
+  }

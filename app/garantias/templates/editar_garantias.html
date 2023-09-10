@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="HTML Masters">
+    <title>Editar Garantías</title>
+</head>
+<body>
+    <form action="/garantias/actualizar_garantia/{{garantia.0}}" method="POST">
+        <input type="date" name="fechaGarantia" placeholder="Fecha Garantía" value="{{garantia.1}}">
+        <input type="text" name="descripcionGarantia" placeholder="Descripción Garantía" value="{{garantia.2}}">
+        <label for="lang">Tipo de Garantía</label>
+        <select name="garantia" id="lang" value="{{garantia.3}}">
+            <option value="reparaciones">Reparaciones</option>
+            <option value="reemplazo">Reemplazo</option>
+            <option value="daño">Daño</option>
+        </select>
+        <button type="submit">
+            Enviar
+        </button>
+    </form>
+</body>
+</html>

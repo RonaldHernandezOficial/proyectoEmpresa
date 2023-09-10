@@ -7,6 +7,14 @@
     <meta name="author" content="HTML Masters">
     <title>Insertar Garantías</title>
 </head>
+
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+{% for message in messages %}
+    <p>{{ message }}</p> 
+{% endfor %}
+{% endif %}
+{% endwith %}
 <body>
     <form action="/garantias/agregar_garantia" method="POST">
         <input type="date" name="fechaGarantia" placeholder="Fecha Garantía">
@@ -21,5 +29,29 @@
             save
         </button>
     </form>
+
+    <table>
+        <thead>
+            <tr>
+                <td>Fecha garantía</td>
+                <td>Descripción Garantía</td>
+                <td>Tipo Garantía</td>
+                <td>Operations</td>
+            </tr>
+            <tbody>
+                {% for garantia in garantias  %}
+                    <tr>
+                        <td>{{ garantia.1 }}</td>
+                        <td>{{ garantia.2 }}</td>
+                        <td>{{ garantia.3  }}</td>
+                        <td>
+                            <a href="/garantias/editar_garantia/{{garantia.0}}">Editar</a>
+                            <a href="/garantias/eliminar_garantia/{{garantia.0}}">Eliminar</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </thead>
+    </table>
 </body>
 </html>

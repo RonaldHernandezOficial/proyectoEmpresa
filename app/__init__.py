@@ -3,6 +3,7 @@ from .config import Config
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from app.menu import modelo_menu
+from app.garantias import modelo_garantias
 from app.login import modelo_login
 from app.admin import modelo_admin
 from app.contactanos import modelo_contacto
@@ -21,6 +22,7 @@ app.register_blueprint(modelo_login)
 app.register_blueprint(modelo_admin)
 app.register_blueprint(modelo_contacto)
 app.register_blueprint(modelo_servicio)
+app.register_blueprint(modelo_garantias)
 
 if __name__ == '__main__':
     app.run(port=3000, debug=True)

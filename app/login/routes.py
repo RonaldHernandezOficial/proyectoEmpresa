@@ -8,6 +8,6 @@ app = Flask(__name__)
 def login():
     return render_template("login.html")
 
-@modelo_login.route("/nuevo_usuario")
+@modelo_login.route("/olvidar_contraseña")
 def nuevo_usuario():
-    return render_template("nuevoUsuario.html")
+    return render_template("olvidarcon.html")

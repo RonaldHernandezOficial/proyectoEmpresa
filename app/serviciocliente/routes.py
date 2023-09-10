@@ -8,3 +8,7 @@ app = Flask(__name__)
 @modelo_servicio.route("/reseñas")
 def reseña():
     return render_template("serviciocliente.html")
+
+@modelo_servicio.route("/pqr")
+def pqr():
+    return render_template("registrarpqr.html")

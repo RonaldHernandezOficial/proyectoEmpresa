@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../../static/css/styles.css">
+  <link rel="apple-touch-icon" href="../../static/Img/logo.png">
+  <link rel="shortcut icon" type="image/x-icon" href="../../static/Img/logo.png">
+
+  <link rel="stylesheet" href="../../static/assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../../static/assets/css/templatemo.css">
+  <link rel="stylesheet" href="../../static/assets/css/custom.css">
+
+  <!-- Load fonts style after rendering the layout styles -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
+  <link rel="stylesheet" href="../../static/assets/css/fontawesome.min.css">
+
+  <title>Cliente</title>
+</head>
+<body>
+<!-- Ubicación de presentación -->
+  <header>
+    <div class="image-container">
+      <img src="../../static/img/logo.png"> <!-- Logo de la empresa -->
+    </div>
+    <br>
+    <h1>
+      Bienvenido Cliente
+    </h1>
+  </header>
+
+  <div id="profile-container">
+    <!-- El input ayuda a acomodar los pixeles de la imagen del usuario -->
+    <input type="file" id="profile-image-upload" accept="image/*">
+    <div id="profile-header">
+        <div id="profile-image">
+        </div>
+        <div id="profile-name">Nombre del Usuario</div>
+        <div id="profile-email">correo@example.com</div>
+        <br>
+        <button class="edit-profile-button">Editar perfil</button>
+    </div>
+<!-- Fin del input -->
+
+    <div id="profile-info">
+        Descripción.
+    </div>>
+    <a id="recent-activity" href="#">
+      Ultimos Movimientos
+    </a>
+</div>
+<!-- boton para volver -->
+<div class="button-container">
+  <button class="button" id="menu-button">Volver al Menú Principal</button>
+</div>
+ <!-- Start Footer -->
+ <br>
+ <footer class="bg-dark" id="tempaltemo_footer">
+  <div class="container">
+    <div class="row">
+
+      <div class="col-md-4 pt-5">
+        <h2 class="h2 text-success border-bottom pb-3 border-light logo">Fabriautomaticas SAS</h2> 
+        <ul class="list-unstyled text-light footer-link-list">
+          <li>
+            <i class="fas fa-map-marker-alt fa-fw"></i>
+            Cll 129 C #98 a 09
+          </li>
+          <li>
+            <i class="fa fa-phone fa-fw"></i>
+            <a class="text-decoration-none">315-300-9936</a>
+          </li>
+          <li>
+            <i class="fa fa-envelope fa-fw"></i>
+            <a class="text-decoration-none">fabriautomaticas@hotmail.com</a>
+          </li>
+        </ul>
+        <a rel="sponsored" href="/privacy/legalcy" target="_blank">Terminos y condiciones</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- End Footer -->
+<script>
+  document.getElementById("menu-button").addEventListener("click", function() {
+      window.location.href = "/menu/menu"; // Reemplaza "url-del-menu-principal.html" con la URL real de tu página principal
+  });
+  </script>  
+</body>
+</html>

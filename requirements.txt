@@ -4,6 +4,7 @@ click==8.1.6
 colorama==0.4.6
 Flask==2.3.2
 Flask-Migrate==4.0.4
+Flask-MySQLdb==1.0.1
 Flask-SQLAlchemy==3.0.5
 Flask-WTF==1.1.1
 greenlet==2.0.2

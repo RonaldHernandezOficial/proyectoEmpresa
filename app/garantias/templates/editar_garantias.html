@@ -1,16 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-    <title>Fabriautomaticas SAS</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="HTML Masters">
+    <link rel="stylesheet" href="../../static/css/bootstrap.min.css">
     <link rel="apple-touch-icon" href="../../static/Img/logo.png">
     <link rel="shortcut icon" type="image/x-icon" href="../../static/Img/logo.png">
-    <link rel="stylesheet" href="../../static/assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../../static/assets/css/templatemo.css">
-    <link rel="stylesheet" href="../../static/assets/css/custom.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
-    <link rel="stylesheet" href="../../static/assets/css/fontawesome.min.css">
+    <title>Editar Garantías</title>
 </head>
 <body>
     <!-- Start Top Nav -->
@@ -33,20 +31,15 @@
         </div>
     </nav>
     <!-- Close Top Nav -->
-
-
     <!-- Header -->
     <nav class="navbar navbar-expand-lg navbar-light shadow">
         <div class="container d-flex justify-content-between align-items-center">
-
-            <a class="navbar-brand text-success logo h1 align-self-center" href="/menu/menu">
+            <a class="navbar-brand text-dark logo h1 align-self-center" href="/menu/menu">
                 Fabriautomaticas SAS
             </a>
-
             <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#templatemo_main_nav" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-
             <div class="align-self-center collapse navbar-collapse flex-fill  d-lg-flex justify-content-lg-between" id="templatemo_main_nav">
                 <div class="flex-fill">
                     <ul class="nav navbar-nav d-flex justify-content-between mx-lg-auto">
@@ -63,7 +56,7 @@
                             <a class="nav-link" href="/menu/menu">Menú</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/warranty/warranty">Garantía</a>
+                            <a class="nav-link" href="/garantias/garantia">Garantía</a>
                         </li>
                     </ul>
                 </div>
@@ -79,70 +72,45 @@
                     <a class="nav-icon d-none d-lg-inline" href="#" data-bs-toggle="modal" data-bs-target="#templatemo_search">
                         <i class="fa fa-fw fa-search text-dark mr-2"></i>
                     </a>
-                    <a class="nav-icon position-relative text-decoration-none" href="#">
-                        <i class="fa fa-fw fa-cart-arrow-down text-dark mr-1"></i>
-                        <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">7</span>
-                    </a>
-                    <a class="nav-icon position-relative text-decoration-none" href="#">
-                        <i class="fa fa-fw fa-user text-dark mr-3"></i>
-                        <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">+99</span>
-                    </a>
                 </div>
             </div>
-
         </div>
     </nav>
     <!-- Close Header -->
-
-    <!-- Modal -->
-    <div class="modal fade bg-white" id="templatemo_search" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg" role="document">
-            <div class="w-100 pt-1 mb-5 text-right">
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <form action="" method="get" class="modal-content modal-body border-0 p-0">
-                <div class="input-group mb-2">
-                    <input type="text" class="form-control" id="inputModalSearch" name="q" placeholder="Search ...">
-                    <button type="submit" class="input-group-text bg-success text-light">
-                        <i class="fa fa-fw fa-search text-white"></i>
+    <br>
+    <div class="container">
+        <div class="card card-body">
+            <div class="col-md-4 offset-md-4">
+                <form action="/garantias/actualizar_garantia/{{garantia.0}}" method="POST">
+                    <div class="form-group">
+                    <input type="date" name="fechaGarantia" placeholder="Fecha Garantía" value="{{garantia.1}}" class="form-control">
+                    </div>
+                    <br>
+                    <div class="form-group">
+                    <input type="text" name="descripcionGarantia" placeholder="Descripción Garantía" value="{{garantia.2}}" class=form-control>
+                    </div>
+                    <br>
+                    <div class="form-group">
+                    <label for="lang">Tipo de Garantía</label>
+                    <select name="garantia" id="lang" value="{{garantia.3}}" class="form-control">
+                        <option value="reparaciones">Reparación</option>
+                        <option value="reemplazo">Reemplazo</option>
+                        <option value="daño">Daño</option>
+                    </select>
+                    </div>
+                    <br>
+                    <div class="form-group">
+                    <button type="submit" class="btn btn-dark btn-block">
+                        Enviar
                     </button>
-                </div>
-            </form>
-        </div>
-    </div>
-
-    <!-- Start Categories of The Month -->
-    <section class="container py-5">
-        <div class="row text-center pt-3">
-            <div class="col-lg-6 m-auto">
-                <h1 class="h1"><b>¿Tienes algún problema?</b></h1>
-                <h5>
-                    Aqui podras solicitar tu Garantía.
-                </h5>
+                    </div>
+                </form>
             </div>
         </div>
-        <div class="row">
-            <div class="col-12 col-md-4 p-5 mt-3">
-                <a href="#"><img src="../../static/img/01.png" class="rounded-circle img-fluid border"></a>
-                <h5 class="text-center mt-3 mb-3">En este apartado solicitaras, la garantía por defectos o irregularidades durante el proceso de reparación.</h5>
-                <p class="text-center"><a class="btn btn-success" href="/garantias/insertar">Solicitar</a></p>
-            </div>
-            <div class="col-12 col-md-4 p-5 mt-3">
-                <a href="#"><img src="../../static/img/02.png" class="rounded-circle img-fluid border"></a>
-                <h2 class="h5 text-center mt-3 mb-3">                   En este apartado solicitaras, la garantía si algún elemento salio defectuoso.                      </h2>
-                <p class="text-center"><a class="btn btn-success" href="/garantias/insertar">Solicitar</a></p>
-            </div>
-            <div class="col-12 col-md-4 p-5 mt-3">
-                <a href="#"><img src="../../static/img/03.png" class="rounded-circle img-fluid border"></a>
-                <h2 class="h5 text-center mt-3 mb-3">En este apartado solicitaras, la garantía si hubi algún robo o un daño intencional a la hora de la instalación.</h2>
-                <p class="text-center"><a class="btn btn-success" href="/garantias/insertar">Solicitar</a></p>
-            </div>
-        </div>
-    </section>
-    <!-- End Categories of The Month -->
-
-    <!-- Start Footer -->
-    <footer class="bg-dark" id="tempaltemo_footer">
+</div>
+    <br>
+        <!-- Start Footer -->
+        <footer class="bg-dark" id="tempaltemo_footer">
         <div class="container">
             <div class="row">
                 <div class="col-md-4 pt-5">
@@ -162,7 +130,6 @@
                         </li>
                     </ul>
                 </div>
-
                 <div class="col-md-4 pt-5">
                     <h2 class="h2 text-light border-bottom pb-3 border-light">Productos</h2>
                     <ul class="list-unstyled text-light footer-link-list">
@@ -171,7 +138,6 @@
                         <li><a class="text-decoration-none" href="#">Talanqueras</a></li>
                     </ul>
                 </div>
-
                 <div class="col-md-4 pt-5">
                     <h2 class="h2 text-light border-bottom pb-3 border-light">Acerca de</h2>
                     <ul class="list-unstyled text-light footer-link-list">
@@ -182,9 +148,7 @@
                         <li><a class="text-decoration-none" href="#">Garantías</a></li>
                     </ul>
                 </div>
-
             </div>
-
             <div class="row text-light mb-4">
                 <div class="col-12 mb-3">
                     <div class="w-100 my-3 border-top border-light"></div>
@@ -205,11 +169,10 @@
                         </li>
                     </ul>
                 </div>
-
         <div class="w-100 bg-black py-3">
             <div class="container">
                 <div class="row pt-2">
-                    <div class="col-12">
+                <div class="col-12">
                         <p class="text-left text-light">
                             <a rel="sponsored" href="/privacy/legalcy" target="_blank">Terminos y condiciones</a>
                         </p>
@@ -217,12 +180,9 @@
                 </div>
             </div>
         </div>
-    </footer>
-    <script src="../Styles/assets/js/jquery-1.11.0.min.js"></script>
-    <script src="../Styles/assets/js/jquery-migrate-1.2.1.min.js"></script>
-    <script src="../Styles/assets/js/bootstrap.bundle.min.js"></script>
-    <script src="../Styles/assets/js/templatemo.js"></script>
-    <script src="../Styles/assets/js/custom.js"></script>
-    <!-- End Script -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.min.js" integrity="sha384-Rx+T1VzGupg4BHQYs2gCW9It+akI2MM/mndMCy36UVfodzcJcF0GGLxZIzObiEfa" crossorigin="anonymous"></script>
+</footer>
+</div>
 </body>
 </html>

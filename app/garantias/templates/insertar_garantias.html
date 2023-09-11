@@ -1,57 +1,236 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="author" content="HTML Masters">
-    <title>Insertar Garantías</title>
-</head>
-
-{% with messages = get_flashed_messages() %}
-{% if messages %}
-{% for message in messages %}
-    <p>{{ message }}</p> 
-{% endfor %}
-{% endif %}
-{% endwith %}
-<body>
-    <form action="/garantias/agregar_garantia" method="POST">
-        <input type="date" name="fechaGarantia" placeholder="Fecha Garantía">
-        <input type="text" name="descripcionGarantia" placeholder="Descripción Garantía">
-        <label for="lang">Tipo de Garantía</label>
-        <select name="garantia" id="lang">
-            <option value="reparaciones">Reparaciones</option>
-            <option value="reemplazo">Reemplazo</option>
-            <option value="daño">Daño</option>
-        </select>
-        <button type="submit">
-            save
-        </button>
-    </form>
-
-    <table>
-        <thead>
-            <tr>
-                <td>Fecha garantía</td>
-                <td>Descripción Garantía</td>
-                <td>Tipo Garantía</td>
-                <td>Operations</td>
-            </tr>
-            <tbody>
-                {% for garantia in garantias  %}
-                    <tr>
-                        <td>{{ garantia.1 }}</td>
-                        <td>{{ garantia.2 }}</td>
-                        <td>{{ garantia.3  }}</td>
-                        <td>
-                            <a href="/garantias/editar_garantia/{{garantia.0}}">Editar</a>
-                            <a href="/garantias/eliminar_garantia/{{garantia.0}}">Eliminar</a>
-                        </td>
-                    </tr>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="HTML Masters" />
+    <link rel="stylesheet" href="../../static/css/bootstrap.min.css" />
+    <link rel="apple-touch-icon" href="../../static/Img/logo.png">
+    <link rel="shortcut icon" type="image/x-icon" href="../../static/Img/logo.png">
+    <title>Solicitar Garantías</title>
+  </head>
+  <body>
+        <!-- Start Top Nav -->
+        <nav class="navbar navbar-expand-lg bg-dark navbar-light d-none d-lg-block" id="templatemo_nav_top">
+          <div class="container text-light">
+              <div class="w-100 d-flex justify-content-between">
+                  <div>
+                      <i class="fa fa-envelope mx-2"></i>
+                      <a class="navbar-sm-brand text-light text-decoration-none" >fabriautomaticas@hotmail.com</a>
+                      <i class="fa fa-phone mx-2"></i>
+                      <a class="navbar-sm-brand text-light text-decoration-none" >315-300-9936</a>
+                  </div>
+                  <div>
+                      <a class="text-light" href="https://fb.com/templatemo" target="_blank" rel="sponsored"><i class="fab fa-facebook-f fa-sm fa-fw me-2"></i></a>
+                      <a class="text-light" href="https://www.instagram.com/fabriautomaticas/?hl=es" target="_blank"><i class="fab fa-instagram fa-sm fa-fw me-2"></i></a>
+                      <a class="text-light" href="https://twitter.com/" target="_blank"><i class="fab fa-twitter fa-sm fa-fw me-2"></i></a>
+                      <a class="text-light" href="https://www.linkedin.com/" target="_blank"><i class="fab fa-linkedin fa-sm fa-fw"></i></a>
+                  </div>
+              </div>
+          </div>
+      </nav>
+      <!-- Close Top Nav -->
+      <!-- Header -->
+      <nav class="navbar navbar-expand-lg navbar-light shadow">
+          <div class="container d-flex justify-content-between align-items-center">
+              <a class="navbar-brand text-dark logo h1 align-self-center" href="/menu/menu">
+                  Fabriautomaticas SAS
+              </a>
+              <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#templatemo_main_nav" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="align-self-center collapse navbar-collapse flex-fill  d-lg-flex justify-content-lg-between" id="templatemo_main_nav">
+                  <div class="flex-fill">
+                      <ul class="nav navbar-nav d-flex justify-content-between mx-lg-auto">
+                          <li class="nav-item">
+                              <a class="nav-link" href="/pqr/pqr">PQR'S</a>
+                          </li>
+                          <li class="nav-item">
+                              <a class="nav-link" href="/shop/catalogue">Compra</a>
+                          </li>
+                          <li class="nav-item">
+                              <a class="nav-link" href="/contactanos/contactanos">Contactanos</a>
+                          </li>
+                          <li class="nav-item">
+                              <a class="nav-link" href="/menu/menu">Menú</a>
+                          </li>
+                          <li class="nav-item">
+                              <a class="nav-link" href="/garantias/garantia">Garantía</a>
+                          </li>
+                      </ul>
+                  </div>
+                  <div class="navbar align-self-center d-flex">
+                      <div class="d-lg-none flex-sm-fill mt-3 mb-4 col-7 col-sm-auto pr-3">
+                          <div class="input-group">
+                              <input type="text" class="form-control" id="inputMobileSearch" placeholder="Busca ...">
+                              <div class="input-group-text">
+                                  <i class="fa fa-fw fa-search"></i>
+                              </div>
+                          </div>
+                      </div>
+                      <a class="nav-icon d-none d-lg-inline" href="#" data-bs-toggle="modal" data-bs-target="#templatemo_search">
+                          <i class="fa fa-fw fa-search text-dark mr-2"></i>
+                      </a>
+                  </div>
+              </div>
+          </div>
+      </nav>
+      <!-- Close Header -->
+      <br>
+    <div class="container">
+      <div class="col text-center">
+      <h1 class="text-aling-center">Insertar Garantías</h1>
+      <br>
+      <h3>Inserta tu garantía de acuerdo a tu solicitud</h3>
+      </div>
+      <br>
+      {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        {% for message in messages %}
+          <div class="alert alert-success alert-dismissible fade show" role="alert">
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+      <div class="row">
+        <div class="col-md-5">
+          <div class="card card-body">
+            <form action="/garantias/agregar_garantia" method="POST">
+              <div class="form-group">
+                <label for="lang" class="form-group"><strong>Selecciona la fecha de la garantía</strong></label>
+              <input type="date" name="fechaGarantia" placeholder="Fecha Garantía" class="form-control">
+              </div>
+              <br>
+              <div class="form-group" color="dark">
+                <label for="lang" class="form-group"><strong>Ingresa la descripción de la garantía</strong></label>
+              <input type="text" name="descripcionGarantia" placeholder="Descripción Garantía" class="form-control"/>
+              </div>
+              <br>
+              <div class="form-group">
+              <label for="lang" class="form-group"><strong>Selecciona el tipo de Garantía</strong></label>
+              <select name="garantia" id="lang" class="form-control">
+                <option value="reparaciones">Reparación</option>
+                <option value="reemplazo">Reemplazo</option>
+                <option value="daño">Daño</option>
+              </select>
+              </div>
+              <br>
+              <div class="form-group">
+              <button type="submit" class="btn btn-dark btn-block">enviar</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      
+        <div class="col-md-7">
+          <table class="table table-striped table-bordered bg.white table-sm">
+            <thead>
+              <div class="col text-center">
+                <h3>Mira las garantías ingresadas</h3>
+                </div>
+                <br>
+              <tr>
+                <td><strong>Fecha garantía</strong></td>
+                <td><strong>Descripción Garantía</strong></td>
+                <td><strong>Tipo Garantía</strong></td>
+                <td><strong>Operaciones</strong></td>
+              </tr>
+              <tbody>
+                {% for garantia in garantias %}
+                  <tr>
+                    <td>{{ garantia[1] }}</td>
+                    <td>{{ garantia[2] }}</td>
+                    <td>{{ garantia[3] }}</td>
+                    <td>
+                      <a href="/garantias/editar_garantia/{{ garantia[0] }}" class="btn btn-light">Editar</a>
+                      <a href="/garantias/eliminar_garantia/{{ garantia[0] }}" class="btn btn-dark btn-delete">Eliminar</a>
+                    </td>
+                  </tr>
                 {% endfor %}
-            </tbody>
-        </thead>
-    </table>
-</body>
+              </tbody>
+            </thead>
+          </table>
+        </div>
+      </div>
+    </div>
+    <br>
+        <!-- Start Footer -->
+        <footer class="bg-dark" id="tempaltemo_footer">
+          <div class="container">
+              <div class="row">
+                  <div class="col-md-4 pt-5">
+                      <h2 class="h2 text-success border-bottom pb-3 border-light logo">Fabriautomaticas SAS</h2>
+                      <ul class="list-unstyled text-light footer-link-list">
+                          <li>
+                              <i class="fas fa-map-marker-alt fa-fw"></i>
+                              Cll 129 C #98 a 09
+                          </li>
+                          <li>
+                              <i class="fa fa-phone fa-fw"></i>
+                              <a class="text-decoration-none">315-300-9936</a>
+                          </li>
+                          <li>
+                              <i class="fa fa-envelope fa-fw"></i>
+                              <a class="text-decoration-none" >fabriautomaticas@hotmail.com</a>
+                          </li>
+                      </ul>
+                  </div>
+                  <div class="col-md-4 pt-5">
+                      <h2 class="h2 text-light border-bottom pb-3 border-light">Productos</h2>
+                      <ul class="list-unstyled text-light footer-link-list">
+                          <li><a class="text-decoration-none" href="#">Motores</a></li>
+                          <li><a class="text-decoration-none" href="#">Brazos Mecánicos</a></li>
+                          <li><a class="text-decoration-none" href="#">Talanqueras</a></li>
+                      </ul>
+                  </div>
+                  <div class="col-md-4 pt-5">
+                      <h2 class="h2 text-light border-bottom pb-3 border-light">Acerca de</h2>
+                      <ul class="list-unstyled text-light footer-link-list">
+                          <li><a class="text-decoration-none" href="#">Inicio</a></li>
+                          <li><a class="text-decoration-none" href="#">Compra</a></li>
+                          <li><a class="text-decoration-none" href="#">Contactanos</a></li>
+                          <li><a class="text-decoration-none" href="#">PQR'S</a></li>
+                          <li><a class="text-decoration-none" href="#">Garantías</a></li>
+                      </ul>
+                  </div>
+              </div>
+              <div class="row text-light mb-4">
+                  <div class="col-12 mb-3">
+                      <div class="w-100 my-3 border-top border-light"></div>
+                  </div>
+                  <div class="col-auto me-auto">
+                      <ul class="list-inline text-left footer-icons">
+                          <li class="list-inline-item border border-light rounded-circle text-center">
+                              <a class="text-light text-decoration-none" target="_blank" href="http://facebook.com/"><i class="fab fa-facebook-f fa-lg fa-fw"></i></a>
+                          </li>
+                          <li class="list-inline-item border border-light rounded-circle text-center">
+                              <a class="text-light text-decoration-none" target="_blank" href="https://www.instagram.com/fabriautomaticas/?hl=es"><i class="fab fa-instagram fa-lg fa-fw"></i></a>
+                          </li>
+                          <li class="list-inline-item border border-light rounded-circle text-center">
+                              <a class="text-light text-decoration-none" target="_blank" href="https://twitter.com/"><i class="fab fa-twitter fa-lg fa-fw"></i></a>
+                          </li>
+                          <li class="list-inline-item border border-light rounded-circle text-center">
+                              <a class="text-light text-decoration-none" target="_blank" href="https://www.linkedin.com/"><i class="fab fa-linkedin fa-lg fa-fw"></i></a>
+                          </li>
+                      </ul>
+                  </div>
+          <div class="w-100 bg-black py-3">
+              <div class="container">
+                  <div class="row pt-2">
+                      <div class="col-12">
+                          <p class="text-left text-light">
+                              <a rel="sponsored" href="/privacy/legalcy" target="_blank">Terminos y condiciones</a>
+                          </p>
+                      </div>
+                  </div>
+              </div>
+          </div>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.min.js" integrity="sha384-Rx+T1VzGupg4BHQYs2gCW9It+akI2MM/mndMCy36UVfodzcJcF0GGLxZIzObiEfa" crossorigin="anonymous"></script>
+    <script src="../../static/Js/Script6.js"></script>
+      </footer>
+  </body>
 </html>

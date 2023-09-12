@@ -7,3 +7,7 @@ app = Flask(__name__)
 @modelo_admin.route("/admin")
 def login():
     return render_template("admin.html")
+
+@modelo_admin.route("/menu")
+def menu():
+    return render_template("indexadmin.html")

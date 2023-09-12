@@ -165,6 +165,11 @@ body, ul, li, p, a, label, input, div {
   height: 6px;
 }
 
+.img-fc{
+  margin-top: 140px;
+  width: 400px;
+}
+
 @media (min-width: 576px) {
   .tempaltemo-carousel .h1 { font-size: 1em !important;}
 }

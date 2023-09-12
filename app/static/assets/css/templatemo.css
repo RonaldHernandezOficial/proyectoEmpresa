@@ -134,6 +134,12 @@ body, ul, li, p, a, label, input, div {
 /* Contact map */
 .leaflet-control a, .leaflet-control { font-size: 10px !important;}
 .form-control { border: 1px solid #e8e8e8;}
+
+/*Centrar xd*/
+.centro{
+  margin-top: 15px;
+  margin-left: 26%;
+}
 /* Footer */
 #tempaltemo_footer a { color: #dcdde1;}
 #tempaltemo_footer a:hover { color: #951e1e;}

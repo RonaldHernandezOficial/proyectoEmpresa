@@ -41,7 +41,6 @@ def agregar_garantia():
         flash('!Garantía agregada satisfactoriamente¡')
     return redirect(url_for('modelo_garantias.insertar'))
 
-
 @modelo_garantias.route('/editar_garantia/<id>')
 def obtener_garantia(id):
     cur = mysql.connection.cursor()
@@ -62,8 +61,8 @@ def actualizar_garantia(id):
                     descripcionGarantia = %s,
                     tipoGarantia = %s
             WHERE idGarantia = %s
-        """, (fechaGarantia, descripcionGarantia, tipoGarantia, id))
-        flash('Garantía actualizada satisfactoriamente')
+            """, (fechaGarantia, descripcionGarantia, tipoGarantia, id))
+        flash('!Garantía actualizada satisfactoriamente¡')
         cur.connection.commit()
         return redirect(url_for('modelo_garantias.insertar'))
 
@@ -72,5 +71,5 @@ def eliminar_garantia(id):
     cur = mysql.connection.cursor()  
     cur.execute('DELETE FROM garantia WHERE idGarantia = {0}'.format(id))
     mysql.connection.commit() 
-    flash('Garantía eliminada satisfactoriamente')
+    flash('!Garantía eliminada satisfactoriamente¡')
     return redirect(url_for('modelo_garantias.insertar'))

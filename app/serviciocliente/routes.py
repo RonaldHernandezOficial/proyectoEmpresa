@@ -17,10 +17,12 @@ app.secret_key = 'mysecretkey'
 
 mysql = MySQL(app)
 
+#inicio de la ruta en donde se encuentra el menú de reseñas 
 @modelo_servicio.route("/pqr")
 def inicio():
     return render_template("serviciocliente.html")
 
+#Función para mostrar los pqrs ya hechos 
 @modelo_servicio.route('/insertar')
 def insertar():
     cur = mysql.connection.cursor()
@@ -28,6 +30,7 @@ def insertar():
     data = cur.fetchall()   
     return render_template('registrarpqr.html' , servicios = data)
 
+#Función para insertar pqrs
 @modelo_servicio.route('/insertar', methods=['GET', 'POST'])
 def agregar_reseña():
     if request.method == 'POST':
@@ -40,7 +43,7 @@ def agregar_reseña():
         flash("¡PQR'S registrado exitosamente!")
     return redirect(url_for('modelo_servicio.insertar'))
 
-
+#Función para eliminar los pqrs por ID atra vez de la tabla
 @modelo_servicio.route('/eliminar_servicio/<string:id>')
 def eliminar_servicio(id):
     cur = mysql.connection.cursor()  

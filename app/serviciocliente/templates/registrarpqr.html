@@ -135,21 +135,9 @@
         <div class="underline">
         </div>
         <form action="/servicio/insertar" method="post" id="contact_form">
-          <div class="name">
-            <label for="name"></label>
-            <input type="text" placeholder="Tu nombre" name="tipoPqrs" id="name_input" required>
-          </div>
-          <div class="email">
-            <label for="email"></label>
-            <input type="email" placeholder="Tu correo" name="descripcionPqrs" id="email_input" required>
-          </div>
-          <div class="telephone">
-            <label for="name"></label>
-            <input type="text" placeholder="Tu numero telefonico" name="telephone" id="telephone_input" required>
-          </div>
           <div class="subject">
             <label for="subject"></label>
-            <select placeholder="Subject line" name="subject" id="subject_input" required>
+            <select placeholder="Subject line" name="tipoPqrs" id="subject_input" required>
               <option disabled hidden selected>Que tipo de "PQRS" realizaras</option>
               <option>Peticion</option>
               <option>Queja</option>
@@ -157,15 +145,47 @@
               <option>Sugerencia</option>
             </select>
           </div>
+          <br>
+          <br>
           <div class="message">
             <label for="message"></label>
-            <textarea name="message" placeholder="Me gustaría charlar sobre" id="message_input" cols="30" rows="5" required></textarea>
+            <textarea name="descripcionPqrs" placeholder="Me gustaría charlar sobre" id="message_input" cols="30" rows="5" required></textarea>
           </div>
           <div class="submit">
             <input type="submit" value="Enviar" id="form_button" />
           </div>
         </form><!-- // End form -->
       </div><!-- // End #container -->
+      <div>
+        <table class="table table-striped table-bordered bg.white table-sm">
+          <thead>
+            <div class="col text-center">
+              <h3>Mira los pqr's solicitados</h3>
+              </div>
+              <br>
+            <tr>
+              <td><strong>Tipo</strong></td>
+              <td><strong>Descripción</strong></td>
+              <td><strong>Codigo de la garantia</strong></td>
+              <td><strong>Codigo del contrato</strong></td>
+            </tr>
+            <tbody>
+              {% for servicio in servicios %}
+                <tr>
+                  <td>{{ servicio[1] }}</td>
+                  <td>{{ servicio[2] }}</td>
+                  <td>{{ servicio[3] }}</td>
+                  <td>{{ servicio[4] }}</td>
+                  <td>
+                    <a href="" class="btn btn-light">Editar</a>
+                    <a href="/servicio/eliminar_servicio/{{ servicio[0] }}" class="btn btn-dark btn-delete">Eliminar</a>
+                  </td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </thead>
+        </table>
+      </div>
         <!-- Start Footer -->
         <footer class="bg-dark1" id="tempaltemo_footer">
             <div class="container">

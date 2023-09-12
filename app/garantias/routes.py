@@ -50,7 +50,7 @@ def obtener_garantia(id):
     return render_template('editar_garantias.html', garantia = dataG[0])
 
 @modelo_garantias.route('/actualizar_garantia/<id>', methods = ['POST'])
-def actualizar_garantia(id):
+def actualizar_garantia(id):    
     if request.method == 'POST':
         fechaGarantia = request.form['fechaGarantia']
         descripcionGarantia = request.form['descripcionGarantia']

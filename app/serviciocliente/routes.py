@@ -51,3 +51,26 @@ def eliminar_servicio(id):
     mysql.connection.commit() 
     flash('Pqrs eliminado satisfactoriamente')
     return redirect(url_for('modelo_servicio.insertar'))
+
+@modelo_servicio.route('/editar_servicio/<id>')
+def obtener_servicio(id):
+    cur = mysql.connection.cursor()
+    cur.execute("SELECT * FROM pqrs WHERE idPqrs = {0}".format(id))
+    dataS = cur.fetchall()
+    return render_template('editarpqr.html', servicio = dataS[0])
+
+@modelo_servicio.route('/actualizar_servicio/<id>', methods = ['POST'])
+def actualizar_servicio(id):
+    if request.method == 'POST':
+        tipoPqrs = request.form['tipoPqrs']
+        descripcionPqrs = request.form['descripcionPqrs']
+        cur = mysql.connection.cursor()
+        cur.execute("""
+            UPDATE pqrs 
+            SET tipoPqrs = %s,
+                descripcionPqrs = %s
+            WHERE idpqrs = %s
+        """, (tipoPqrs, descripcionPqrs, id))
+        flash('Garantía actualizada satisfactoriamente')
+        cur.connection.commit()
+        return redirect(url_for('modelo_servicio.insertar'))

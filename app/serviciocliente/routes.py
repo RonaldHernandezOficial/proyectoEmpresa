@@ -52,6 +52,7 @@ def eliminar_servicio(id):
     flash('Pqrs eliminado satisfactoriamente')
     return redirect(url_for('modelo_servicio.insertar'))
 
+#Funcion para obtener los datos atraves del ID 
 @modelo_servicio.route('/editar_servicio/<id>')
 def obtener_servicio(id):
     cur = mysql.connection.cursor()
@@ -59,6 +60,7 @@ def obtener_servicio(id):
     dataS = cur.fetchall()
     return render_template('editarpqr.html', servicio = dataS[0])
 
+#funcion para actualizar los datos del pqrs
 @modelo_servicio.route('/actualizar_servicio/<id>', methods = ['POST'])
 def actualizar_servicio(id):
     if request.method == 'POST':

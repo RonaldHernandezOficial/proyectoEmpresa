@@ -78,27 +78,24 @@
     </nav>
     <!-- Close Header -->
     <br>
-    <div class="container">
-        <div class="card card-body">
+    <div class="lol">
+    <div class="card card-body">
             <div class="col-md-4 offset-md-4">
                 <form action="/admin/actualizar_garantia/{{garantia.0}}" method="POST">
                     <div class="form-group">
-                    <input type="date" name="fechaGarantia" placeholder="Fecha Garantía" value="{{garantia.1}}" class="form-control">
+                    <input type="date" name="fechaGarantia" placeholder="Fecha Garantía" value="{{garantia.1}}" class="form-control" readonly>
                     </div>
                     <br>
                     <div class="form-group">
-                    <input type="text" name="descripcionGarantia" placeholder="Descripción Garantía" value="{{garantia.2}}" class=form-control>
+                    <input type="text" name="descripcionGarantia" placeholder="Descripción Garantía" value="{{garantia.2}}" class=form-control readonly>
                     </div>
                     <br>
-                      <div class="form-group">
-                    <input type="date" name="fechaGarantia" placeholder="Fecha Garantía" value="{{garantia.1}}" class="form-control">
-                    </div>
                     <div class="form-group">
                         <label for="lang">Estado de Garantía</label>
-                        <select name="garantia" id="lang" value="{{garantia.3}}" class="form-control">
-                            <option value="reparaciones">Activo</option>
-                            <option value="reemplazo">Revision</option>
-                            <option value="daño">Cumplida</option>
+                        <select name="estado" id="lang" value="{{garantia.3}}" class="form-control">
+                            <option value="activo">Activo</option>
+                            <option value="revision">Revision</option>
+                            <option value="cumplida">Cumplida</option>
                         </select>
                         </div>
                     <div class="form-group">
@@ -106,7 +103,6 @@
                     <select name="garantia" id="lang" value="{{garantia.4}}" class="form-control">
                         <option value="reparaciones">Reparación</option>
                         <option value="reemplazo">Reemplazo</option>
-                        <option value="daño">Daño</option>
                     </select>
                     </div>
                     <br>
@@ -116,9 +112,12 @@
                     </button>
                     </div>
                 </form>
+                
             </div>
         </div>
 </div>
+</div>
+        
     <br>
         <!-- Start Footer -->
         <footer class="bg-dark" id="tempaltemo_footer">

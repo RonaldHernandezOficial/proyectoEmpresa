@@ -8,6 +8,7 @@ from app.login import modelo_login
 from app.admin import modelo_admin
 from app.contactanos import modelo_contacto
 from app.serviciocliente import modelo_servicio
+from app.admin import modelo_admin
 
 app = Flask(__name__)
 app.config.from_object(Config)

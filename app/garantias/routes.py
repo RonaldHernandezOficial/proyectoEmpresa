@@ -61,7 +61,7 @@ def actualizar_garantia(id):
                     descripcionGarantia = %s,
                     tipoGarantia = %s
             WHERE idGarantia = %s
-            """, (fechaGarantia, descripcionGarantia, tipoGarantia, id))
+            """, (fechaGarantia, descripcionGarantia, tipoGarantia, estadoGarantia, id))
         flash('!Garantía actualizada satisfactoriamente¡')
         cur.connection.commit()
         return redirect(url_for('modelo_garantias.insertar'))

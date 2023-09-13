@@ -136,6 +136,7 @@
                 <td><strong>Fecha garantía</strong></td>
                 <td><strong>Descripción Garantía</strong></td>
                 <td><strong>Tipo Garantía</strong></td>
+                <td><strong>Estado Garantía</strong></td>
                 <td><strong>Operaciones</strong></td>
               </tr>
               <tbody>
@@ -144,9 +145,9 @@
                     <td>{{ garantia[1] }}</td>
                     <td>{{ garantia[2] }}</td>
                     <td>{{ garantia[3] }}</td>
+                    <td>{{ garantia[4] }}</td>
                     <td>
                       <a href="/garantias/editar_garantia/{{ garantia[0] }}" class="btn btn-light">Editar</a>
-                      <a href="/garantias/eliminar_garantia/{{ garantia[0] }}" class="btn btn-dark btn-delete">Eliminar</a>
                     </td>
                   </tr>
                 {% endfor %}

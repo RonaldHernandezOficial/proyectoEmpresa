@@ -32,19 +32,6 @@ def insertar():
     data = cur.fetchall()
     return render_template('garantiasadmin.html' , garantias = data)
 
-@modelo_admin.route('/agregar_garantia' , methods=['GET','POST'])
-def agregar_garantia():
-    if request.method == 'POST':
-        fechaGarantia = request.form['fechaGarantia']
-        descripcionGarantia = request.form['descripcionGarantia']
-        garantia = request.form['garantia']
-        cur = mysql.connection.cursor()
-        cur.execute('INSERT INTO garantia (fechaGarantia, descripcionGarantia, tipoGarantia) VALUES (%s, %s, %s)', 
-                    (fechaGarantia, descripcionGarantia, garantia))
-        mysql.connection.commit()
-        flash('!Garantía agregada satisfactoriamente¡')
-    return redirect(url_for('modelo_admin.insertar'))
-
 @modelo_admin.route('/editar_garantia/<id>')
 def obtener_garantia(id):
     cur = mysql.connection.cursor()
@@ -58,22 +45,24 @@ def actualizar_garantia(id):
         fechaGarantia = request.form['fechaGarantia']
         descripcionGarantia = request.form['descripcionGarantia']
         tipoGarantia = request.form['garantia']
+        estadoGarantia = request.form['estado']
         cur = mysql.connection.cursor()
         cur.execute("""
             UPDATE garantia 
             SET fechaGarantia = %s,
                     descripcionGarantia = %s,
-                    tipoGarantia = %s
+                    tipoGarantia = %s,
+                    estadoGarantia = %s
             WHERE idGarantia = %s
-        """, (fechaGarantia, descripcionGarantia, tipoGarantia, id))
+        """, (fechaGarantia, descripcionGarantia, tipoGarantia, estadoGarantia, id))
         flash('!Garantía actualizada satisfactoriamente¡')
         cur.connection.commit()
-        return redirect(url_for('modelo_garantias.insertar'))
-
-@modelo_admin.route('/eliminar_garantia/<string:id>')
+        return redirect(url_for('modelo_admin.insertar'))
+    
+@modelo_admin.route('/eliminar/<string:id>')
 def eliminar_garantia(id):
     cur = mysql.connection.cursor()  
     cur.execute('DELETE FROM garantia WHERE idGarantia = {0}'.format(id))
     mysql.connection.commit() 
     flash('!Garantía eliminada satisfactoriamente¡')
-    return redirect(url_for('modelo_garantias.insertar'))
+    return redirect(url_for('modelo_admin.insertar'))

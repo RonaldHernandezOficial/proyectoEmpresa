@@ -138,7 +138,8 @@ body, ul, li, p, a, label, input, div {
 /*Centrar xd*/
 .centro{
   margin-top: 15px;
-  margin-left: 26%;
+  margin-left: 25%;
+  margin-right: 29%;
 }
 /* Footer */
 #tempaltemo_footer a { color: #dcdde1;}

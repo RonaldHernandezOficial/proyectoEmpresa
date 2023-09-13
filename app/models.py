@@ -36,6 +36,7 @@ class Garantias(db.Model):
     fechaGarantia = Column(Date, nullable = False)
     descripcionGarantia = Column(Text, nullable = False)
     tipoGarantia = Column(String(255), nullable = False)
+    estadoGarantia = Column(String(255), nullable = False)
     idUsuFk = Column(Integer, ForeignKey('Usuario.idUsu'))
 
 class Contrato(db.Model):

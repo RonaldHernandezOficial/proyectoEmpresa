@@ -19,7 +19,7 @@ mysql = MySQL(app)
 
 #inicio de la ruta en donde se encuentra el menú de reseñas 
 @modelo_servicio.route("/pqr")
-def inicio():
+def inicioreseñas():
     return render_template("serviciocliente.html")
 
 #Función para mostrar los pqrs ya hechos 
@@ -32,7 +32,7 @@ def insertar():
 
 #Función para insertar pqrs
 @modelo_servicio.route('/insertar', methods=['GET', 'POST'])
-def agregar_reseña():
+def agregar_pqrs():
     if request.method == 'POST':
         tipoPqrs = request.form['tipoPqrs']
         descripcionPqrs = request.form['descripcionPqrs']
@@ -45,7 +45,7 @@ def agregar_reseña():
 
 #Función para eliminar los pqrs por ID atra vez de la tabla
 @modelo_servicio.route('/eliminar_servicio/<string:id>')
-def eliminar_servicio(id):
+def eliminar_pqrs(id):
     cur = mysql.connection.cursor()  
     cur.execute('DELETE FROM pqrs WHERE idPqrs = {0}'.format(id))
     mysql.connection.commit() 
@@ -54,7 +54,7 @@ def eliminar_servicio(id):
 
 #Funcion para obtener los datos atraves del ID 
 @modelo_servicio.route('/editar_servicio/<id>')
-def obtener_servicio(id):
+def obtener_pqrs(id):
     cur = mysql.connection.cursor()
     cur.execute("SELECT * FROM pqrs WHERE idPqrs = {0}".format(id))
     dataS = cur.fetchall()
@@ -62,7 +62,7 @@ def obtener_servicio(id):
 
 #funcion para actualizar los datos del pqrs
 @modelo_servicio.route('/actualizar_servicio/<id>', methods = ['POST'])
-def actualizar_servicio(id):
+def actualizar_pqrs(id):
     if request.method == 'POST':
         tipoPqrs = request.form['tipoPqrs']
         descripcionPqrs = request.form['descripcionPqrs']

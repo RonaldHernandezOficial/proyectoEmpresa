@@ -54,3 +54,11 @@ class Pqrs(db.Model):
     idGarantiaFk = Column(Integer, ForeignKey('Garantia.idGarantia'))
     idContratoFk = Column(String(20), ForeignKey('Contrato.idContrato'))
 
+class Reseñas(db.Model):
+    __tablename__='Reseñas'
+    idReseña = Column(Integer, primary_key = True)
+    comentarios = Column(Text, nullable = False)
+    estrellas = Column(Integer, nullable = False)
+    idUsuFk = Column(Integer, ForeignKey('Usuario.idUsu'))
+    idPqrFk = Column(Integer, ForeignKey('Pqrs.idPqrs'))
+

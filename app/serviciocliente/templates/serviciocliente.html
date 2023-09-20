@@ -127,7 +127,7 @@
         <a href="enlace_publicidad">Ver más</a>
     </aside>
 <section class="lol">
-    <form>
+    <form id="commentForm">
         <section class="comments-section">
             <img src="../../static/img/logo.png" alt="" class="img">
             <div class="comments">
@@ -135,15 +135,22 @@
             </div>
             <div class="comment-form">
                 <h3>Deja un Comentario</h3>
-                <form id="commentForm">
                     <div class="form-group">
                         <label for="name">Nombre:</label>
-                        <input type="text" id="name" name="name" required>
+                        <input type="text" id="name" name="nombre" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="comment">Correo:</label>
+                        <input type="email" id="name" name="correo" required>
                     </div>
                     <div class="form-group">
                         <label for="comment">Comentario:</label>
-                        <textarea id="comment" name="comment" required></textarea>
+                        <textarea id="comment" name="comentario" required></textarea>
                     </div>
+                        <div class="form-group">
+                            <label for="name">Muestranos el trabajo que se te realizo:</label>
+                            <input type="file" id="name" name="foto" required>
+                        </div>    
                     <div class="form-group">
                         <label for="rating">Calificación:</label>
                         <div class="rating">

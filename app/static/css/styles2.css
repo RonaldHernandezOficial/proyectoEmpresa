@@ -48,7 +48,7 @@ header {
 
 form {
     background-color: #f5f5f5;
-    padding: 20px;
+    padding: 30px;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
@@ -73,12 +73,14 @@ textarea {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: 100px;
+
 }
 
 .rating label {
-    font-size: 30px;
+    font-size: 50px;
     cursor: pointer;
+    padding: 45px;
+    scale: 250%;
 }
 
 button[type="submit"] {
@@ -143,7 +145,7 @@ input[type="radio"]:checked~label {
     /* Ancho de la publicidad */
     margin-right: 20px;
     /* Espacio entre la publicidad y el contenido principal */
-    padding: 261px;
+    padding: 304px;
     /* Espacio interno de la publicidad */
     background-color: #f0f0f0;
     /* Color de fondo de la publicidad */
@@ -156,4 +158,11 @@ input[type="radio"]:checked~label {
     width: 50%;
     margin: 10px;
     margin-left: 27%;
+}
+input[type="email"],
+textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
 }

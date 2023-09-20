@@ -18,7 +18,6 @@ class Rol(db.Model):
     __tablename__ = 'Rol'
     id = Column(Integer, primary_key= True)
     tipoRol = Column(String(45), nullable = False)
-    nombreRol = Column(String(45), nullable = False)
 
 class Usuario(db.Model):
     __tablename__ = 'Usuario'

@@ -57,6 +57,8 @@ class Pqrs(db.Model):
 class Reseñas(db.Model):
     __tablename__='Reseñas'
     idReseña = Column(Integer, primary_key = True)
+    nombre = Column(String(100), nullable = False)
+    correo = Column(String(100), nullable = False)
     comentarios = Column(Text, nullable = False)
     estrellas = Column(Integer, nullable = False)
     idUsuFk = Column(Integer, ForeignKey('Usuario.idUsu'))

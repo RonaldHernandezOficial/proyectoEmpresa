@@ -16,7 +16,7 @@
 
     <!-- Load fonts style after rendering the layout styles -->
     <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
+        href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900display=swap">
     <link rel="stylesheet" href="../../static/assets/css/fontawesome.min.css">
 
 </head>
@@ -120,12 +120,14 @@
     </nav>
     <!-- Start section -->
     <!-- Aside para la publicidad -->
+    <div class="">
     <aside class="advertising">
         <!-- Aquí puedes agregar tu contenido de publicidad, como imágenes, enlaces, texto, etc. -->
-        <img src=" " alt="Publicidad">
-        <p>¡Descubre nuestras ofertas especiales!</p>
-        <a href="enlace_publicidad">Ver más</a>
+        <img src="../../static/img/pngtree-like-comment-icon-png-image_2696350.png" alt="Revisa tu comentario" class="comentario">
+        <a href="/insertarReseña">Revisa tu Comentario</a>
     </aside>
+</div>
+<div class="col text-center">
 <section class="lol">
     <form id="commentForm">
         <section class="comments-section">
@@ -134,7 +136,7 @@
                 <!-- Los comentarios se agregarán aquí dinámicamente usando python -->
             </div>
             <div class="comment-form">
-                <h3>Deja un Comentario</h3>
+                <h3>Deja tu Comentario</h3>
                     <div class="form-group">
                         <label for="name">Nombre:</label>
                         <input type="text" id="name" name="nombre" required>
@@ -147,30 +149,68 @@
                         <label for="comment">Comentario:</label>
                         <textarea id="comment" name="comentario" required></textarea>
                     </div>
-                     
                     <div class="form-group">
                         <label for="rating">Calificación:</label>
                         <div class="rating">
                             <p class="clasificacion">
-                                <input id="radio1" type="radio" name="estrellas" value="5"><!--
-                                --><label for="radio1">★</label><!--
-                                --><input id="radio2" type="radio" name="estrellas" value="4"><!--
-                                --><label for="radio2">★</label><!--
-                                --><input id="radio3" type="radio" name="estrellas" value="3"><!--
-                                --><label for="radio3">★</label><!--
-                                --><input id="radio4" type="radio" name="estrellas" value="2"><!--
-                                --><label for="radio4">★</label><!--
-                                --><input id="radio5" type="radio" name="estrellas" value="1"><!--
-                                --><label for="radio5">★</label>
+                                <!--
+                                --><label for="radio1"><input id="radio1" type="radio" name="estrellas" value="5">★</label><!--
+                                --><!--
+                                --><label for="radio2"><input id="radio2" type="radio" name="estrellas" value="4">★</label><!--
+                                --><!--
+                                --><label for="radio3"><input id="radio3" type="radio" name="estrellas" value="3">★</label><!--
+                                --><!--
+                                --><label for="radio4"><input id="radio4" type="radio" name="estrellas" value="2">★</label><!--
+                                --><!--
+                                --><label for="radio5"><input id="radio5" type="radio" name="estrellas" value="1">★</label>
                                 </p>
-                        </div>
                     </div>
-                    <button type="submit">Enviar</button>
-    </form>
-    
+                <form id="formulario1" action="" method="post" target="_blank">
+
+                    <p><input type="submit" value="Enviar datos"></p>
+                  
+                  </form>
+            </div>
+    </form>    
+    <div class="col-md-7">
+        <table class="table table-striped table-bordered bg.white table-sm">
+          <thead>
+            <br>
+            <div class="col text-center">
+              <h3>Mira las reseñas ingresadas</h3>
+              </div>
+              <br>
+            <tr>
+              <td><strong>Nombre</strong></td>
+              <td><strong>Correo</strong></td>
+              <td><strong>Comentario</strong></td>
+              <td><strong>Calificar</strong></td>
+              <td><strong>Operaciones</strong></td>
+            </tr>
+            <tbody>
+              {% for reseña in reseñas %}
+                <tr>
+                  <td>{{ reseña[1] }}</td>
+                  <td>{{ reseña[2] }}</td>
+                  <td>{{ reseña[3] }}</td>
+                  <td>{{ reseña[4] }}</td>
+                  <td>
+                    <a href="/servicio//{{ garantia[0] }}" class="btn btn-light">Editar</a>
+                  </td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </thead>
+        </table>
+    </div>
+      </div>
+    </div>
+</div>
 </section>
+
+
 <!-- End section -->
- 
+
 <!-- Start Footer -->
 <footer class="bg-dark1" id="tempaltemo_footer" >
     <div class="container">

@@ -18,9 +18,29 @@ app.secret_key = 'mysecretkey'
 mysql = MySQL(app)
 
 #inicio de la ruta en donde se encuentra el menú de reseñas 
-@modelo_servicio.route("/pqr")
-def inicioreseñas():
-    return render_template("serviciocliente.html")
+
+#inicio de la ruta en donde se encuentra el menú de reseñas 
+@modelo_servicio.route("/insertar_reseña")
+def insertar_reseña():
+    cur = mysql.connection.cursor()
+    cur.execute('SELECT * FROM reseñas')
+    data = cur.fetchall()
+    return render_template("serviciocliente.html", reseña = data)
+
+#Función para insertar pqrs
+@modelo_servicio.route('/insertar_reseña', methods=['GET', 'POST'])
+def agregar_reseña():
+    if request.method == 'POST':
+        nombre = request.form['nombre']
+        correo = request.form['correo']
+        comentario = request.form['comentario']
+        calificacion = request.form['calificacion']
+        cur = mysql.connection.cursor()
+        cur.execute('INSERT INTO  pqrs (nombre, correo, comentarios, estrellas) VALUES (%s,%s,%s,%s)',
+                    (nombre, correo, comentario, calificacion))
+        mysql.connection.commit()
+        flash("¡RESEÑA registrada exitosamente!")
+    return redirect(url_for('modelo_servicio.insertar_reseña'))
 
 #Función para mostrar los pqrs ya hechos 
 @modelo_servicio.route('/insertar')

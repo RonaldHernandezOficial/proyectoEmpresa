@@ -166,3 +166,7 @@ textarea {
     border: 1px solid #ddd;
     border-radius: 5px;
 }
+
+.comentario{
+    width: 100px;
+}

@@ -9,6 +9,7 @@ from app.admin import modelo_admin
 from app.contactanos import modelo_contacto
 from app.serviciocliente import modelo_servicio
 from app.admin import modelo_admin
+from app.terminosycondiciones import modelo_terminos
 
 app = Flask(__name__)
 app.config.from_object(Config)
@@ -24,6 +25,7 @@ app.register_blueprint(modelo_admin)
 app.register_blueprint(modelo_contacto)
 app.register_blueprint(modelo_servicio)
 app.register_blueprint(modelo_garantias)
+app.register_blueprint(modelo_terminos)
 
 if __name__ == '__main__':
     app.run(port=3000, debug=True)

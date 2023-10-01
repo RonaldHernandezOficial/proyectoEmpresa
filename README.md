@@ -15,4 +15,9 @@ THIS REPOSITORY IS CREATED SOLELY AS A COMMUNICATION HELP FOR THE CREATION OF A 
 * Se realizo la CRUD de pqrs.
 * se agrego la conexion en el archivo main para realizar la conexión.
 * Se agregaron las vistas para consultar las garantias desde el perfil de admin.
-* 
+
+# 01-10-2023
+* Se ruta de terminos y condiciones
+* se agregaron botones de regreso en diferentes paginas
+* Se elimino el apartado de compras.
+  

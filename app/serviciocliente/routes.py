@@ -36,7 +36,7 @@ def agregar_reseña():
         comentario = request.form['comentario']
         calificacion = request.form['calificacion']
         cur = mysql.connection.cursor()
-        cur.execute('INSERT INTO  pqrs (nombre, correo, comentarios, estrellas) VALUES (%s,%s,%s,%s)',
+        cur.execute('INSERT INTO  reseñas (nombre, correo, comentarios, calificacion) VALUES (%s,%s,%s,%s)',
                     (nombre, correo, comentario, calificacion))
         mysql.connection.commit()
         flash("¡RESEÑA registrada exitosamente!")

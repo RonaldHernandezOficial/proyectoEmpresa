@@ -60,7 +60,7 @@ class Reseñas(db.Model):
     nombre = Column(String(100), nullable = False)
     correo = Column(String(100), nullable = False)
     comentarios = Column(Text, nullable = False)
-    estrellas = Column(Integer, nullable = False)
+    calificacion = Column(String(50), nullable = False)
     idUsuFk = Column(Integer, ForeignKey('Usuario.idUsu'))
     idPqrFk = Column(Integer, ForeignKey('Pqrs.idPqrs'))
 

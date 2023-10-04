@@ -14,7 +14,7 @@ header {
 }
 
 .comments-section {
-    max-width: 800px;
+    max-width: 900px;
     margin: 0 auto;
     padding: 22px;
     background-color: #fff;
@@ -80,7 +80,7 @@ textarea {
     font-size: 50px;
     cursor: pointer;
     padding: 45px;
-    scale: 200%;
+    scale: 100%;
 }
 
 button[type="submit"] {
@@ -141,16 +141,18 @@ input[type="radio"]:checked~label {
 .advertising {
     float: left;
     /* Coloca el aside a la izquierda */
-    width: 50%;
+    width: 58%;
     /* Ancho de la publicidad */
-    margin-right: 20px;
+    margin-right: 100px;
+    margin-left: -150px;
     /* Espacio entre la publicidad y el contenido principal */
-    padding: 304px;
+    padding: 250px;
     /* Espacio interno de la publicidad */
     background-color: #f0f0f0;
     /* Color de fondo de la publicidad */
     border: 1px solid #ccc;
     /* Borde de la publicidad */
+    text-align: left;
 
 }
 
@@ -168,5 +170,6 @@ textarea {
 }
 
 .comentario{
-    width: 100px;
+    width: 30px;
 }
+input[type = "radio"]:checked ~ label{color:orange;}

@@ -25,7 +25,7 @@ def insertar_reseña():
     cur = mysql.connection.cursor()
     cur.execute('SELECT * FROM reseñas')
     data = cur.fetchall()
-    return render_template("serviciocliente.html", reseña = data)
+    return render_template("serviciocliente.html", reseñas = data)
 
 #Función para insertar pqrs
 @modelo_servicio.route('/insertar_reseña', methods=['GET', 'POST'])
@@ -40,6 +40,15 @@ def agregar_reseña():
                     (nombre, correo, comentario, calificacion))
         mysql.connection.commit()
         flash("¡RESEÑA registrada exitosamente!")
+    return redirect(url_for('modelo_servicio.insertar_reseña'))
+
+#Función para eliminar las rese{as} por ID atra vez de la tabla
+@modelo_servicio.route('/eliminar_reseña/<string:id>')
+def eliminar_reseña(id):
+    cur = mysql.connection.cursor()  
+    cur.execute('DELETE FROM reseñas WHERE idReseña = {0}'.format(id))
+    mysql.connection.commit() 
+    flash('Garantía eliminado satisfactoriamente')
     return redirect(url_for('modelo_servicio.insertar_reseña'))
 
 #Función para mostrar los pqrs ya hechos 

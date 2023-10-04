@@ -21,3 +21,7 @@ THIS REPOSITORY IS CREATED SOLELY AS A COMMUNICATION HELP FOR THE CREATION OF A 
 * se agregaron botones de regreso en diferentes paginas
 * Se elimino el apartado de compras.
   
+# 03-10-2023
+* Se termina de solucionar errores, cosas que quedaron pendientes del aplicativo, quedando en perfecto funcionamiento.
+  
+#MUCHAS GRACIAS COMPAÑEROS POR SU COLABORACIÓN, ME ALEGRO DE TENERLO A MI LADO COMO EL EQUIPO QUE SOMOS!!

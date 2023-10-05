@@ -51,6 +51,7 @@ form {
     padding: 30px;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    width: 50%;
 }
 
 .form-group {
@@ -62,25 +63,25 @@ label {
 }
 
 input[type="text"],
+input[type="email"],
 textarea {
     width: 100%;
     padding: 10px;
     border: 1px solid #ddd;
     border-radius: 5px;
+    margin-bottom: 10px;
 }
 
 .rating {
     display: flex;
     justify-content: space-between;
     align-items: center;
-
 }
 
 .rating label {
     font-size: 50px;
     cursor: pointer;
-    padding: 45px;
-    scale: 100%;
+    padding: 10px;
 }
 
 button[type="submit"] {
@@ -91,85 +92,43 @@ button[type="submit"] {
     border-radius: 5px;
     cursor: pointer;
     font-weight: bold;
+    margin-top: 10px;
 }
 
 button[type="submit"]:hover {
     background-color: #555;
 }
 
-#form p {
-    text-align: center;
-}
-
-#form label {
-    font-size: 20px;
-}
-
-input[type="radio"] {
-    display: none;
-}
-
-label {
-    color: grey;
-}
-
-.clasificacion {
-    direction: rtl;
-    unicode-bidi: bidi-override;
-}
-
-label:hover,
-label:hover~label {
-    color: orange;
-}
-
-input[type="radio"]:checked~label {
-    color: orange;
-}
-
 .lol {
-    padding-left: 50%;
+    text-align: center;
     margin-bottom: 20px;
 }
 
 .bg-dark1 {
     background-color: #333;
-    margin-left: -100%;
-    padding-left: -200%;
+    padding-left: 200px; /* Adjust as needed */
+    margin-left: -200px; /* Adjust as needed */
+    padding-right: 200px; /* Adjust as needed */
+    margin-right: -200px; /* Adjust as needed */
 }
 
 .advertising {
-    float: left;
-    /* Coloca el aside a la izquierda */
-    width: 58%;
-    /* Ancho de la publicidad */
-    margin-right: 100px;
-    margin-left: -150px;
-    /* Espacio entre la publicidad y el contenido principal */
-    padding: 250px;
-    /* Espacio interno de la publicidad */
+    float: right;
+    width: 48%;
+    margin-right: 10px; 
     background-color: #f0f0f0;
-    /* Color de fondo de la publicidad */
-    border: 1px solid #ccc;
-    /* Borde de la publicidad */
-    text-align: left;
-
+    border:4 1px solid #ccc;
+    text-align: center;
+    padding: auto; 
 }
 
 .img {
     width: 50%;
-    margin: 10px;
-    margin-left: 27%;
-}
-input[type="email"],
-textarea {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
+    margin: 10px auto;
 }
 
-.comentario{
+.comentario {
     width: 30px;
 }
-input[type = "radio"]:checked ~ label{color:orange;}
+
+

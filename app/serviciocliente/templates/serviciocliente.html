@@ -57,16 +57,7 @@
 
             
 
-            {% with messages = get_flashed_messages() %}
-            {% if messages %}
-            {% for message in messages %}
-                <div class="alert alert-success alert-dismissible fade show" role="alert">
-                {{ message }}
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
-            {% endfor %}
-            {% endif %}
-        {% endwith %}
+          
             
             <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse"
                 data-bs-target="#templatemo_main_nav" aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -86,9 +77,6 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="/login/login">Iniciar sesión</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/garantias/garantia">Garantía</a>
                         </li>
                     </ul>
                 </div>
@@ -141,38 +129,45 @@
     <!-- Start section -->
     <!-- Aside para la publicidad -->
     <aside class="advertising">
-        <table class="table table-striped table-bordered bg.white table-sm">
-            <thead>
-                <br>
-                <div class="col text-center">
-                    <h3>Mira las reseñas ingresadas</h3>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h3 class="text-center">Mira las reseñas ingresadas</h3>
+                    <table class="table table-striped table-bordered bg-white table-sm">
+                        <thead>
+                            <tr>
+                                <th><strong>Nombre</strong></th>
+                                <th><strong>Correo</strong></th>
+                                <th><strong>Comentario</strong></th>
+                                <th><strong>Calificación</strong></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for reseña in reseñas %}
+                            <tr>
+                                <td>{{ reseña[1] }}</td>
+                                <td>{{ reseña[2] }}</td>
+                                <td>{{ reseña[3] }}</td>
+                                <td>{{ reseña[4] }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
                 </div>
-                <br>
-                <tr>
-                    <td><strong>Nombre</strong></td>
-                    <td><strong>Correo</strong></td>
-                    <td><strong>Comentario</strong></td>
-                    <td><strong>Calificación</strong></td>
-                    <td><strong>Operaciones</strong></td>
-                </tr>
-            <tbody>
-                {% for reseña in reseñas %}
-                <tr>
-                    <td>{{ reseña[1] }}</td>
-                    <td>{{ reseña[2] }}</td>
-                    <td>{{ reseña[3] }}</td>
-                    <td>{{ reseña[4] }}</td>
-                    <td>
-                        <a href="/servicio/eliminar_reseña/{{reseña.0}}">Eliminar</a>
-                    </td>
-                </tr>
-                {% endfor %}
-            </tbody>
-            </thead>
-        </table>
+            </div>
         </div>
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        {% endfor %}
+        {% endif %}
+    {% endwith %}
     </aside>
-    </div>
+    
         <section class="lol">
             <form action="/servicio/insertar_reseña" method="post" id="" >
                 <section class="comments-section">

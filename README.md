@@ -23,5 +23,9 @@ THIS REPOSITORY IS CREATED SOLELY AS A COMMUNICATION HELP FOR THE CREATION OF A 
   
 # 03-10-2023
 * Se termina de solucionar errores, cosas que quedaron pendientes del aplicativo, quedando en perfecto funcionamiento.
+
+# 26-10-2023
+* Se corigio el botón para volver al menú del login.
+* Se quitaron botones del menu principal.👍
   
 # MUCHAS GRACIAS COMPAÑEROS POR SU COLABORACIÓN, ME ALEGRO DE TENERLO A MI LADO COMO EL EQUIPO QUE SOMOS!!

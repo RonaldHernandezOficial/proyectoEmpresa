@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="../../static/assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="../../static/assets/css/templatemo.css">
     <link rel="stylesheet" href="../../static/assets/css/custom.css">
+    <link rel="stylesheet" href="../../static/css/menu.css">
 
     <!-- Load fonts style after rendering the layout styles -->
     <link rel="stylesheet"
@@ -51,61 +52,41 @@
         <div class="container d-flex justify-content-between align-items-center">
 
             <a class="navbar-brand text-success logo h1 align-self-center" href="/menu/menu">
+                <img src="../../static/img/logo.png" class="imagenfabri">
                 Fabriautomaticas SAS
             </a>
 
-            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse"
+            <button class="navbar-toggler border-10" type="button" data-bs-toggle="collapse"
                 data-bs-target="#templatemo_main_nav" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-
             <div class="align-self-center collapse navbar-collapse flex-fill  d-lg-flex justify-content-lg-between"
                 id="templatemo_main_nav">
                 <div class="flex-fill">
-                    <ul class="nav navbar-nav d-flex justify-content-between mx-lg-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" href="/servicio/pqr">PQR'S</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/shop/catalogue">Compra</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/contactanos/contactanos">Contactanos</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/login/login">Iniciar sesión</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/garantias/garantia">Garantía</a>
-                        </li>
+                    <ul class="nav navbar-nav d-flex">
                     </ul>
                 </div>
                 <div class="navbar align-self-center d-flex">
-                    <div class="d-lg-none flex-sm-fill mt-3 mb-4 col-7 col-sm-auto pr-3">
+                    <div class="d-lg-none flex-sm-fill mt-5 mb-23 col-14 col-sm-auto pr-7">
                         <div class="input-group">
-                            <input type="text" class="form-control" id="inputMobileSearch" placeholder="Busca ...">
-                            <div class="input-group-text">
-                                <i class="fa fa-fw fa-search"></i>
-                            </div>
                         </div>
                     </div>
-                    <a class="nav-icon d-none d-lg-inline" href="#" data-bs-toggle="modal"
-                        data-bs-target="#templatemo_search">
-                        <i class="fa fa-fw fa-search text-dark mr-2"></i>
-                    </a>
-                    <a class="nav-icon position-relative text-decoration-none" href="/shop/catalogue">
-                        <i class="fa fa-fw fa-cart-arrow-down text-dark mr-1"></i>
-                        <span
-                            class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">7</span>
-                    </a>
-                    <a class="nav-icon position-relative text-decoration-none" href="#">
-                        <i class="fa fa-fw fa-user text-dark mr-3"></i>
-                        <span
-                            class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">+99</span>
-                    </a>
                 </div>
             </div>
+            <div class="navbar align-self-center d-flex">
+                <div class="d-lg-none flex-sm-fill mt-3 mb-4 col-7 col-sm-auto pr-3">    
+                </div>
+                <a class="nav-icon position-relative text-decoration-none" href="/login/login">
+                    <i class="fa fa-fw fa-user text-dark mr-3"></i>
+                    <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">FC</span>
+                </a>
+            </div>
+        </div>
+
+    </div>
+</nav>
+<!-- Close Header -->
 
         </div>
     </nav>
@@ -129,7 +110,21 @@
         </div>
     </div>
 
-
+    <div class="modal fade bg-white" id="templatemo_search" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="w-100 pt-1 mb-5 text-right">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="" method="get" class="modal-content modal-body border-0 p-0">
+                <div class="input-group mb-2">
+                    <input type="text" class="form-control" id="inputModalSearch" name="q" placeholder="Search ...">
+                    <button type="submit" class="input-group-text bg-success text-light">
+                        <i class="fa fa-fw fa-search text-white"></i>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
     <!-- Start Banner Hero -->
     <div id="template-mo-zay-hero-carousel" class="carousel slide" data-bs-ride="carousel">
         <ol class="carousel-indicators">
@@ -234,21 +229,21 @@
                         class="rounded-circle img-fluid border"></a>
                 <h5 class="text-center mt-3 mb-3">Sistema de apertura para puertas corredizas de hasta 1100Kg.
                     BULLDOG1100</h5>
-                <p class="text-center"><a class="btn btn-success" href="/shop/catalogue">Comprar</a></p>
+                <!--<p class="text-center"><a class="btn btn-success" href="/shop/catalogue">Comprar</a></p>-->
             </div>
             <div class="col-12 col-md-4 p-5 mt-3">
                 <a href="#"><img src="../../static/Img/Accessmatic-eagle20501-1.jpg"
                         class="rounded-circle img-fluid border"></a>
                 <h2 class="h5 text-center mt-3 mb-3">Pistón para puertas batientes/abatibles de hasta 350Kg o 5 metros
                     de ancho. Incluye 1 pistón. EAGLE501</h2>
-                <p class="text-center"><a class="btn btn-success" href="/shop/catalogue">Comprar</a></p>
+                <!--<p class="text-center"><a class="btn btn-success" href="/shop/catalogue">Comprar</a></p>-->
             </div>
             <div class="col-12 col-md-4 p-5 mt-3">
                 <a href="#"><img src="../../static/Img/Accessmatic_AR380_8.jpg"
                         class="rounded-circle img-fluid border"></a>
                 <h2 class="h5 text-center mt-3 mb-3">Sistema central de apertura para puertas enrollables compensadas de
                     hasta 380 Kg. ARMADILLO380</h2>
-                <p class="text-center"><a class="btn btn-success" href="/shop/catalogue">Comprar</a></p>
+                <!--<p class="text-center"><a class="btn btn-success" href="/shop/catalogue">Comprar</a></p>-->
             </div>
         </div>
     </section>
@@ -289,11 +284,9 @@
                 <div class="col-md-4 pt-5">
                     <h2 class="h2 text-light border-bottom pb-3 border-light">Acerca de</h2>
                     <ul class="list-unstyled text-light footer-link-list">
-                        <li><a class="text-decoration-none" href="#">Inicio</a></li>
-                        <li><a class="text-decoration-none" href="#">Compra</a></li>
-                        <li><a class="text-decoration-none" href="#">Contactanos</a></li>
-                        <li><a class="text-decoration-none" href="#">PQR'S</a></li>
-                        <li><a class="text-decoration-none" href="#">Garantías</a></li>
+                        <li><a class="text-decoration-none" href="/contactanos/contactanos">Contactanos</a></li>
+                        <li><a class="text-decoration-none" href="/servicio/insertar_reseña">Reseñas</a></li>
+                        <li><a class="text-decoration-none" href="/garantias/garantia">Garantías</a></li>
                     </ul>
                 </div>
 
@@ -330,7 +323,7 @@
                         <div class="row pt-2">
                             <div class="col-12">
                                 <p class="text-left text-light">
-                                    <a rel="sponsored" href="/privacy/legalcy" target="_blank">Terminos y
+                                    <a rel="sponsored" href="/terminos/terminos" target="_blank">Terminos y
                                         condiciones</a>
                                 </p>
                             </div>

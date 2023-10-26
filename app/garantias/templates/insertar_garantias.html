@@ -5,9 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="author" content="HTML Masters" />
-    <link rel="stylesheet" href="../../static/css/bootstrap.min.css" />
     <link rel="apple-touch-icon" href="../../static/Img/logo.png">
     <link rel="shortcut icon" type="image/x-icon" href="../../static/Img/logo.png">
+    <link rel="stylesheet" href="../../static/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../static/assets/css/templatemo.css">
+    <link rel="stylesheet" href="../../static/assets/css/custom.css">
     <title>Solicitar Garantías</title>
   </head>
   <body>
@@ -44,10 +46,7 @@
                   <div class="flex-fill">
                       <ul class="nav navbar-nav d-flex justify-content-between mx-lg-auto">
                           <li class="nav-item">
-                              <a class="nav-link" href="/pqr/pqr">PQR'S</a>
-                          </li>
-                          <li class="nav-item">
-                              <a class="nav-link" href="/shop/catalogue">Compra</a>
+                              <a class="nav-link" href="/servicio/insertar_reseña">Reseña</a>
                           </li>
                           <li class="nav-item">
                               <a class="nav-link" href="/contactanos/contactanos">Contactanos</a>
@@ -136,6 +135,7 @@
                 <td><strong>Fecha garantía</strong></td>
                 <td><strong>Descripción Garantía</strong></td>
                 <td><strong>Tipo Garantía</strong></td>
+                <td><strong>Estado Garantía</strong></td>
                 <td><strong>Operaciones</strong></td>
               </tr>
               <tbody>
@@ -144,9 +144,9 @@
                     <td>{{ garantia[1] }}</td>
                     <td>{{ garantia[2] }}</td>
                     <td>{{ garantia[3] }}</td>
+                    <td>{{ garantia[4] }}</td>
                     <td>
                       <a href="/garantias/editar_garantia/{{ garantia[0] }}" class="btn btn-light">Editar</a>
-                      <a href="/garantias/eliminar_garantia/{{ garantia[0] }}" class="btn btn-dark btn-delete">Eliminar</a>
                     </td>
                   </tr>
                 {% endfor %}
@@ -190,7 +190,6 @@
                       <h2 class="h2 text-light border-bottom pb-3 border-light">Acerca de</h2>
                       <ul class="list-unstyled text-light footer-link-list">
                           <li><a class="text-decoration-none" href="#">Inicio</a></li>
-                          <li><a class="text-decoration-none" href="#">Compra</a></li>
                           <li><a class="text-decoration-none" href="#">Contactanos</a></li>
                           <li><a class="text-decoration-none" href="#">PQR'S</a></li>
                           <li><a class="text-decoration-none" href="#">Garantías</a></li>

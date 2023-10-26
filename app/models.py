@@ -18,7 +18,6 @@ class Rol(db.Model):
     __tablename__ = 'Rol'
     id = Column(Integer, primary_key= True)
     tipoRol = Column(String(45), nullable = False)
-    nombreRol = Column(String(45), nullable = False)
 
 class Usuario(db.Model):
     __tablename__ = 'Usuario'
@@ -36,6 +35,7 @@ class Garantias(db.Model):
     fechaGarantia = Column(Date, nullable = False)
     descripcionGarantia = Column(Text, nullable = False)
     tipoGarantia = Column(String(255), nullable = False)
+    estadoGarantia = Column(String(255), nullable = False)
     idUsuFk = Column(Integer, ForeignKey('Usuario.idUsu'))
 
 class Contrato(db.Model):
@@ -53,4 +53,14 @@ class Pqrs(db.Model):
     descripcionPqrs = Column(Text, nullable = False)
     idGarantiaFk = Column(Integer, ForeignKey('Garantia.idGarantia'))
     idContratoFk = Column(String(20), ForeignKey('Contrato.idContrato'))
+
+class Reseñas(db.Model):
+    __tablename__='Reseñas'
+    idReseña = Column(Integer, primary_key = True)
+    nombre = Column(String(100), nullable = False)
+    correo = Column(String(100), nullable = False)
+    comentarios = Column(Text, nullable = False)
+    calificacion = Column(String(50), nullable = False)
+    idUsuFk = Column(Integer, ForeignKey('Usuario.idUsu'))
+    idPqrFk = Column(Integer, ForeignKey('Pqrs.idPqrs'))
 

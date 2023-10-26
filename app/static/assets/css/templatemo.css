@@ -134,6 +134,13 @@ body, ul, li, p, a, label, input, div {
 /* Contact map */
 .leaflet-control a, .leaflet-control { font-size: 10px !important;}
 .form-control { border: 1px solid #e8e8e8;}
+
+/*Centrar xd*/
+.centro{
+  margin-top: 15px;
+  margin-left: 25%;
+  margin-right: 29%;
+}
 /* Footer */
 #tempaltemo_footer a { color: #dcdde1;}
 #tempaltemo_footer a:hover { color: #951e1e;}
@@ -163,6 +170,11 @@ body, ul, li, p, a, label, input, div {
 .product-wap .product-color-dot {
   width: 6px;
   height: 6px;
+}
+
+.img-fc{
+  margin-top: 140px;
+  width: 400px;
 }
 
 @media (min-width: 576px) {

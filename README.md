@@ -27,5 +27,9 @@ THIS REPOSITORY IS CREATED SOLELY AS A COMMUNICATION HELP FOR THE CREATION OF A 
 # 26-10-2023
 * Se corigio el botón para volver al menú del login.
 * Se quitaron botones del menu principal.👍
+
+# 02/11/2023
+* Al momento de las validaciones nos dimos cuenta que la validación de administrador no funciona correctamente, no sabe el por que pero si nos preocupa, ese error hay que corregirlo.
+* Se hace boton para ver la contraseña en login, solo funciona uno hay que verificar el otro.
   
 # MUCHAS GRACIAS COMPAÑEROS POR SU COLABORACIÓN, ME ALEGRO DE TENERLO A MI LADO COMO EL EQUIPO QUE SOMOS!!

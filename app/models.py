@@ -51,6 +51,7 @@ class Pqrs(db.Model):
     idPqrs = Column(Integer, primary_key = True)
     tipoPqrs = Column(String(255), nullable = False)
     descripcionPqrs = Column(Text, nullable = False)
+    estadopqrs = Column(Text, nullable = False)
     idGarantiaFk = Column(Integer, ForeignKey('Garantia.idGarantia'))
     idContratoFk = Column(String(20), ForeignKey('Contrato.idContrato'))
 

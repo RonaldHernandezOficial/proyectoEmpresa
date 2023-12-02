@@ -81,19 +81,16 @@
     <div class="lol">
     <div class="card card-body">
             <div class="col-md-4 offset-md-4">
-                <form action="/admin/actualizar_pqr/{{pqrs.0}}" method="POST">
-                    <div class="form-group">
-                    <input type="date" name="fechaGarantia" placeholder="Fecha Garantía" value="{{pqrs.1}}" class="form-control" readonly>
-                    </div>
+                <form action="/admin/actualizar_pqrs/{{ pqrs.0 }}" method="POST">
                     <br>
                     <div class="form-group">
-                    <input type="text" name="descripcionGarantia" placeholder="Descripción Garantía" value="{{pqrs.2}}" class=form-control readonly>
+                    <input type="text" name="descripcionPqrs" placeholder="Descripción Garantía" value="{{pqrs.2}}" class=form-control readonly>
                     </div>
                     <br>
                     <div class="form-group">
                         <label for="lang">Estado de Pqr</label>
-                        <select name="estado" id="lang" value="{{pqrs.3}}" class="form-control">
-                            <option value="activo">Pendiente</option>
+                        <select name="estado" id="lang" value="{{ pqrs.3 }}" class="form-control">
+                            <option value="pendiente">Pendiente</option>
                             <option value="activo">Activo</option>
                             <option value="revision">Revision</option>
                             <option value="cumplida">Cumplida</option>

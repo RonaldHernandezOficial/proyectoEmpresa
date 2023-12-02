@@ -29,9 +29,10 @@ def agregar_usuario():
         emailUsuario = request.form['email']
         telefonoUsuario = request.form['telefono']
         contrasenaUsuario = request.form['contrasena']
+        idRolFk = 2
         cur = mysql.connection.cursor()
-        cur.execute('INSERT INTO usuario (nombreUsuario, apellidoUsuario, emailUsuario, telefonoUsuario, contrasenaUsuario) VALUES (%s, %s, %s, %s, %s)', 
-                    (nombreUsuario, apellidoUsuario, emailUsuario, telefonoUsuario, contrasenaUsuario))
+        cur.execute('INSERT INTO usuario (nombreUsuario, apellidoUsuario, emailUsuario, telefonoUsuario, contrasenaUsuario, idRolFk) VALUES (%s, %s, %s, %s, %s, %s)', 
+                    (nombreUsuario, apellidoUsuario, emailUsuario, telefonoUsuario, contrasenaUsuario, idRolFk))
         mysql.connection.commit()
     return render_template('login.html')
 
@@ -50,10 +51,10 @@ def ingresar():
             session['idUsu'] = account[0]
             session['idRolFk'] = account[0]
 
-            if session['idRolFk']==1:
-                return render_template("indexadmin.html")
+            if session['idRolFk'] == 1:
+                return redirect("/admin/menu")
             elif session['idRolFk'] == 2: 
-                return render_template("menu.html")
+                return redirect("/menu/menuClientes")
         else:
             return render_template('login.html', mensaje="Usuario o contraseña incorrecta")
         

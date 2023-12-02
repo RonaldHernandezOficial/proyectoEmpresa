@@ -19,7 +19,7 @@ mysql = MySQL(app)
 
 @modelo_admin.route("/admin")
 def login():
-    return render_template("admin.html")
+    return redirect("admin.html")
 
 @modelo_admin.route("/menu")
 def menu():
@@ -98,15 +98,15 @@ def obtener_pqrs(id):
 @modelo_admin.route('/actualizar_pqrs/<id>', methods = ['POST'])
 def responderPqrs(id):
     if request.method == 'POST':
-        tipoPqrs = request.form['tipoPqrs']
+        tipoPqrs = request.form['estado']
         descripcionPqrs = request.form['descripcionPqrs']
         cur = mysql.connection.cursor()
         cur.execute("""
-            UPDATE garantia 
+            UPDATE pqrs 
             SET tipoPqrs = %s,
-                    descripcionPqrs = %s,
+                descripcionPqrs = %s
             WHERE idPqrs = %s
         """, (tipoPqrs, descripcionPqrs, id))
         flash('!Pqrs respondido satisfactoriamente¡')
         cur.connection.commit()
-        return redirect(url_for('modelo_admin.consultar'))
+        return redirect(url_for('modelo_admin.consultarP'))

@@ -52,7 +52,7 @@ def ingresar():
 
             if session['idRolFk']==1:
                 return render_template("indexadmin.html")
-            elif session['idRolFk'] == 2:
+            elif session['idRolFk'] == 2: 
                 return render_template("menu.html")
         else:
             return render_template('login.html', mensaje="Usuario o contraseña incorrecta")

@@ -35,6 +35,10 @@ def agregar_reseña():
         correo = request.form['correo']
         comentario = request.form['comentario']
         calificacion = request.form['calificacion']
+        if (calificacion == "deficiente"):
+            return render_template('registrarpqr.html')
+        if (calificacion == "pesimo"):
+            return render_template('registrarpqr.html')
         cur = mysql.connection.cursor()
         cur.execute('INSERT INTO  reseñas (nombre, correo, comentarios, calificacion) VALUES (%s,%s,%s,%s)',
                     (nombre, correo, comentario, calificacion))

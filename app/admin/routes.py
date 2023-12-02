@@ -66,3 +66,47 @@ def eliminar_garantia(id):
     mysql.connection.commit() 
     flash('!Garantía eliminada satisfactoriamente¡')
     return redirect(url_for('modelo_admin.insertar'))
+
+@modelo_admin.route('/consultar')
+def consultar():
+    cur = mysql.connection.cursor()
+    cur.execute('SELECT * FROM usuario')
+    data = cur.fetchall()
+    return render_template('usuariosAdmin.html' , usuario = data)
+
+@modelo_admin.route('/consultarR')
+def consultarR():
+    cur = mysql.connection.cursor()
+    cur.execute('SELECT * FROM reseñas')
+    data = cur.fetchall()
+    return render_template('reseñasAdmin.html' , reseñas = data)
+
+@modelo_admin.route('/consultarP')
+def consultarP():
+    cur = mysql.connection.cursor()
+    cur.execute('SELECT * FROM pqrs')
+    data = cur.fetchall()
+    return render_template('responderPqr.html' , pqrs = data)
+
+@modelo_admin.route('/editar_pqrs/<id>')
+def obtener_pqrs(id):
+    cur = mysql.connection.cursor()
+    cur.execute('SELECT * FROM pqrs WHERE idPqrs = %s', (id))
+    dataP = cur.fetchall()
+    return render_template('respuesta.html', pqrs = dataP[0])
+
+@modelo_admin.route('/actualizar_pqrs/<id>', methods = ['POST'])
+def responderPqrs(id):
+    if request.method == 'POST':
+        tipoPqrs = request.form['tipoPqrs']
+        descripcionPqrs = request.form['descripcionPqrs']
+        cur = mysql.connection.cursor()
+        cur.execute("""
+            UPDATE garantia 
+            SET tipoPqrs = %s,
+                    descripcionPqrs = %s,
+            WHERE idPqrs = %s
+        """, (tipoPqrs, descripcionPqrs, id))
+        flash('!Pqrs respondido satisfactoriamente¡')
+        cur.connection.commit()
+        return redirect(url_for('modelo_admin.consultar'))

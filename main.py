@@ -2,9 +2,6 @@ from app import app
 from app import render_template 
 from flask_mysqldb import MySQL
 
-if __name__ == "__main__":
-    app.run(port = 3000, debug = True)
-
 # MYSQL Connection 
 app.config['MYSQL_HOST'] = 'localhost'
 app.config['MYSQL_USER'] = 'root'
@@ -18,4 +15,7 @@ mysql = MySQL(app)
 
 @app.route('/')
 def inicio():
-    return render_template('menu.html')
+    return render_template('/menu.html')
+
+if __name__ == "__main__":
+    app.run(port = 3000, debug = True)

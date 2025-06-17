@@ -1,31 +1,33 @@
-from flask import Flask, render_template
+from flask import Flask
 from .config import Config
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
-from app.menu import modelo_menu
-from app.garantias import modelo_garantias
-from app.login import modelo_login
-from app.admin import modelo_admin
-from app.contactanos import modelo_contacto
-from app.serviciocliente import modelo_servicio
-from app.admin import modelo_admin
-from app.terminosycondiciones import modelo_terminos
 
-app = Flask(__name__)
-app.config.from_object(Config)
+db = SQLAlchemy()
+migrate = Migrate()
 
-db = SQLAlchemy(app)
-migrate = Migrate(app=app , db=db)
+def create_app():
+    app = Flask(__name__)
+    app.config.from_object(Config)
 
-from .models import Rol, Usuario, Contrato, Pqrs, Garantias
+    db.init_app(app)
+    migrate.init_app(app, db)
 
-app.register_blueprint(modelo_menu)
-app.register_blueprint(modelo_login)
-app.register_blueprint(modelo_admin)
-app.register_blueprint(modelo_contacto)
-app.register_blueprint(modelo_servicio)
-app.register_blueprint(modelo_garantias)
-app.register_blueprint(modelo_terminos)
+    from .models import Rol, Usuario, Contrato, Pqrs, Garantias
 
-if __name__ == '__main__':
-    app.run(port=3000, debug=True)
+    from app.menu import modelo_menu
+    from app.garantias import modelo_garantias
+    from app.login import modelo_login
+    from app.admin import modelo_admin
+    from app.contactanos import modelo_contacto
+    from app.serviciocliente import modelo_servicio
+    from app.terminosycondiciones import modelo_terminos
+
+    app.register_blueprint(modelo_menu)
+    app.register_blueprint(modelo_login)
+    app.register_blueprint(modelo_admin)
+    app.register_blueprint(modelo_contacto)
+    app.register_blueprint(modelo_servicio)
+    app.register_blueprint(modelo_terminos)
+
+    return app

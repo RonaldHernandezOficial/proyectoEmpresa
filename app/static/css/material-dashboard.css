@@ -10882,6 +10882,7 @@ fieldset:disabled .btn {
 .rounded-circle,
 .avatar.rounded-circle img {
   border-radius: 50% !important;
+  border-color: pink;
 }
 
 .rounded-pill {
@@ -22777,7 +22778,7 @@ label,
 }
 
 .bg-gradient-faded-secondary {
-  background-image: radial-gradient(370px circle at 80% 50%, rgba(, 128, 154, 0.6) 0, #626780 100%);
+  background-image: radial-gradient(370px circle at 80% 50%, rgba( 128, 154, 0.6) 0, #626780 100%);
 }
 
 .bg-gradient-faded-success {

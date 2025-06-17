@@ -1,9 +1,5 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import render_template
 from . import modelo_menu
-import app
-
-#Crear una instancia Flask
-app = Flask(__name__)
 
 @modelo_menu.route("/menu")
 def menu():

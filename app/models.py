@@ -65,3 +65,16 @@ class Reseñas(db.Model):
     idUsuFk = Column(Integer, ForeignKey('Usuario.idUsu'))
     idPqrFk = Column(Integer, ForeignKey('Pqrs.idPqrs'))
 
+class ReporteVentas(db.Model):
+    __tablename__ = 'ReporteVentas'
+    idReporte = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    edificio = db.Column(db.String(100), nullable=False)
+    direccion = db.Column(db.String(200), nullable=False)
+    descripcion = db.Column(db.Text)
+    estado = db.Column(db.Enum('Realizado', 'Pendiente', 'Cancelado'), default='Pendiente')
+    acciones_realizadas = db.Column(db.Text)
+    fotos = db.Column(db.LargeBinary)  # O String si usas rutas de imagen
+    fecha_creacion = db.Column(db.DateTime, server_default=db.func.now())
+    fecha_actualizacion = db.Column(db.DateTime, server_default=db.func.now(), onupdate=db.func.now())
+    idUsuFk = db.Column(db.Integer, db.ForeignKey('Usuario.idUsu'))
+    usuario = db.relationship('Usuario', backref='reportes')

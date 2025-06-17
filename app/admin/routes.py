@@ -1,112 +1,81 @@
-from flask import Flask, render_template, request, redirect, url_for, flash
+from flask import render_template, request, redirect, url_for, flash
 from . import modelo_admin
-from flask_mysqldb import MySQL
-import app
+from app.models import Garantias, Usuario, Reseñas, Pqrs
+from app import db
+from app.decoradores import solo_admin
 
-#Crear una instancia Flask
-app = Flask(__name__)
-
-# MYSQL Connection 
-app.config['MYSQL_HOST'] = 'localhost'
-app.config['MYSQL_USER'] = 'root'
-app.config['MYSQL_PASSWORD'] = ''
-app.config['MYSQL_DB'] = 'post_sale'
-
-# Settings
-app.secret_key = 'mysecretkey'
-
-mysql = MySQL(app)
 
 @modelo_admin.route("/admin")
 def login():
     return redirect("admin.html")
 
-@modelo_admin.route("/menu")
+@modelo_admin.route("/menuAdmin")
 def menu():
     return render_template("indexadmin.html")
 
+
+@modelo_admin.route("/menuAdmin")
+@solo_admin
+def menu_admin():
+     return render_template("indexadmin.html")
+
+
 @modelo_admin.route('/insertar')
 def insertar():
-    cur = mysql.connection.cursor()
-    cur.execute('SELECT * FROM garantia')
-    data = cur.fetchall()
-    return render_template('garantiasadmin.html' , garantias = data)
+    garantias = Garantias.query.all()
+    return render_template('garantiasadmin.html', garantias=garantias)
 
-@modelo_admin.route('/editar_garantia/<id>')
+@modelo_admin.route('/editar_garantia/<int:id>')
 def obtener_garantia(id):
-    cur = mysql.connection.cursor()
-    cur.execute('SELECT * FROM garantia WHERE idGarantia = %s', (id))
-    dataG = cur.fetchall()
-    return render_template('editar.html', garantia = dataG[0])
+    garantia = Garantias.query.get_or_404(id)
+    return render_template('editar.html', garantia=garantia)
 
-@modelo_admin.route('/actualizar_garantia/<id>', methods = ['POST'])
+@modelo_admin.route('/actualizar_garantia/<int:id>', methods=['POST'])
 def actualizar_garantia(id):
+    garantia = Garantias.query.get_or_404(id)
     if request.method == 'POST':
-        fechaGarantia = request.form['fechaGarantia']
-        descripcionGarantia = request.form['descripcionGarantia']
-        tipoGarantia = request.form['garantia']
-        estadoGarantia = request.form['estado']
-        cur = mysql.connection.cursor()
-        cur.execute("""
-            UPDATE garantia 
-            SET fechaGarantia = %s,
-                    descripcionGarantia = %s,
-                    tipoGarantia = %s,
-                    estadoGarantia = %s
-            WHERE idGarantia = %s
-        """, (fechaGarantia, descripcionGarantia, tipoGarantia, estadoGarantia, id))
-        flash('!Garantía actualizada satisfactoriamente¡')
-        cur.connection.commit()
+        garantia.fechaGarantia = request.form['fechaGarantia']
+        garantia.descripcionGarantia = request.form['descripcionGarantia']
+        garantia.tipoGarantia = request.form['garantia']
+        garantia.estadoGarantia = request.form['estado']
+        db.session.commit()
+        flash('¡Garantía actualizada satisfactoriamente!')
         return redirect(url_for('modelo_admin.insertar'))
-    
-@modelo_admin.route('/eliminar/<string:id>')
+
+@modelo_admin.route('/eliminar/<int:id>')
 def eliminar_garantia(id):
-    cur = mysql.connection.cursor()  
-    cur.execute('DELETE FROM garantia WHERE idGarantia = {0}'.format(id))
-    mysql.connection.commit() 
-    flash('!Garantía eliminada satisfactoriamente¡')
+    garantia = Garantias.query.get_or_404(id)
+    db.session.delete(garantia)
+    db.session.commit()
+    flash('¡Garantía eliminada satisfactoriamente!')
     return redirect(url_for('modelo_admin.insertar'))
 
 @modelo_admin.route('/consultar')
 def consultar():
-    cur = mysql.connection.cursor()
-    cur.execute('SELECT * FROM usuario')
-    data = cur.fetchall()
-    return render_template('usuariosAdmin.html' , usuario = data)
+    usuarios = Usuario.query.all()
+    return render_template('usuariosAdmin.html', usuario=usuarios)
 
 @modelo_admin.route('/consultarR')
 def consultarR():
-    cur = mysql.connection.cursor()
-    cur.execute('SELECT * FROM reseñas')
-    data = cur.fetchall()
-    return render_template('reseñasAdmin.html' , reseñas = data)
+    reseñas = Reseñas.query.all()
+    return render_template('reseñasAdmin.html', reseñas=reseñas)
 
 @modelo_admin.route('/consultarP')
 def consultarP():
-    cur = mysql.connection.cursor()
-    cur.execute('SELECT * FROM pqrs')
-    data = cur.fetchall()
-    return render_template('responderPqr.html' , pqrs = data)
+    pqrs = Pqrs.query.all()
+    return render_template('responderPqr.html', pqrs=pqrs)
 
-@modelo_admin.route('/editar_pqrs/<id>')
+@modelo_admin.route('/editar_pqrs/<int:id>')
 def obtener_pqrs(id):
-    cur = mysql.connection.cursor()
-    cur.execute('SELECT * FROM pqrs WHERE idPqrs = %s', (id))
-    dataP = cur.fetchall()
-    return render_template('respuesta.html', pqrs = dataP[0])
+    pqrs = Pqrs.query.get_or_404(id)
+    return render_template('respuesta.html', pqrs=pqrs)
 
-@modelo_admin.route('/actualizar_pqrs/<id>', methods = ['POST'])
+@modelo_admin.route('/actualizar_pqrs/<int:id>', methods=['POST'])
 def responderPqrs(id):
+    pqrs = Pqrs.query.get_or_404(id)
     if request.method == 'POST':
-        tipoPqrs = request.form['estado']
-        descripcionPqrs = request.form['descripcionPqrs']
-        cur = mysql.connection.cursor()
-        cur.execute("""
-            UPDATE pqrs 
-            SET tipoPqrs = %s,
-                descripcionPqrs = %s
-            WHERE idPqrs = %s
-        """, (tipoPqrs, descripcionPqrs, id))
-        flash('!Pqrs respondido satisfactoriamente¡')
-        cur.connection.commit()
+        pqrs.tipoPqrs = request.form['estado']
+        pqrs.descripcionPqrs = request.form['descripcionPqrs']
+        db.session.commit()
+        flash('¡Pqrs respondido satisfactoriamente!')
         return redirect(url_for('modelo_admin.consultarP'))

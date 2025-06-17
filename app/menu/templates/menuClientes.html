@@ -77,8 +77,9 @@
                 <div class="d-lg-none flex-sm-fill mt-3 mb-4 col-7 col-sm-auto pr-3">    
                 </div>
                 <a class="nav-icon position-relative text-decoration-none" href="/menu/menu">
-                    <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">Salir</span>
+                    <a href="{{ url_for('modelo_login.logout') }}" class="btn btn-danger" type="button" style="position: absolute; right: -50px; margin-top: -3px;">Cerrar sesión</a>
                 </a>
+                <h2 class="display-6" style="margin-right: 120px;">Bienvenido, {{ session['nombreUsuario'] }}</h2>
             </div>
         </div>
 

@@ -1,17 +1,7 @@
-from flask import Flask, render_template, request, redirect, url_for, Response, session
+from flask import render_template, request, redirect, url_for, session, flash
 from . import modelo_login
-import app
-from flask_mysqldb import MySQL
-
-
-app = Flask(__name__)
-
-app.config['MYSQL_HOST'] = 'localhost'
-app.config['MYSQL_USER'] = 'root'
-app.config['MYSQL_PASSWORD'] = ''
-app.config['MYSQL_DB'] = 'post_sale'
-
-mysql = MySQL(app)
+from app.models import Usuario
+from app import db
 
 @modelo_login.route("/olvidar_contraseña")
 def nuevo_usuario():
@@ -21,41 +11,44 @@ def nuevo_usuario():
 def login():
     return render_template("login.html")
 
-@modelo_login.route('/insertar' , methods=['GET','POST'])
+@modelo_login.route('/insertar', methods=['POST'])
 def agregar_usuario():
     if request.method == 'POST':
-        nombreUsuario = request.form['nombre']
-        apellidoUsuario = request.form['apellido']
-        emailUsuario = request.form['email']
-        telefonoUsuario = request.form['telefono']
-        contrasenaUsuario = request.form['contrasena']
-        idRolFk = 2
-        cur = mysql.connection.cursor()
-        cur.execute('INSERT INTO usuario (nombreUsuario, apellidoUsuario, emailUsuario, telefonoUsuario, contrasenaUsuario, idRolFk) VALUES (%s, %s, %s, %s, %s, %s)', 
-                    (nombreUsuario, apellidoUsuario, emailUsuario, telefonoUsuario, contrasenaUsuario, idRolFk))
-        mysql.connection.commit()
+        nuevo = Usuario(
+            nombreUsuario=request.form['nombre'],
+            apellidoUsuario=request.form['apellido'],
+            emailUsuario=request.form['email'],
+            telefonoUsuario=request.form['telefono'],
+            contrasenaUsuario=request.form['contrasena'],
+            idRolFk=2
+        )
+        db.session.add(nuevo)
+        db.session.commit()
+        flash("¡Usuario registrado correctamente!")
     return render_template('login.html')
 
-@modelo_login.route('/ingresar', methods=['GET' , 'POST'])
+@modelo_login.route('/ingresar', methods=['POST'])
 def ingresar():
-    if request.method == 'POST' and 'correo' in request.form  and 'contrasena' in request.form:
-        correo = request.form['correo']
-        contrasena = request.form['contrasena']
+    correo = request.form.get('correo')
+    contrasena = request.form.get('contrasena')
+    usuario = Usuario.query.filter_by(emailUsuario=correo, contrasenaUsuario=contrasena).first()
 
-        cur = mysql.connection.cursor()
-        cur.execute('SELECT * FROM usuario WHERE emailUsuario = %s AND contrasenaUsuario = %s', (correo, contrasena))
-        account = cur.fetchone()
+    if usuario:
+        session['logueado'] = True
+        session['idUsu'] = usuario.idUsu
+        session['idRolFk'] = usuario.idRolFk
+        session['nombreUsuario'] = usuario.nombreUsuario
 
-        if account:
-            session['logueado'] = True
-            session['idUsu'] = account[0]
-            session['idRolFk'] = account[0]
-
-            if session['idRolFk'] == 1:
-                return redirect("/admin/menu")
-            elif session['idRolFk'] == 2: 
-                return redirect("/menu/menuClientes")
+        if usuario.idRolFk == 1:
+            return redirect("/admin/menuAdmin")
         else:
-            return render_template('login.html', mensaje="Usuario o contraseña incorrecta")
-        
+            return redirect("/menu/menuClientes")
+    else:
+        return render_template('login.html', mensaje="Usuario o contraseña incorrecta")
+
+@modelo_login.route('/logout')
+def logout():
+    session.clear()
+    flash("Sesión cerrada correctamente.")
+    return redirect(url_for('modelo_login.login'))
 

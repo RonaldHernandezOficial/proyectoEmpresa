@@ -1,5 +1,10 @@
-@import url(https://goo.gl/maps/z1bfGzt1wELzeXvz7);
-@import url(http://weloveiconfonts.com/api/?family=brandico|entypo);
+/* Cargas válidas de fuentes */
+@import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
+
+/* Las siguientes fuentes han sido comentadas porque el servicio ya no está activo */
+/* @import url(http://weloveiconfonts.com/api/?family=brandico|entypo); */
+/* @import url(http://weloveiconfonts.com/api/?family=entypo); */
+
 /* entypo */
 [class*="entypo-"]:before {
   font-family: "entypo", sans-serif;
@@ -10,10 +15,10 @@ body {
   font-family: "Open Sans", sans-serif;
   font-size: 100%;
   background: rgb(194,204,207);
-background: linear-gradient(90deg, rgba(194,204,207,1) 1%, rgba(255,255,255,1) 35%, rgba(194,204,207,1) 100%);
+  background: linear-gradient(90deg, rgba(194,204,207,1) 1%, rgba(255,255,255,1) 35%, rgba(194,204,207,1) 100%);
 }
 
-h1{
+h1 {
   text-align: center;
   color: #575757;
 }
@@ -96,7 +101,7 @@ a {
 #content #left {
   float: left;
   width: 75%;
-  background: #7bc087;
+  background: none;
 }
 @media all and (max-width: 780px) {
   #content #left {
@@ -106,8 +111,12 @@ a {
 #content #left #map {
   height: 388px;
   position: relative;
-  background-image: url("http://f.cl.ly/items/452R3S1440221Z3m372j/israel.png");
-  background-size: cover;
+  background-color: transparent;
+}
+@media all and (max-width: 780px) {
+  #content #left #map {
+    height: 250px;
+  }
 }
 #content #left #map p {
   text-transform: uppercase;
@@ -144,13 +153,14 @@ a {
 }
 #content #left #map .map-locator {
   position: absolute;
-  top: 40%;
-  left: 30%;
+  top: 158px;
+  left: 562px ;
   border-radius: 15px;
   height: 30px;
   width: 30px;
   background: rgba(0, 0, 0, 0.4);
   border: solid 2px white;
+  z-index: 10;
 }
 #content #left #map .map-locator:before {
   content: "";
@@ -210,7 +220,7 @@ a {
   display: table-cell;
   padding: 15px;
   background: rgb(133, 127, 127);
-  border-right: solid thin #7fb587;
+  border-right: solid thin #951e1e;
 }
 #content #left ul#location-bar li:last-of-type {
   border-right: 0;
@@ -238,7 +248,7 @@ a {
   text-transform: uppercase;
 }
 #content #right a:hover {
-  color: #51b2d6;
+  color: #c2c2c2;
 }
 #content #right #social {
   display: table;
@@ -247,6 +257,13 @@ a {
 #content #right .social {
   display: table-cell;
   text-align: center;
+  font-size: 1.5em;
+  padding: 10px;
+  transition: transform 0.2s;
+}
+#content #right .social:hover {
+  transform: scale(1.2);
+  color: #951e1e;
 }
 #content #right form {
   border-top: solid thin #8e9699;
@@ -256,33 +273,32 @@ a {
 }
 #content #right form input,
 #content #right form textarea {
-  background: #394141;
-  padding: 8px;
-  margin-bottom: 8px;
-  width: 100%;
-  color: white;
+  background: #f2f2f2;
+  border: 1px solid #ccc;
+  color: #333;
+  border-radius: 5px;
+  padding: 10px;
 }
-#content #right form input:last-of-type,
-#content #right form textarea:last-of-type {
-  margin-bottom: 0;
+#content #right form input:focus,
+#content #right form textarea:focus {
+  outline: none;
+  border-color: #951e1e;
+  box-shadow: 0 0 5px rgba(255, 0, 0, 0.63);
 }
 #content #right form input[type="submit"],
 #content #right form textarea[type="submit"] {
   text-transform: uppercase;
-  background: grey;
+  background: #951e1e;
   width: 50%;
   color: white;
   margin-top: 5px;
   cursor: pointer;
+  border-radius: 5px;
 }
 #content #right form input[type="submit"]:hover,
 #content #right form textarea[type="submit"]:hover {
-  background: grey;
-  -webkit-box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-  -moz-box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  background-color: #951e1e;
   box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-  background-color: #575757;
-
 }
 #content #right form input[type="textarea"],
 #content #right form textarea[type="textarea"] {
@@ -290,7 +306,7 @@ a {
   vertical-align: text-top;
 }
 #content #right p.other {
-  font-size: 0.7;
+  font-size: 0.7em; /* Corregido aquí */
   margin-bottom: 5px;
   text-transform: lowercase;
   font-weight: 100;
@@ -299,41 +315,118 @@ a {
 #content #right p.other a {
   color: #8e9699;
 }
-#left2{ 
+#left2 {
   text-align: center;
-  display: table; 
+  display: table;
 }
-
-.menu{
-  text-transform: uppercase;
-  background: grey;
-  width: 50%;
+.menu, .insert {
+  background-color: #a72222;
   color: white;
+  padding: 10px 20px;
+  border-radius: 8px;
+  border: none;
+  font-weight: bold;
   margin-top: 20px;
   height: 30px;
   cursor: pointer;
+  transition: 0.3s ease;
 }
- .menu:hover{
-  background: grey;
-  -webkit-box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-  -moz-box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-  background-color: #575757;
- }
+.menu:hover, .insert:hover {
+  background-color: #951e1e;
+  box-shadow: 0px 4px 10px rgba(0,0,0,0.3);
+}
 
- .insert{
-  text-transform: uppercase;
-  background: grey;
-  width: 50%;
-  color: white;
-  margin-top: 20px;
-  height: 30px;
+/* --- MODAL para Suba Rincón --- */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 999;
+  padding-top: 100px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.6);
+}
+.modal-content {
+  background-color: #fff;
+  margin: auto;
+  padding: 20px;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 500px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+  text-align: center;
+  color: #333;
+}
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 24px;
+  font-weight: bold;
   cursor: pointer;
 }
- .insert:hover{
-  background: grey;
-  -webkit-box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-  -moz-box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-  background-color: #575757;
- }
+.close:hover {
+  color: #000;
+}
+.suba-link {
+  cursor: pointer;
+  color: #951e1e;
+  text-decoration: underline;
+}
+.suba-link:hover {
+  color: #000000;
+}
+
+.ubicacion-link {
+  cursor: pointer;
+  color:  #951e1e;
+  text-decoration: none;
+}
+
+.ubicacion-link:hover {
+  color: #951e1e;
+}
+
+form a i {
+  margin-right: 8px;
+  color: #25d366; /* color típico de WhatsApp */
+}
+
+form a[href^="mailto:"] i {
+  color: #951e1e; 
+}
+
+.carousel-container {
+  width: 80%;
+  overflow: hidden;
+  margin: 20px auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  height: 300px;
+}
+
+.carousel-track {
+  display: flex;
+  animation: scroll 5s linear infinite;
+  width: calc((300px + 10px) * 8); /* 8 imágenes de 300px + 10px de separación */
+}
+
+.carousel-track img {
+  width: 300px;
+  height: 300px;
+  object-fit: cover;
+  margin-right: 10px;
+  border-radius: 8px;
+}
+
+/* Movimiento continuo */
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}

@@ -29,5 +29,6 @@ def create_app():
     app.register_blueprint(modelo_contacto)
     app.register_blueprint(modelo_servicio)
     app.register_blueprint(modelo_terminos)
+    app.register_blueprint(modelo_garantias)
 
     return app

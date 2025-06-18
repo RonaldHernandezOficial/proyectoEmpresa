@@ -6,7 +6,14 @@ from app.decoradores import login_requerido
 
 @modelo_garantias.route('/garantia')
 def garantia():
-    return render_template('garantias.html')
+    garantias = Garantias.query.all()
+
+    # CONVIERTE a listas o tuplas explícitamente:
+    lista = [
+        (g.id, g.fechaGarantia, g.descripcionGarantia, g.tipoGarantia, g.estadoGarantia)
+        for g in garantias
+    ]
+    return render_template('garantias.html', garantias=Garantias.query.all())
 
 @modelo_garantias.route('/insertar_garantia')
 def insertar():

@@ -263,6 +263,7 @@
         <div class="row">
             <!-- Tarjeta 1 -->
             <div class="col-md-4">
+                <h3 class="h2 text-success text-center border-bottom pb-3 border-light">Mantenimiento Especializado</h3>
                 <div class="hover-container">
                     <img src="../../static/img/Imagen de WhatsApp 2025-02-28 a las 21.22.38_eca1d346.jpg" style="height: 400px;" alt="Puerta automática">
                     <div class="hover-text">
@@ -274,22 +275,24 @@
             
             <!-- Tarjeta 2 -->
             <div class="col-md-4">
+                <h3 class="h2 text-success text-center border-bottom pb-3 border-light ">Instalaciones Especializadas</h3>
                 <div class="hover-container">
-                    <img src="https://via.placeholder.com/600x400?text=Puerta+Mágica" alt="Puerta mágica">
+                    <img src="../../static/img/Imagen de WhatsApp 2025-06-16 a las 16.38.57_b9aad3f1.jpg" style="height: 400px;" alt="Puerta mágica">
                     <div class="hover-text">
                         <h3 class="h5">Sistemas Sin Contacto</h3>
-                        <p class="mb-0">Apertura automática con sensores de proximidad para espacios higiénicos.</p>
+                        <p class="mb-0">Ofrecemos instalación profesional de todo tipo de puertas automáticas (corredizas, batientes, giratorias), puertas mágicas (sin marco visible), motores de alta eficiencia, sensores de movimiento y seguridad, así como sistemas de acceso controlado. Soluciones personalizadas para comercios, edificios y hogares con tecnología avanzada y garantía de funcionamiento óptimo.</p>
                     </div>
                 </div>
             </div>
             
             <!-- Ejemplo 3 -->
             <div class="col-md-4">
+                <h3 class="h2 text-success text-center border-bottom pb-3 border-light ">Fabricaciones Especialazadas</h3>
                 <div class="hover-container">
-                    <img src="https://via.placeholder.com/600x400?text=Estructuras" alt="Estructuras">
+                    <img src="../../static/img/Imagen de WhatsApp 2025-06-16 a las 16.42.00_a7448c69.jpg" style="height: 400px;" alt="Estructuras">
                     <div class="hover-text">
-                        <h3 class="h5">Estructuras Personalizadas</h3>
-                        <p class="mb-0">Fabricación e instalación de marcos y soportes metálicos.</p>
+                        <h3 class="h5">Estructuras Personalizadas hacemos realidad tus ideas</h3>
+                        <p class="mb-0">No importa el diseño ni los materiales: lo hacemos posible. Fabricamos puertas de cualquier tipo (automáticas, blindadas, de madera), ventanas a medida (corredizas, abatibles, con vidrio de seguridad), marcos perfectos y estructuras metálicas sólidas. Su proyecto, por complejo que sea, cobra vida en nuestras manos. ¡Calidad garantizada desde el boceto hasta la instalación.</p>
                     </div>
                 </div>
             </div>
@@ -300,7 +303,7 @@
     <!-- End Categories of The Month -->
 
     <!-- Start Footer -->
-    <footer class="bg-dark" id="tempaltemo_footer">
+    <footer class="bg-dark" style="margin-bottom: -25px;" id="tempaltemo_footer">
         <div class="container">
             <div class="row">
 
@@ -337,8 +340,8 @@
                     <ul class="list-unstyled text-light footer-link-list">
 
                         <li><a class="text-decoration-none" href="/contactanos/contactanos">Contactanos</a></li>
-                        <li><a class="text-decoration-none" href="/servicio/insertar_reseña">Reseñas</a></li>
-                        <li><a class="text-decoration-none" href="/garantia/insertar_garantia">Garantías</a></li>
+                        <li><a class="text-decoration-none" id="linkReseñas" href="/servicio/insertar_reseña">Reseñas</a></li>
+                        <li><a class="text-decoration-none" id="linkGarantia" href="/garantia/insertar_garantia">Garantías</a></li>
                     </ul>
                 </div>  
 
@@ -385,6 +388,31 @@
 
     </footer>
     <!-- End Footer -->
+          <!-- Toast (mensaje emergente) -->
+    <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+    <div id="alertaReseña" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-header bg-success text-white">
+        <strong class="me-auto">Aviso</strong>
+        <button type="button" class="btn-close btn-close-success" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+        <div class="toast-body">
+        Para ingresar una reseña, debes iniciar sesión...
+        </div>
+    </div>
+    </div>
+
+    <!-- Toast (mensaje emergente) -->
+    <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+    <div id="alertaGarantia" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-header bg-success text-white">
+        <strong class="me-auto">Aviso</strong>
+        <button type="button" class="btn-close btn-close-success" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+        <div class="toast-body">
+        Para ingresar una garantía, debes iniciar sesión...
+        </div>
+    </div>
+    </div>
 
     <!-- Start Script -->
     <script src="../../static/assets/js/jquery-1.11.0.min.js"></script>
@@ -393,6 +421,35 @@
     <script src="../../static/assets/js/bootstrap.bundle.min.js"></script>
     <script src="../../static/assets/js/templatemo.js"></script>
     <script src="../../static/assets/js/custom.js"></script>
+    <script>
+    document.getElementById('linkReseñas').addEventListener('click', function(e) {
+        e.preventDefault(); // Detiene la navegación temporalmente
+        
+        // Muestra el toast
+        const toast = new bootstrap.Toast(document.getElementById('alertaReseña'));
+        toast.show();
+        
+        // Redirige después de 5 segundos
+        setTimeout(() => {
+        window.location.href = this.href;
+        }, 5000);
+    });
+    </script>
+    <script>
+    document.getElementById('linkGarantia').addEventListener('click', function(e) {
+        e.preventDefault(); // Detiene la navegación temporalmente
+        
+        // Muestra el toast
+        const toast = new bootstrap.Toast(document.getElementById('alertaGarantia'));
+        toast.show();
+        
+        // Redirige después de 5 segundos
+        setTimeout(() => {
+        window.location.href = this.href;
+        }, 5000);
+    });
+    </script>
+    <!-- End Script -->
     <!-- End Script -->
 </body>
 

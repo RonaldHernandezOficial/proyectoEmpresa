@@ -16,11 +16,13 @@ def garantia():
     return render_template('garantias.html', garantias=Garantias.query.all())
 
 @modelo_garantias.route('/insertar_garantia')
+@login_requerido
 def insertar():
     garantias = Garantias.query.all()
     return render_template('insertar_garantias.html', garantias=garantias)
 
 @modelo_garantias.route('/agregar_garantia', methods=['POST'])
+@login_requerido
 def agregar_garantia():
     if request.method == 'POST':
         nueva = Garantias(
@@ -36,11 +38,13 @@ def agregar_garantia():
     return redirect(url_for('modelo_garantias.insertar'))
 
 @modelo_garantias.route('/editar_garantia/<int:id>')
+@login_requerido
 def obtener_garantia(id):
     garantia = Garantias.query.get_or_404(id)
     return render_template('editar_garantias.html', garantia=garantia)
 
 @modelo_garantias.route('/actualizar_garantia/<int:id>', methods=['POST'])
+@login_requerido
 def actualizar_garantia(id):
     garantia = Garantias.query.get_or_404(id)
     garantia.fechaGarantia = request.form['fechaGarantia']
@@ -51,6 +55,7 @@ def actualizar_garantia(id):
     return redirect(url_for('modelo_garantias.insertar'))
 
 @modelo_garantias.route('/eliminar_garantia/<int:id>')
+@login_requerido
 def eliminar_garantia(id):
     garantia = Garantias.query.get_or_404(id)
     db.session.delete(garantia)

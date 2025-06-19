@@ -2,6 +2,7 @@ from flask import render_template, request, redirect, url_for, session, flash
 from . import modelo_login
 from app.models import Usuario
 from app import db
+from functools import wraps
 
 @modelo_login.route("/olvidar_contraseña")
 def nuevo_usuario():
@@ -52,3 +53,11 @@ def logout():
     flash("Sesión cerrada correctamente.")
     return redirect(url_for('modelo_login.login'))
 
+def login_requerido(f):
+    @wraps(f)
+    def decorated_function(*args, **kwargs):
+        if 'usuario_id' not in session:
+            flash('Debes iniciar sesión para acceder a esta página.')
+            return redirect(url_for('login.login'))  # Asegúrate que 'login.login' coincide con tu nombre de blueprint y ruta
+        return f(*args, **kwargs)
+    return decorated_function

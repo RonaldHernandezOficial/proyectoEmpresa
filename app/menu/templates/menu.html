@@ -78,7 +78,7 @@
                 </div>
                 <a class="nav-icon position-relative text-decoration-none" href="/login/login">
                     <i class="fa fa-fw fa-user text-dark mr-3"></i>
-                    <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">FC</span>
+                    <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">Iniciar Sesión</span>
                 </a>
             </div>
         </div>
@@ -341,7 +341,15 @@
 
                         <li><a class="text-decoration-none" href="/contactanos/contactanos">Contactanos</a></li>
                         <li><a class="text-decoration-none" id="linkReseñas" href="/servicio/insertar_reseña">Reseñas</a></li>
-                        <li><a class="text-decoration-none" id="linkGarantia" href="/garantia/insertar_garantia">Garantías</a></li>
+                        <li>
+  {% if 'usuario' in session %}
+    <!-- Si ha iniciado sesión, se muestra el link a la garantía -->
+    <a class="text-decoration-none" id="linkGarantia" href="/garantia/insertar_garantia">Garantías</a>
+  {% else %}
+    <!-- Si NO ha iniciado sesión, muestra un botón que activa el toast -->
+    <a href="#" class="text-decoration-none" onclick="mostrarToast()">Garantías</a>
+  {% endif %}
+</li>
                     </ul>
                 </div>  
 
@@ -389,17 +397,17 @@
     </footer>
     <!-- End Footer -->
           <!-- Toast (mensaje emergente) -->
-    <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
-    <div id="alertaReseña" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
-        <div class="toast-header bg-success text-white">
-        <strong class="me-auto">Aviso</strong>
-        <button type="button" class="btn-close btn-close-success" data-bs-dismiss="toast" aria-label="Close"></button>
-        </div>
-        <div class="toast-body">
-        Para ingresar una reseña, debes iniciar sesión...
-        </div>
+<div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+  <div id="alertaGarantia" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-header bg-success text-white">
+      <strong class="me-auto">Aviso</strong>
+      <button type="button" class="btn-close btn-close-success" data-bs-dismiss="toast" aria-label="Close"></button>
     </div>
+    <div class="toast-body">
+      Para ingresar una garantía, debes iniciar sesión...
     </div>
+  </div>
+</div>
 
     <!-- Toast (mensaje emergente) -->
     <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
@@ -449,6 +457,18 @@
         }, 5000);
     });
     </script>
+    <script>
+function mostrarToast() {
+  const toastElement = document.getElementById('alertaGarantia');
+  const toast = new bootstrap.Toast(toastElement);
+  toast.show();
+
+  // Redirige a login después de 2 segundos (opcional)
+  setTimeout(() => {
+    window.location.href = "/login/login";
+  }, 2000);
+}
+</script>
     <!-- End Script -->
     <!-- End Script -->
 </body>

@@ -5,7 +5,7 @@ from flask import Blueprint
 modelo_menu = Blueprint('modelo_menu',
                     __name__,
                     static_folder='static',
-                    url_prefix='/menu',
+                    url_prefix='/',
                     template_folder='templates')
 
 from  . import routes

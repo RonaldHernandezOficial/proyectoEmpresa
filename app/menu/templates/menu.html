@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <title>Fabriautomaticas SAS</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <link rel="apple-touch-icon" href="../../static/Img/logo.png">
-        <link rel="shortcut icon" type="image/x-icon" href="../../static/Img/logo.png">
+    <link rel="apple-touch-icon" href="../../static/Img/logo.png">
+    <link rel="shortcut icon" type="image/x-icon" href="../../static/Img/logo.png">
 
     <link rel="stylesheet" href="../../static/assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="../../static/assets/css/templatemo.css">
@@ -51,7 +52,7 @@
     <nav class="navbar navbar-expand-lg navbar-light shadow">
         <div class="container d-flex justify-content-between align-items-center">
 
-            <a class="navbar-brand text-success logo h1 align-self-center" href="/menu/menu">
+            <a class="navbar-brand text-success logo h1 align-self-center" href="/">
                 <img src="../../static/img/logo.png" class="imagenfabri">
                 Fabriautomaticas SAS
             </a>
@@ -73,21 +74,19 @@
                     </div>
                 </div>
             </div>
-            <div class="navbar align-self-center d-flex">
-                <div class="d-lg-none flex-sm-fill mt-3 mb-4 col-7 col-sm-auto pr-3">    
-                </div>
-                <a class="nav-icon position-relative text-decoration-none" href="/login/login">
-                    <i class="fa fa-fw fa-user text-dark mr-3"></i>
-                    <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">Iniciar Sesión</span>
-                </a>
-            </div>
+<div class="navbar align-self-center d-flex flex-column text-center">
+    <i class="fa fa-fw fa-user text-login" style="margin-bottom: 2px; font-size: 1.3rem;"></i>
+    <a href="/login/login" class="text-decoration-none">
+        <span class="text-login badge rounded-pill bg-light px-3 py-1">Iniciar Sesión</span>
+    </a>
+</div>
         </div>
+
+        </div>
+    </nav>
+    <!-- Close Header -->
 
     </div>
-</nav>
-<!-- Close Header -->
-
-        </div>
     </nav>
     <!-- Close Header -->
 
@@ -109,7 +108,8 @@
         </div>
     </div>
 
-    <div class="modal fade bg-white" id="templatemo_search" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade bg-white" id="templatemo_search" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
             <div class="w-100 pt-1 mb-5 text-right">
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -216,15 +216,17 @@
     <section class="container py-5">
         <div class="row text-center pt-3">
             <div class="col-lg-6 m-auto">
-                <h1 class="h1 text-success" ><b>Quienes somos</b> </h1>
+                <h1 class="h1 text-success"><b>Quienes somos</b> </h1>
                 <p>
-    Somos una Empresa Colombiana que brinda soluciones en el mercado de los sistemas de automatización de accesos. Especializada en la fabricación, automatización,
-    servicio técnico para reparación y mantenimiento de puertas eléctricas para garajes residenciales, comerciales e industriales. 
-    Adicional realizamos servicios para la fabricación de estructuras metálicas, puertas, cerramientos
+                    Somos una Empresa Colombiana que brinda soluciones en el mercado de los sistemas de automatización
+                    de accesos. Especializada en la fabricación, automatización,
+                    servicio técnico para reparación y mantenimiento de puertas eléctricas para garajes residenciales,
+                    comerciales e industriales.
+                    Adicional realizamos servicios para la fabricación de estructuras metálicas, puertas, cerramientos
                 </p>
             </div>
         </div>
-    <!-- <div class="row">
+        <!-- <div class="row">
             <div class="col-12 col-md-5 p-4">
                 <div class="d-flex align-items-center">
                     <img src="../../static/Img/Imagen de WhatsApp 2025-02-28 a las 21.22.38_eca1d346.jpg" 
@@ -260,45 +262,63 @@
     </div>
     -->
         <div class="container py-5">
-        <div class="row">
-            <!-- Tarjeta 1 -->
-            <div class="col-md-4">
-                <h3 class="h2 text-success text-center border-bottom pb-3 border-light">Mantenimiento Especializado</h3>
-                <div class="hover-container">
-                    <img src="../../static/img/Imagen de WhatsApp 2025-02-28 a las 21.22.38_eca1d346.jpg" style="height: 400px;" alt="Puerta automática">
-                    <div class="hover-text">
-                        <h3 class="h5">Servicios Especializados en Mantenimiento de Sistemas de Acceso Automatizado</h3>
-                        <p class="mb-0">Nuestros técnicos certificados ofrecen servicio completo: ajuste de sensores, motores y mecanismos de seguridad en puertas corredizas, batientes y giratorias. Reparación de tarjetas electrónicas, controles RFID y biométricos. Revisión profesional de cables. Usamos repuestos originales.</p>
+            <div class="row">
+                <!-- Tarjeta 1 -->
+                <div class="col-md-4">
+                    <h3 class="h2 text-success text-center border-bottom pb-3 border-light">Mantenimiento Especializado
+                    </h3>
+                    <div class="hover-container">
+                        <img src="../../static/img/Imagen de WhatsApp 2025-02-28 a las 21.22.38_eca1d346.jpg"
+                            style="height: 400px;" alt="Puerta automática">
+                        <div class="hover-text">
+                            <h3 class="h5">Servicios Especializados en Mantenimiento de Sistemas de Acceso Automatizado
+                            </h3>
+                            <p class="mb-0">Nuestros técnicos certificados ofrecen servicio completo: ajuste de
+                                sensores, motores y mecanismos de seguridad en puertas corredizas, batientes y
+                                giratorias. Reparación de tarjetas electrónicas, controles RFID y biométricos. Revisión
+                                profesional de cables. Usamos repuestos originales.</p>
+                        </div>
                     </div>
                 </div>
-            </div>
-            
-            <!-- Tarjeta 2 -->
-            <div class="col-md-4">
-                <h3 class="h2 text-success text-center border-bottom pb-3 border-light ">Instalaciones Especializadas</h3>
-                <div class="hover-container">
-                    <img src="../../static/img/Imagen de WhatsApp 2025-06-16 a las 16.38.57_b9aad3f1.jpg" style="height: 400px;" alt="Puerta mágica">
-                    <div class="hover-text">
-                        <h3 class="h5">Sistemas Sin Contacto</h3>
-                        <p class="mb-0">Ofrecemos instalación profesional de todo tipo de puertas automáticas (corredizas, batientes, giratorias), puertas mágicas (sin marco visible), motores de alta eficiencia, sensores de movimiento y seguridad, así como sistemas de acceso controlado. Soluciones personalizadas para comercios, edificios y hogares con tecnología avanzada y garantía de funcionamiento óptimo.</p>
+
+                <!-- Tarjeta 2 -->
+                <div class="col-md-4">
+                    <h3 class="h2 text-success text-center border-bottom pb-3 border-light ">Instalaciones
+                        Especializadas</h3>
+                    <div class="hover-container">
+                        <img src="../../static/img/Imagen de WhatsApp 2025-06-16 a las 16.38.57_b9aad3f1.jpg"
+                            style="height: 400px;" alt="Puerta mágica">
+                        <div class="hover-text">
+                            <h3 class="h5">Sistemas Sin Contacto</h3>
+                            <p class="mb-0">Ofrecemos instalación profesional de todo tipo de puertas automáticas
+                                (corredizas, batientes, giratorias), puertas mágicas (sin marco visible), motores de
+                                alta eficiencia, sensores de movimiento y seguridad, así como sistemas de acceso
+                                controlado. Soluciones personalizadas para comercios, edificios y hogares con tecnología
+                                avanzada y garantía de funcionamiento óptimo.</p>
+                        </div>
                     </div>
                 </div>
-            </div>
-            
-            <!-- Ejemplo 3 -->
-            <div class="col-md-4">
-                <h3 class="h2 text-success text-center border-bottom pb-3 border-light ">Fabricaciones Especialazadas</h3>
-                <div class="hover-container">
-                    <img src="../../static/img/Imagen de WhatsApp 2025-06-16 a las 16.42.00_a7448c69.jpg" style="height: 400px;" alt="Estructuras">
-                    <div class="hover-text">
-                        <h3 class="h5">Estructuras Personalizadas hacemos realidad tus ideas</h3>
-                        <p class="mb-0">No importa el diseño ni los materiales: lo hacemos posible. Fabricamos puertas de cualquier tipo (automáticas, blindadas, de madera), ventanas a medida (corredizas, abatibles, con vidrio de seguridad), marcos perfectos y estructuras metálicas sólidas. Su proyecto, por complejo que sea, cobra vida en nuestras manos. ¡Calidad garantizada desde el boceto hasta la instalación.</p>
+
+                <!-- Ejemplo 3 -->
+                <div class="col-md-4">
+                    <h3 class="h2 text-success text-center border-bottom pb-3 border-light ">Fabricaciones
+                        Especialazadas</h3>
+                    <div class="hover-container">
+                        <img src="../../static/img/Imagen de WhatsApp 2025-06-16 a las 16.42.00_a7448c69.jpg"
+                            style="height: 400px;" alt="Estructuras">
+                        <div class="hover-text">
+                            <h3 class="h5">Estructuras Personalizadas hacemos realidad tus ideas</h3>
+                            <p class="mb-0">No importa el diseño ni los materiales: lo hacemos posible. Fabricamos
+                                puertas de cualquier tipo (automáticas, blindadas, de madera), ventanas a medida
+                                (corredizas, abatibles, con vidrio de seguridad), marcos perfectos y estructuras
+                                metálicas sólidas. Su proyecto, por complejo que sea, cobra vida en nuestras manos.
+                                ¡Calidad garantizada desde el boceto hasta la instalación.</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-        
+
     </section>
     <!-- End Categories of The Month -->
 
@@ -338,20 +358,39 @@
                 <div class="col-md-4 pt-5">
                     <h2 class="h2 text-light border-bottom pb-3 border-light">Navega através de esta</h2>
                     <ul class="list-unstyled text-light footer-link-list">
-
-                        <li><a class="text-decoration-none" href="/contactanos/contactanos">Contactanos</a></li>
-                        <li><a class="text-decoration-none" id="linkReseñas" href="/servicio/insertar_reseña">Reseñas</a></li>
                         <li>
-  {% if 'usuario' in session %}
-    <!-- Si ha iniciado sesión, se muestra el link a la garantía -->
-    <a class="text-decoration-none" id="linkGarantia" href="/garantia/insertar_garantia">Garantías</a>
-  {% else %}
-    <!-- Si NO ha iniciado sesión, muestra un botón que activa el toast -->
-    <a href="#" class="text-decoration-none" onclick="mostrarToast()">Garantías</a>
-  {% endif %}
-</li>
+                            {% if 'usuario' in session %}
+                            <!-- Si ha iniciado sesión, se muestra el link a la garantía -->
+                            <a class="text-decoration-none" id="linkContactos"
+                                href="/contactanos/contactanos">Contactanos</a>
+                            {% else %}
+                            <!-- Si NO ha iniciado sesión, muestra un botón que activa el toast -->
+                            <a href="#" class="text-decoration-none" onclick="mostrarContacto()">Contactanos</a>
+                            {% endif %}
+                        </li>
+
+                        <li>
+                            {% if 'usuario' in session %}
+                            <!-- Si ha iniciado sesión, se muestra el link a la garantía -->
+                            <a class="text-decoration-none" id="linkReseñas"
+                                href="/servicio/insertar_reseña">Reseñas</a>
+                            {% else %}
+                            <!-- Si NO ha iniciado sesión, muestra un botón que activa el toast -->
+                            <a href="#" class="text-decoration-none" onclick="mostrarReseña()">Reseñas</a>
+                            {% endif %}
+                        </li>
+                        <li>
+                            {% if 'usuario' in session %}
+                            <!-- Si ha iniciado sesión, se muestra el link a la garantía -->
+                            <a class="text-decoration-none" id="linkGarantia"
+                                href="/garantia/insertar_garantia">Garantías</a>
+                            {% else %}
+                            <!-- Si NO ha iniciado sesión, muestra un botón que activa el toast -->
+                            <a href="#" class="text-decoration-none" onclick="mostrarToast()">Garantías</a>
+                            {% endif %}
+                        </li>
                     </ul>
-                </div>  
+                </div>
 
             </div>
 
@@ -396,30 +435,47 @@
 
     </footer>
     <!-- End Footer -->
-          <!-- Toast (mensaje emergente) -->
-<div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
-  <div id="alertaGarantia" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
-    <div class="toast-header bg-success text-white">
-      <strong class="me-auto">Aviso</strong>
-      <button type="button" class="btn-close btn-close-success" data-bs-dismiss="toast" aria-label="Close"></button>
-    </div>
-    <div class="toast-body">
-      Para ingresar una garantía, debes iniciar sesión...
-    </div>
-  </div>
-</div>
 
-    <!-- Toast (mensaje emergente) -->
+
+    <!-- Toast (mensaje emergente para contactanos, reseña y gartantias) -->
+    <!--CONTACTENOS MENSAJE EMERGENTE-->
     <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
-    <div id="alertaGarantia" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
-        <div class="toast-header bg-success text-white">
-        <strong class="me-auto">Aviso</strong>
-        <button type="button" class="btn-close btn-close-success" data-bs-dismiss="toast" aria-label="Close"></button>
-        </div>
-        <div class="toast-body">
-        Para ingresar una garantía, debes iniciar sesión...
+        <div id="alertaContacto" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header bg-success text-white">
+                <strong class="me-auto">Aviso</strong>
+                <button type="button" class="btn-close btn-close-success" data-bs-dismiss="toast"
+                    aria-label="Close"></button>
+            </div>
+            <div class="toast-body">
+                Para contactarnos, debes iniciar sesión o mira el número al costado izquierdo...
+            </div>
         </div>
     </div>
+    <!--RESEÑAS MENSAJE EMERGENTE-->
+        <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+        <div id="alertaReseña" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header bg-success text-white">
+                <strong class="me-auto">Aviso</strong>
+                <button type="button" class="btn-close btn-close-success" data-bs-dismiss="toast"
+                    aria-label="Close"></button>
+            </div>
+            <div class="toast-body">
+                Para ingresar una reseña, debes iniciar sesión...
+            </div>
+        </div>
+    </div>
+    <!--GARANTIAS MENSAJE EMERGENTE-->
+    <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+        <div id="alertaGarantia" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header bg-success text-white">
+                <strong class="me-auto">Aviso</strong>
+                <button type="button" class="btn-close btn-close-success" data-bs-dismiss="toast"
+                    aria-label="Close"></button>
+            </div>
+            <div class="toast-body">
+                Para ingresar una garantía, debes iniciar sesión...
+            </div>
+        </div>
     </div>
 
     <!-- Start Script -->
@@ -429,46 +485,106 @@
     <script src="../../static/assets/js/bootstrap.bundle.min.js"></script>
     <script src="../../static/assets/js/templatemo.js"></script>
     <script src="../../static/assets/js/custom.js"></script>
-    <script>
-    document.getElementById('linkReseñas').addEventListener('click', function(e) {
-        e.preventDefault(); // Detiene la navegación temporalmente
-        
-        // Muestra el toast
-        const toast = new bootstrap.Toast(document.getElementById('alertaReseña'));
-        toast.show();
-        
-        // Redirige después de 5 segundos
-        setTimeout(() => {
-        window.location.href = this.href;
-        }, 5000);
-    });
-    </script>
-    <script>
-    document.getElementById('linkGarantia').addEventListener('click', function(e) {
-        e.preventDefault(); // Detiene la navegación temporalmente
-        
-        // Muestra el toast
-        const toast = new bootstrap.Toast(document.getElementById('alertaGarantia'));
-        toast.show();
-        
-        // Redirige después de 5 segundos
-        setTimeout(() => {
-        window.location.href = this.href;
-        }, 5000);
-    });
-    </script>
-    <script>
-function mostrarToast() {
-  const toastElement = document.getElementById('alertaGarantia');
-  const toast = new bootstrap.Toast(toastElement);
-  toast.show();
 
-  // Redirige a login después de 2 segundos (opcional)
-  setTimeout(() => {
-    window.location.href = "/login/login";
-  }, 2000);
-}
-</script>
+
+    <!--Script para ver si la persona inicio o no sesion-->
+
+    <!--Contactanos-->
+    <script>
+        function mostrarContacto() {
+            const toastElement = document.getElementById('alertaContacto');
+            const toast = new bootstrap.Toast(toastElement);
+            toast.show();
+
+            // Redirige a login después de 2 segundos (opcional)
+            setTimeout(() => {
+                window.location.href = "/login/login";
+            }, 2000);
+        }
+    </script>
+
+    <script>
+        document.getElementById('linkContactos').addEventListener('click', function (e) {
+            e.preventDefault(); // Detiene la navegación temporalmente
+
+            // Muestra el toast
+            const toast = new bootstrap.Toast(document.getElementById('alertaContacto'));
+            toast.show();
+
+            // Redirige después de 5 segundos
+            setTimeout(() => {
+                window.location.href = this.href;
+            }, 5000);
+        });
+    </script>
+
+    <!--Reseñas-->   
+
+    <script>
+        function mostrarReseña() {
+            const toastElement = document.getElementById('alertaReseña');
+            const toast = new bootstrap.Toast(toastElement);
+            toast.show();
+
+            // Redirige a login después de 2 segundos (opcional)
+            setTimeout(() => {
+                window.location.href = "/login/login";
+            }, 2000);
+        }
+    </script>
+
+    <script>
+        document.getElementById('linkReseñas').addEventListener('click', function (e) {
+            e.preventDefault(); // Detiene la navegación temporalmente
+
+            // Muestra el toast
+            const toast = new bootstrap.Toast(document.getElementById('alertaReseña'));
+            toast.show();
+
+            // Redirige después de 5 segundos
+            setTimeout(() => {
+                window.location.href = this.href;
+            }, 5000);
+        });
+    </script>
+
+
+
+     <!--Garantias-->
+    <script>
+        function mostrarToast() {
+            const toastElement = document.getElementById('alertaGarantia');
+            const toast = new bootstrap.Toast(toastElement);
+            toast.show();
+
+            // Redirige a login después de 2 segundos (opcional)
+            setTimeout(() => {
+                window.location.href = "/login/login";
+            }, 2000);
+        }
+    </script>
+
+    <script>
+        document.getElementById('linkGarantia').addEventListener('click', function (e) {
+            e.preventDefault(); // Detiene la navegación temporalmente
+
+            // Muestra el toast
+            const toast = new bootstrap.Toast(document.getElementById('alertaGarantia'));
+            toast.show();
+
+            // Redirige después de 5 segundos
+            setTimeout(() => {
+                window.location.href = this.href;
+            }, 5000);
+        });
+    </script>
+
+
+
+
+
+
+
     <!-- End Script -->
     <!-- End Script -->
 </body>

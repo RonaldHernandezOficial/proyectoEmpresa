@@ -1,7 +1,7 @@
 from flask import render_template
 from . import modelo_menu
 
-@modelo_menu.route("/menu")
+@modelo_menu.route("/")
 def menu():
     return render_template("menu.html")
 

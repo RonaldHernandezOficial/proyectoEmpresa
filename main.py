@@ -1,6 +1,7 @@
 from app import app
-from app import render_template 
+from flask import render_template, redirect, url_for
 from flask_mysqldb import MySQL
+from app.menu import modelo_menu
 
 # MYSQL Connection 
 app.config['MYSQL_HOST'] = 'localhost'
@@ -13,9 +14,11 @@ app.secret_key = 'mysecretkey'
 
 mysql = MySQL(app)
 
+app.register_blueprint(modelo_menu)
+
 @app.route('/')
-def inicio():
-    return render_template('/menu.html')
+def redirigir_a_menu():
+    return redirect(url_for('modelo_menu.menu'))  # <- redirige al blueprint
 
 if __name__ == "__main__":
-    app.run(port = 3000, debug = True)
+    app.run(debug=True)

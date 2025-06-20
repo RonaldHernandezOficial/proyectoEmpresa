@@ -43,7 +43,7 @@ def ingresar():
         if usuario.idRolFk == 1:
             return redirect("/admin/menuAdmin")
         else:
-            return redirect("/menu/menuClientes")
+            return redirect("/menuClientes")
     else:
         return render_template('login.html', mensaje="Usuario o contraseña incorrecta")
 

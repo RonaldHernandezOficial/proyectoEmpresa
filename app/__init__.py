@@ -22,6 +22,7 @@ def create_app():
     from app.contactanos import modelo_contacto
     from app.serviciocliente import modelo_servicio
     from app.terminosycondiciones import modelo_terminos
+    
 
     app.register_blueprint(modelo_menu)
     app.register_blueprint(modelo_login)

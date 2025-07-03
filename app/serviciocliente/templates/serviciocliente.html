@@ -55,10 +55,10 @@
                 Fabriautomaticas SAS
             </a>
 
-            
 
-          
-            
+
+
+
             <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse"
                 data-bs-target="#templatemo_main_nav" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">
@@ -77,48 +77,6 @@
                         </li>
                     </ul>
                 </div>
-                <div class="navbar align-self-center d-flex">
-                    <div class="d-lg-none flex-sm-fill mt-3 mb-4 col-7 col-sm-auto pr-3">
-                        <div class="input-group">
-                            <input type="text" class="form-control" id="inputMobileSearch" placeholder="Busca ...">
-                            <div class="input-group-text">
-                                <i class="fa fa-fw fa-search"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <a class="nav-icon d-none d-lg-inline" href="#" data-bs-toggle="modal"
-                        data-bs-target="#templatemo_search">
-                        <i class="fa fa-fw fa-search text-dark mr-2"></i>
-                    </a>
-                    <a class="nav-icon position-relative text-decoration-none" href="/shop/catalogue">
-                        <i class="fa fa-fw fa-cart-arrow-down text-dark mr-1"></i>
-                        <span
-                            class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">7</span>
-                    </a>
-                    <a class="nav-icon position-relative text-decoration-none" href="#">
-                        <i class="fa fa-fw fa-user text-dark mr-3"></i>
-                        <span
-                            class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">+99</span>
-                    </a>
-                </div>
-            </div>
-            <!-- Modal -->
-            <div class="modal fade bg-white" id="templatemo_search" tabindex="-1" role="dialog"
-                aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-lg" role="document">
-                    <div class="w-100 pt-1 mb-5 text-right">
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <form action="" method="get" class="modal-content modal-body border-0 p-0">
-                        <div class="input-group mb-2">
-                            <input type="text" class="form-control" id="inputModalSearch" name="q"
-                                placeholder="Search ...">
-                            <button type="submit" class="input-group-text bg-success text-light">
-                                <i class="fa fa-fw fa-search text-white"></i>
-                            </button>
-                        </div>
-                    </form>
-                </div>
             </div>
         </div>
         </div>
@@ -126,74 +84,74 @@
     <!-- Start section -->
     <!-- Aside para la publicidad -->
     <aside class="advertising">
-                    <h3 class="text-center">Mira las reseñas ingresadas</h3>
-                    <table class="table table-striped table-bordered bg-white table-sm">
-                        <thead>
-                            <tr>
-                                <th><strong>Nombre</strong></th>
-                                <th><strong>Correo</strong></th>
-                                <th><strong>Comentario</strong></th>
-                                <th><strong>Calificación</strong></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {% for reseña in reseñas %}
-                            <tr>
-                                <td>{{ reseña[1] }}</td>
-                                <td>{{ reseña[2] }}</td>
-                                <td>{{ reseña[3] }}</td>
-                                <td>{{ reseña[4] }}</td>
-                            </tr>
-                            {% endfor %}
-                        </tbody>
-                    </table>
-                </div>
-            </div>
+        <h3 class="text-center">Mira las reseñas ingresadas</h3>
+        <table class="table table-striped table-bordered bg-white table-sm">
+            <thead>
+                <tr>
+                    <th><strong>Nombre</strong></th>
+                    <th><strong>Correo</strong></th>
+                    <th><strong>Comentario</strong></th>
+                    <th><strong>Calificación</strong></th>
+                </tr>
+            </thead> 
+            <tbody>
+                {% for reseña in reseñas %}
+                <tr>
+                    <td>{{ reseña.nombre }}</td>
+                    <td>{{ reseña.correo }}</td>
+                    <td>{{ reseña.comentarios }}</td>
+                    <td>{{ reseña.calificacion }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        </div>
+        </div>
         </div>
         {% with messages = get_flashed_messages() %}
         {% if messages %}
         {% for message in messages %}
-            <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
             {{ message }}
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>
+        </div>
         {% endfor %}
         {% endif %}
-    {% endwith %}
+        {% endwith %}
     </aside>
-    
-        <section class="lol">
-            <form action="/servicio/insertar_reseña" method="post" id="" >
-                <section class="comments-section">
-                    <img src="../../static/img/logo.png" alt="" class="img">
-                    <div class="comment-form">
-                        <h3>Deja tu Comentario</h3>
-                        <div class="form-group">
-                            <label for="name">Nombre:</label>
-                            <input type="text" id="name" name="nombre" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="comment">Correo:</label>
-                            <input type="email" id="name" name="correo" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="comment">Comentario:</label>
-                            <textarea id="comment" name="comentario" required></textarea>
-                        </div>
-                        <div class="form-group">
-                            <label for="lang">Calificanos</label>
-                            <select name="calificacion" id="lang" S class="form-control">
-                                <option value="pesimo">Pesimo</option>
-                                <option value="deficiente">Deficiente</option>
-                                <option value="aceptable">Aceptable</option>
-                                <option value="buena">Buena</option>
-                                <option value="excelente">Excelente</option>
-                            </select>
-                        </div>
-                        <button type="submit" class="btn btn-dark btn-block">Enviar</button>
 
-</form>
-</div>         
+    <section class="lol">
+        <form action="/servicio/insertar_reseña" method="POST" id="">
+            <section class="comments-section">
+                <img src="../../static/img/logo.png" alt="" class="img">
+                <div class="comment-form">
+                    <h3>Deja tu Comentario</h3>
+                    <div class="form-group">
+                        <label for="name">Nombre:</label>
+                        <input type="text" id="name" name="nombre" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="comment">Correo:</label>
+                        <input type="email" id="name" name="correo" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="comment">Comentario:</label>
+                        <textarea id="comment" name="comentario" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="lang">Calificanos</label>
+                        <select name="calificacion" id="lang" S class="form-control">
+                            <option value="pesimo">Pesimo</option>
+                            <option value="deficiente">Deficiente</option>
+                            <option value="aceptable">Aceptable</option>
+                            <option value="buena">Buena</option>
+                            <option value="excelente">Excelente</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-dark btn-block">Enviar</button>
+
+        </form>
+        </div>
     </section>
     <!-- End section -->
     <!-- Start Footer -->
@@ -206,15 +164,20 @@
                     <ul class="list-unstyled text-light footer-link-list">
                         <li>
                             <i class="fas fa-map-marker-alt fa-fw"></i>
-                            Cll 129 C #98 a 09
+                            <a class="text-decoration-none"
+                                href="https://www.google.com/maps/search/?api=1&query=Cll+129+C+%2398+a+09"
+                                target="_blank">
+                                Cll 129 C #98 a 09
+                            </a>
                         </li>
-                        <li>
-                            <i class="fa fa-phone fa-fw"></i>
-                            <a class="text-decoration-none">315-300-9936</a>
+                        <i class="fa fa-phone fa-fw"></i>
+                        <a class="text-decoration-none" href="https://wa.me/573107740229"
+                            target="_blank">315-300-9936</a>
                         </li>
                         <li>
                             <i class="fa fa-envelope fa-fw"></i>
-                            <a class="text-decoration-none">fabriautomaticas@hotmail.com</a>
+                            <a class="text-decoration-none"
+                                href="mailto:fabriautomaticassas@hotmail.com">fabriautomaticas@hotmail.com</a>
                         </li>
                     </ul>
                 </div>
@@ -284,8 +247,12 @@
     <!-- End Footer -->
     <script src="../../static/Js/script2.js"></script>
     <script src="../../static/Js/Script6.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.min.js" integrity="sha384-Rx+T1VzGupg4BHQYs2gCW9It+akI2MM/mndMCy36UVfodzcJcF0GGLxZIzObiEfa" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.min.js"
+        integrity="sha384-Rx+T1VzGupg4BHQYs2gCW9It+akI2MM/mndMCy36UVfodzcJcF0GGLxZIzObiEfa"
+        crossorigin="anonymous"></script>
 </body>
 
 </html>

@@ -4,6 +4,21 @@ from app.models import Reseñas, Pqrs
 from app import db
 from app.decoradores import login_requerido
 
+
+
+
+@modelo_servicio.route('/reseña')
+def reseña():
+    reseñas = Reseñas.query.all()
+
+    # CONVIERTE a listas o tuplas explícitamente:
+    lista = [
+        (g.nombre, g.correo, g.comentarios, g.calificacion)
+        for g in reseñas
+    ]
+    return render_template('serviciocliente.html', reseñas=Reseñas.query.all())
+
+@modelo_servicio.route("/insertar_reseña")
 @modelo_servicio.route("/insertar_reseña")
 @login_requerido
 def insertar_reseña():
@@ -44,7 +59,13 @@ def eliminar_reseña(id):
 @login_requerido
 def insertar():
     servicios = Pqrs.query.all()
-    return render_template('registrarpqr.html', servicios=servicios)
+    # CONVIERTE a listas o tuplas explícitamente:
+    lista = [
+        (g.tipoPqrs, g.descripcionPqrs, g.idGarantiaFk, g.idContratoFk)
+        for g in servicios
+    ]
+    return render_template('registrarpqr.html', servicios=Pqrs.query.all())
+
 
 @modelo_servicio.route('/insertar', methods=['POST'])
 @login_requerido
@@ -53,9 +74,9 @@ def agregar_pqrs():
         nuevo = Pqrs(
             tipoPqrs=request.form['tipoPqrs'],
             descripcionPqrs=request.form['descripcionPqrs'],
-            estadopqrs='Pendiente',  # Puedes ajustar esto
-            idGarantiaFk=None,       # Ajustar si aplica
-            idContratoFk=None        # Ajustar si aplica
+            #estadopqrs='Pendiente',   Puedes ajustar esto
+            idGarantiaFk=request.form['idGarantiaFk'],       # Ajustar si aplica
+            idContratoFk=request.form['idContratoFk']      # Ajustar si aplica
         )
         db.session.add(nuevo)
         db.session.commit()

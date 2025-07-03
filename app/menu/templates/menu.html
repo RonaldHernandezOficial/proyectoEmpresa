@@ -74,12 +74,12 @@
                     </div>
                 </div>
             </div>
-<div class="navbar align-self-center d-flex flex-column text-center">
-    <i class="fa fa-fw fa-user text-login" style="margin-bottom: 2px; font-size: 1.3rem;"></i>
-    <a href="/login/login" class="text-decoration-none">
-        <span class="text-login badge rounded-pill bg-light px-3 py-1">Iniciar Sesión</span>
-    </a>
-</div>
+            <div class="navbar align-self-center d-flex flex-column text-center">
+                <i class="fa fa-fw fa-user text-login" style="margin-bottom: 2px; font-size: 1.3rem;"></i>
+                <a href="/login/login" class="text-decoration-none">
+                    <span class="text-login badge rounded-pill bg-light px-3 py-1">Iniciar Sesión</span>
+                </a>
+            </div>
         </div>
 
         </div>
@@ -332,15 +332,20 @@
                     <ul class="list-unstyled text-light footer-link-list">
                         <li>
                             <i class="fas fa-map-marker-alt fa-fw"></i>
-                            Cll 129 C #98 a 09
+                            <a class="text-decoration-none"
+                                href="https://www.google.com/maps/search/?api=1&query=Cll+129+C+%2398+a+09"
+                                target="_blank">
+                                Cll 129 C #98 a 09
+                            </a>
                         </li>
-                        <li>
-                            <i class="fa fa-phone fa-fw"></i>
-                            <a class="text-decoration-none">315-300-9936</a>
+                        <i class="fa fa-phone fa-fw"></i>
+                        <a class="text-decoration-none" href="https://wa.me/573107740229"
+                            target="_blank">315-300-9936</a>
                         </li>
                         <li>
                             <i class="fa fa-envelope fa-fw"></i>
-                            <a class="text-decoration-none">fabriautomaticas@hotmail.com</a>
+                            <a class="text-decoration-none"
+                                href="mailto:fabriautomaticassas@hotmail.com">fabriautomaticas@hotmail.com</a>
                         </li>
                     </ul>
                 </div>
@@ -358,17 +363,8 @@
                 <div class="col-md-4 pt-5">
                     <h2 class="h2 text-light border-bottom pb-3 border-light">Navega através de esta</h2>
                     <ul class="list-unstyled text-light footer-link-list">
-                        <li>
-                            {% if 'usuario' in session %}
-                            <!-- Si ha iniciado sesión, se muestra el link a la garantía -->
-                            <a class="text-decoration-none" id="linkContactos"
-                                href="/contactanos/contactanos">Contactanos</a>
-                            {% else %}
-                            <!-- Si NO ha iniciado sesión, muestra un botón que activa el toast -->
-                            <a href="#" class="text-decoration-none" onclick="mostrarContacto()">Contactanos</a>
-                            {% endif %}
-                        </li>
-
+                        <li><a class="text-decoration-none"
+                                href="/contactanosnotclient/contactanosnotclient">Contactanos</a></li>
                         <li>
                             {% if 'usuario' in session %}
                             <!-- Si ha iniciado sesión, se muestra el link a la garantía -->
@@ -401,7 +397,8 @@
                 <div class="col-auto me-auto">
                     <ul class="list-inline text-left footer-icons">
                         <li class="list-inline-item border border-light rounded-circle text-center">
-                            <a class="text-light text-decoration-none" target="_blank" href="http://facebook.com/"><i
+                            <a class="text-light text-decoration-none" target="_blank"
+                                href="https://www.facebook.com/profile.php?id=100059976041448"><i
                                     class="fab fa-facebook-f fa-lg fa-fw"></i></a>
                         </li>
                         <li class="list-inline-item border border-light rounded-circle text-center">
@@ -410,12 +407,13 @@
                                     class="fab fa-instagram fa-lg fa-fw"></i></a>
                         </li>
                         <li class="list-inline-item border border-light rounded-circle text-center">
-                            <a class="text-light text-decoration-none" target="_blank" href="https://twitter.com/"><i
+                            <a class="text-light text-decoration-none" target="_blank"><i
                                     class="fab fa-twitter fa-lg fa-fw"></i></a>
                         </li>
                         <li class="list-inline-item border border-light rounded-circle text-center">
                             <a class="text-light text-decoration-none" target="_blank"
-                                href="https://www.linkedin.com/"><i class="fab fa-linkedin fa-lg fa-fw"></i></a>
+                                href="https://www.linkedin.com/in/fabriautomaticas/"><i
+                                    class="fab fa-linkedin fa-lg fa-fw"></i></a>
                         </li>
                     </ul>
                 </div>
@@ -437,22 +435,9 @@
     <!-- End Footer -->
 
 
-    <!-- Toast (mensaje emergente para contactanos, reseña y gartantias) -->
-    <!--CONTACTENOS MENSAJE EMERGENTE-->
-    <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
-        <div id="alertaContacto" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
-            <div class="toast-header bg-success text-white">
-                <strong class="me-auto">Aviso</strong>
-                <button type="button" class="btn-close btn-close-success" data-bs-dismiss="toast"
-                    aria-label="Close"></button>
-            </div>
-            <div class="toast-body">
-                Para contactarnos, debes iniciar sesión o mira el número al costado izquierdo...
-            </div>
-        </div>
-    </div>
+
     <!--RESEÑAS MENSAJE EMERGENTE-->
-        <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+    <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
         <div id="alertaReseña" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
             <div class="toast-header bg-success text-white">
                 <strong class="me-auto">Aviso</strong>
@@ -489,36 +474,7 @@
 
     <!--Script para ver si la persona inicio o no sesion-->
 
-    <!--Contactanos-->
-    <script>
-        function mostrarContacto() {
-            const toastElement = document.getElementById('alertaContacto');
-            const toast = new bootstrap.Toast(toastElement);
-            toast.show();
-
-            // Redirige a login después de 2 segundos (opcional)
-            setTimeout(() => {
-                window.location.href = "/login/login";
-            }, 2000);
-        }
-    </script>
-
-    <script>
-        document.getElementById('linkContactos').addEventListener('click', function (e) {
-            e.preventDefault(); // Detiene la navegación temporalmente
-
-            // Muestra el toast
-            const toast = new bootstrap.Toast(document.getElementById('alertaContacto'));
-            toast.show();
-
-            // Redirige después de 5 segundos
-            setTimeout(() => {
-                window.location.href = this.href;
-            }, 5000);
-        });
-    </script>
-
-    <!--Reseñas-->   
+    <!--Reseñas-->
 
     <script>
         function mostrarReseña() {
@@ -550,7 +506,7 @@
 
 
 
-     <!--Garantias-->
+    <!--Garantias-->
     <script>
         function mostrarToast() {
             const toastElement = document.getElementById('alertaGarantia');
@@ -578,13 +534,6 @@
             }, 5000);
         });
     </script>
-
-
-
-
-
-
-
     <!-- End Script -->
     <!-- End Script -->
 </body>

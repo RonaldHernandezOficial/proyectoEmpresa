@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="HTML Masters" />
+    <link rel="apple-touch-icon" href="../../static/Img/logo.png">
+    <link rel="shortcut icon" type="image/x-icon" href="../../static/Img/logo.png">
+    <link rel="stylesheet" href="../../static/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../static/assets/css/templatemo.css">
+    <link rel="stylesheet" href="../../static/assets/css/custom.css">
+    <title>Insertar Contrato</title>
+</head>
+<body>
+
+<!-- Aquí puedes incluir el header y nav igual al que ya tienes -->
+
+<br>
+<div class="container">
+  <div class="col text-center">
+    <h1 class="text-aling-center">Insertar Contrato</h1>
+    <br>
+    <h3>Ingresa los datos del nuevo contrato</h3>
+  </div>
+  <br>
+
+  {% with messages = get_flashed_messages() %}
+  {% if messages %}
+    {% for message in messages %}
+      <div class="alert alert-success alert-dismissible fade show" role="alert">
+        {{ message }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    {% endfor %}
+  {% endif %}
+  {% endwith %}
+
+  <div class="row">
+    <div class="col-md-5">
+      <div class="card card-body">
+        <form action="{{ url_for('modelo_contratos.agregar_contrato') }}" method="POST">
+          <div class="form-group">
+            <label><strong>Tipo de Contrato</strong></label>
+            <input type="text" name="tipoContrato" placeholder="Tipo de Contrato" class="form-control" required>
+          </div>
+          <br>
+          <div class="form-group">
+            <label><strong>Descripción</strong></label>
+            <textarea name="descripcionContrato" placeholder="Descripción del contrato" class="form-control" required></textarea>
+          </div>
+          <br>
+          <div class="form-group">
+            <label><strong>ID Garantía</strong></label>
+            <input type="number" name="idGarantiaFk" placeholder="ID de la Garantía relacionada" class="form-control" required>
+          </div>
+          <br>
+          <div class="form-group">
+            <label><strong>ID Usuario</strong></label>
+            <input type="number" name="idUsuFk" placeholder="ID del Usuario asociado" class="form-control" required>
+          </div>
+          <br>
+          <div class="form-group">
+            <button type="submit" class="btn btn-dark btn-block">Crear Contrato</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="col-md-7">
+      <table class="table table-striped table-bordered bg.white table-sm">
+        <thead>
+          <div class="col text-center">
+            <h3>Contratos Registrados</h3>
+          </div>
+          <br>
+          <tr>
+            <td><strong>ID Contrato</strong></td>
+            <td><strong>Tipo</strong></td>
+            <td><strong>Descripción</strong></td>
+            <td><strong>ID Garantía</strong></td>
+            <td><strong>ID Usuario</strong></td>
+            <td><strong>Operaciones</strong></td>
+          </tr>
+        </thead>
+        <tbody>
+          {% for contrato in contratos %}
+          <tr>
+            <td>{{ contrato.idContrato }}</td>
+            <td>{{ contrato.tipoContrato }}</td>
+            <td>{{ contrato.descripcionContrato }}</td>
+            <td>{{ contrato.idGarantiaFk }}</td>
+            <td>{{ contrato.idUsuFk }}</td>
+            <td>
+              <a href="/contrato/editar_contrato/{{ contrato.idContrato }}" class="btn btn-light">Editar</a>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<br>
+
+<!-- Footer y scripts -->
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.min.js"></script>
+<script src="../../static/Js/Script6.js"></script>
+</body>
+</html>

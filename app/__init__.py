@@ -23,6 +23,7 @@ def create_app():
     from app.serviciocliente import modelo_servicio
     from app.terminosycondiciones import modelo_terminos
     from app.contactanos_not_client import modelo_contacto_not_cliente
+    from app.contrato import modelo_contratos
     
 
     app.register_blueprint(modelo_menu)
@@ -33,5 +34,6 @@ def create_app():
     app.register_blueprint(modelo_terminos)
     app.register_blueprint(modelo_garantias)
     app.register_blueprint(modelo_contacto_not_cliente)
+    app.register_blueprint(modelo_contratos)
 
     return app

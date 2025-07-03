@@ -40,20 +40,22 @@ class Garantias(db.Model):
 
 class Contrato(db.Model):
     __tablename__ = 'Contrato'
-    idContrato = Column(String(20), primary_key = True)
-    tipoContrato = Column(String(50), nullable = False)
-    descripcionContrato = Column(Text, nullable = False)
-    idGarantiaFk = Column(Integer, ForeignKey('Garantia.idGarantia'))
-    idUsuFk = Column(Integer, ForeignKey('Usuario.idUsu'))
+    idContrato = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    tipoContrato = db.Column(db.String(50), nullable=False)
+    descripcionContrato = db.Column(db.Text, nullable=False)
+    idGarantiaFk = db.Column(db.Integer, db.ForeignKey('Garantia.idGarantia'))
+    idUsuFk = db.Column(db.Integer, db.ForeignKey('Usuario.idUsu'))
 
 class Pqrs(db.Model):
-    __tablename__='Pqrs'
-    idPqrs = Column(Integer, primary_key = True)
-    tipoPqrs = Column(String(255), nullable = False)
-    descripcionPqrs = Column(Text, nullable = False)
-    estadopqrs = Column(Text, nullable = False)
-    idGarantiaFk = Column(Integer, ForeignKey('Garantia.idGarantia'))
-    idContratoFk = Column(String(20), ForeignKey('Contrato.idContrato'))
+    __tablename__ = 'Pqrs'
+    idPqrs = db.Column(db.Integer, primary_key=True)
+    tipoPqrs = db.Column(db.String(255), nullable=False)
+    descripcionPqrs = db.Column(db.Text, nullable=False)
+    estadopqrs = db.Column(db.Text, nullable=False)
+    idGarantiaFk = db.Column(db.Integer, db.ForeignKey('Garantia.idGarantia'))
+    idContratoFk = db.Column(db.Integer, db.ForeignKey('Contrato.idContrato'))
+
+    reseñas = db.relationship('Reseñas', backref='pqr', lazy=True)
 
 class Reseñas(db.Model):
     __tablename__='Reseñas'

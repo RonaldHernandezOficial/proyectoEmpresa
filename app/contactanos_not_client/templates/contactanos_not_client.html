@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="apple-touch-icon" href="../../static/img/logo.png" />
+    <link
+      rel="shortcut icon"
+      href="../../static/img/logo.png"
+      type="image/x-icon"
+    />
+    <link rel="stylesheet" href="../static/css/Style1.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <title>Contáctanos</title>
+  </head>
+  <body>
+    <header>
+      <h1>Contáctanos</h1>
+    </header>
+
+    <main id="browser">
+      <div id="browser-bar">
+        <div class="circles"></div>
+        <div class="circles"></div>
+        <div class="circles"></div>
+        <p>¿Dónde nos ubicamos?</p>
+      </div>
+
+      <div id="content">
+        <section id="left">
+          <div id="map">
+            <iframe
+              src="https://www.google.com/maps?q=Fabriautomaticas+SAS+Cl+129c+%2398A-09,+Suba,+Bogotá,+Colombia&output=embed"
+              width="100%"
+              height="388"
+              style="border: 0"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+            ></iframe>
+            <div class="map-locator">
+              <div class="tooltip">
+                <ul>
+                  <li>
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span class="suba-link" onclick="abrirModal()"
+                      >Suba Rincón</span
+                    >
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="zoom"></div>
+            
+          </div>
+
+          <ul id="location-bar">
+            <li>
+              <span class="ubicacion-link" onclick="mostrarInfo('colombia')"
+                >Colombia</span
+              >
+            </li>
+            <li>
+              <span class="ubicacion-link" onclick="mostrarInfo('localidad11')"
+                >Localidad 11</span
+              >
+            </li>
+            <li>
+              <span class="ubicacion-link" onclick="mostrarInfo('suba-rincon')"
+                >Suba Rincón</span
+              >
+            </li>
+            <li>
+              <span
+                class="ubicacion-link"
+                onclick="mostrarInfo('lagos-de-suba')"
+                >Lagos de Suba</span
+              >
+            </li>
+          </ul>
+        </section>
+
+        <aside id="right">
+          <p>Nuestras Redes Sociales</p>
+          <div id="social">
+            <a class="social"><i class="fab fa-facebook"></i></a>
+            <a class="social"><i class="fab fa-twitter"></i></a>
+            <a class="social"><i class="fab fa-linkedin"></i></a>
+            <a class="social"><i class="fab fa-google-plus-g"></i></a>
+            <a class="social"><i class="fab fa-instagram"></i></a>
+          </div>
+
+          <form>
+            <p>
+              <i class="fab fa-whatsapp"></i>
+              <a href="https://wa.me/573153009936" target="_blank"
+                >315-300-9936</a
+              >
+            </p>
+            <p>
+              <i class="fab fa-whatsapp"></i>
+              <a href="https://wa.me/573107740229" target="_blank"
+                >310-774-0229</a
+              >
+            </p>
+            <p>
+              <i class="fas fa-envelope"></i>
+              <a href="mailto:fabriautomaticassas@hotmail.com"
+                >fabriautomaticassas@hotmail.com</a
+              >
+            </p>
+            <br /><br />
+            <a href="/" class="menu">Volver al menú</a>
+          </form>
+
+          <div
+            id="info-ubicacion"
+            style="margin-top: 20px; color: white; font-weight: bold"
+          ></div>
+        </aside>
+      </div>
+    </main>
+
+    <div id="modalSuba" class="modal">
+      <div class="modal-content">
+        <span class="close" onclick="cerrarModal()">&times;</span>
+        <h2>📍 Suba Rincón</h2>
+        <p>
+          Suba Rincón es donde tenemos nuestras oficinas principales en Bogotá.
+          Estamos ubicados cerca de Lagos de Suba y del Portal Suba.
+        </p>
+      </div>
+    </div>
+    <div class="carousel-container">
+      <div class="carousel-track">
+        <img src="../../static/img/trabajo1.jpg" alt="Trabajo 1" />
+        <img src="../../static/img/trabajo2.png" alt="Trabajo 2" />
+        <img src="../../static/img/trabajo3.jpg" alt="Trabajo 3" />
+        <img src="../../static/img/trabajo4.jpg" alt="Trabajo 4" />
+        <!-- Duplicados para hacer bucle sin cortes -->
+        <img src="../../static/img/trabajo1.jpg" alt="Trabajo 1" />
+        <img src="../../static/img/trabajo2.png" alt="Trabajo 2" />
+        <img src="../../static/img/trabajo3.jpg" alt="Trabajo 3" />
+        <img src="../../static/img/trabajo4.jpg" alt="Trabajo 4" />
+      </div>
+    </div>
+    <script>
+      function abrirModal() {
+        document.getElementById("modalSuba").style.display = "block";
+      }
+
+      function cerrarModal() {
+        document.getElementById("modalSuba").style.display = "none";
+      }
+
+      window.onclick = function (event) {
+        const modal = document.getElementById("modalSuba");
+        if (event.target == modal) {
+          modal.style.display = "none";
+        }
+      };
+
+      function mostrarInfo(ubicacion) {
+        const mensajes = {
+          colombia: `
+            <img src="https://flagcdn.com/w40/co.png" alt="Colombia" width="25" style="vertical-align: middle; margin-right: 5px;">
+            <strong>Colombia:</strong> Nuestra empresa tiene raíces 100% colombianas. Operamos desde Bogotá, promoviendo el desarrollo tecnológico nacional.
+          `,
+          localidad11:
+            "📍 <strong>Localidad 11 (Suba):</strong> Aquí se encuentran nuestras instalaciones principales, cerca del Portal de Suba.",
+          "suba-rincon":
+            "🏙️ <strong>Suba Rincón:</strong> Zona donde se ubica nuestra sede, rodeada de comercio y zonas residenciales.",
+          "lagos-de-suba":
+            "🌊 <strong>Lagos de Suba:</strong> Barrio cercano con colegios, parques y vías principales de fácil acceso.",
+        };
+
+        document.getElementById("info-ubicacion").innerHTML =
+          mensajes[ubicacion] || "Información no disponible.";
+      }
+    </script>
+  </body>
+</html>

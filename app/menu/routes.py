@@ -8,3 +8,7 @@ def menu():
 @modelo_menu.route("/menuClientes")
 def menuC():
     return render_template("menuClientes.html")
+
+@modelo_menu.route("/nuestrosTrabajos")
+def menuT():
+    return render_template("nuestrosTrabajos.html")

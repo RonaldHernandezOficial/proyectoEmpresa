@@ -28,7 +28,9 @@ class Usuario(db.Model):
     emailUsuario= Column(String(45), nullable = False)
     contrasenaUsuario = Column(String(45), nullable = False)
     idRolFk = Column(Integer, ForeignKey('Rol.id'))
-
+    
+    rol = db.relationship('Rol', backref='usuarios')
+    
 class Garantias(db.Model):
     __tablename__ = 'Garantia'
     idGarantia = Column(Integer, primary_key = True)

@@ -52,7 +52,7 @@
                 <!-- h2 text-success border-bottom pb-3 border-light logo -->
                 Fabriautomaticas SAS
             </a>
-           <a href="/admin/menu" class="btn btn-dark">Atras</a>
+           <a href="/admin/menuAdmin" class="btn btn-dark">Atras</a>
         </div>
         </div>
         </div>
@@ -72,14 +72,16 @@
                                 <td><strong>Apellido</strong></td>
                                 <td><strong>Telefono</strong></td>
                                 <td><strong>Email</strong></td>
+                                 <td><strong>Tipo de Rol</strong></td> <!-- Nueva columna -->
                             </tr>
                         <tbody>
                             {% for usuario in usuario %}
                             <tr>
-                                <td>{{ usuario[1] }}</td>
-                                <td>{{ usuario[2] }}</td>
-                                <td>{{ usuario[3] }}</td>
-                                <td>{{ usuario[4] }}</td>   
+                                <td>{{ usuario.nombreUsuario }}</td>
+                                <td>{{ usuario.apellidoUsuario }}</td>
+                                <td>{{ usuario.telefonoUsuario }}</td>
+                                <td>{{ usuario.emailUsuario }}</td> 
+                                <td>{{ usuario.rol.tipoRol }}</td> <!-- Mostrar tipo de rol -->  
                             </tr>
                             {% endfor %}
                         </tbody>

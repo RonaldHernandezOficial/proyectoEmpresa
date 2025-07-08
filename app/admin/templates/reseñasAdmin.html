@@ -52,7 +52,7 @@
                 <!-- h2 text-success border-bottom pb-3 border-light logo -->
                 Fabriautomaticas SAS
             </a>
-           <a href="/admin/menu" class="btn btn-dark">Atras</a>
+           <a href="/admin/menuAdmin" class="btn btn-dark">Atras</a>
         </div>
         </div>
         </div>
@@ -69,17 +69,17 @@
                             <br>
                             <tr>
                                 <td><strong>Nombre</strong></td>
-                                <td><strong>Email</strong></td>
+                                <td><strong>Email</strong></td> 
                                 <td><strong>Comentario</strong></td>
                                 <td><strong>Calificacion</strong></td>
                             </tr>
                         <tbody>
                             {% for reseña in reseñas %}
                             <tr>
-                                <td>{{ reseña[1] }}</td>
-                                <td>{{ reseña[2] }}</td>
-                                <td>{{ reseña[3] }}</td>
-                                <td>{{ reseña[4] }}</td>   
+                                <td>{{ reseña.nombre }}</td>
+                                <td>{{ reseña.correo }}</td>
+                                <td>{{ reseña.comentarios }}</td>
+                                <td>{{ reseña.calificacion }}</td>   
                             </tr>
                             {% endfor %}
                         </tbody>

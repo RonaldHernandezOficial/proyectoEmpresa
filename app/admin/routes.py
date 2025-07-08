@@ -16,13 +16,18 @@ def menu():
 
 @modelo_admin.route("/menuAdmin")
 @solo_admin
-def menu_admin():
+def menu_admin(): 
      return render_template("indexadmin.html")
 
-
+ 
 @modelo_admin.route('/insertar')
 def insertar():
     garantias = Garantias.query.all()
+    # CONVIERTE a listas o tuplas explícitamente:
+    lista = [
+        (g.fechaGarantia, g.descripcionGarantia, g.tipoGarantia, g.estadoGarantia)
+        for g in garantias
+    ]
     return render_template('garantiasadmin.html', garantias=garantias)
 
 @modelo_admin.route('/editar_garantia/<int:id>')
@@ -53,11 +58,21 @@ def eliminar_garantia(id):
 @modelo_admin.route('/consultar')
 def consultar():
     usuarios = Usuario.query.all()
+    # CONVIERTE a listas o tuplas explícitamente:
+    lista = [
+        (g.nombreUsuario, g.apellidoUsuario, g.telefonoUsuario, g.emailUsuario, g.rol.tipoRol)
+        for g in usuarios
+    ]
     return render_template('usuariosAdmin.html', usuario=usuarios)
 
 @modelo_admin.route('/consultarR')
 def consultarR():
     reseñas = Reseñas.query.all()
+    # CONVIERTE a listas o tuplas explícitamente:
+    lista = [
+        (g.nombre, g.correo, g.comentarios, g.calificacion)
+        for g in reseñas
+    ]
     return render_template('reseñasAdmin.html', reseñas=reseñas)
 
 @modelo_admin.route('/consultarP')

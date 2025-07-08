@@ -52,7 +52,7 @@
                 <!-- h2 text-success border-bottom pb-3 border-light logo -->
                 Fabriautomaticas SAS
             </a>
-           <a href="/admin/menu" class="btn btn-dark">Atras</a>
+           <a href="/admin/menuAdmin" class="btn btn-dark">Atras</a>
         </div>
         </div>
         </div>
@@ -77,10 +77,10 @@
                         <tbody>
                             {% for garantia in garantias %}
                             <tr>
-                                <td>{{ garantia[1] }}</td>
-                                <td>{{ garantia[2] }}</td>
-                                <td>{{ garantia[3] }}</td>
-                                <td>{{ garantia[4] }}</td>
+                                <td>{{ garantia.fechaGarantia }}</td>
+                                <td>{{ garantia.descripcionGarantia }}</td>
+                                <td>{{ garantia.tipoGarantia }}</td>
+                                <td>{{ garantia.estadoGarantia }}</td>
                                 <td>
                                     <a href="/admin/editar_garantia/{{ garantia[0] }}"
                                         class="btn btn-light">Editar</a>

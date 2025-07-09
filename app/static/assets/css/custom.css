@@ -3,3 +3,10 @@ Custom Css
  * Este Custom Css esta metido en una carpeta diferente, debido a que al descargarlo salía así y fue mejor que 
  * Causar un error.
 */
+
+
+.metric-message {
+  min-height: 40px; /* ajusta según lo que veas que quede mejor */
+  display: flex;
+  align-items: center;
+}

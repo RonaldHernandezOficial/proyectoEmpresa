@@ -72,10 +72,10 @@
                                 <td><strong>Descripcion</strong></td>
                             </tr>
                         <tbody>
-                            {% for pqrs in pqrs %}
+                            {% for pqr in pqrs %}
                             <tr>
-                                <td>{{ pqrs[1] }}</td>
-                                <td>{{ pqrs[2] }}</td>  
+                                <td>{{ pqr.tipoPqrs }}</td>
+                                <td>{{ pqr.descripcionPqrs }}</td>  
                                 <td>
                                     <a href="/admin/editar_pqrs/{{ pqrs[0] }}"
                                         class="btn btn-light">Editar</a>

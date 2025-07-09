@@ -8,4 +8,5 @@ modelo_admin = Blueprint('modelo_admin',
                         template_folder="templates"
                         )
 
+
 from . import routes

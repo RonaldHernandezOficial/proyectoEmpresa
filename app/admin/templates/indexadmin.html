@@ -1,394 +1,522 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link rel="apple-touch-icon" href="../../static/img/logo.png">
-<link rel="shortcut icon" type="image/x-icon" href="../../static/img/logo.png">
-<!--     Fonts and icons     -->
-<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900|Roboto+Slab:400,700" />
-<!-- Nucleo Icons -->
-<link href="../../static/css/nucleo-icons.css" rel="stylesheet" />
-<link href="../../static/css/nucleo-svg.css" rel="stylesheet" />
-<!-- Font Awesome Icons -->
-<script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
-<!-- Material Icons -->
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
-<!-- CSS Files -->
-<link id="pagestyle" href="../../static/css/material-dashboard.css?v=3.1.0" rel="stylesheet" />
-
-<link rel="stylesheet" href="../../static/assets/css/bootstrap.min.css">
-<link rel="stylesheet" href="../../static/assets/css/templatemo.css">
-<link rel="stylesheet" href="../../static/assets/css/custom.css">
-<title> 
-  Fabriautomaticas SAS
-</title>
-<!-- Nepcha Analytics (nepcha.com) -->
-<!-- Nepcha is a easy-to-use web analytics. No cookies and fully compliant with GDPR, CCPA and PECR. -->
-<script defer data-site="YOUR_DOMAIN_HERE" src="https://api.nepcha.com/js/nepcha-analytics.js"></script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="apple-touch-icon" href="../../static/img/logo.png">
+  <link rel="shortcut icon" type="image/x-icon" href="../../static/img/logo.png">
+  <!--     Fonts and icons     -->
+  <link rel="stylesheet" type="text/css"
+    href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900|Roboto+Slab:400,700" />
+  <!-- Nucleo Icons -->
+  <link href="../../static/css/nucleo-icons.css" rel="stylesheet" />
+  <link href="../../static/css/nucleo-svg.css" rel="stylesheet" />
+  <!-- Font Awesome Icons -->
+  <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
+  <!-- Material Icons -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
+  <!-- CSS Files -->
+  <link id="pagestyle" href="../../static/css/material-dashboard.css?v=3.1.0" rel="stylesheet" />
+  <link rel="stylesheet" href="../../static/assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../../static/assets/css/templatemo.css">
+  <link rel="stylesheet" href="../../static/assets/css/custom.css">
+  <title>
+    Fabriautomaticas SAS
+  </title>
 </head>
+
 <body class="g-sidenav-show  bg-gray-100">
-  
-<aside class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3   bg-gradient-dark" id="sidenav-main">
-  <div class="sidenav-header">
-    <i class="fas fa-times p-3 cursor-pointer text-white opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
-    <a class="navbar-brand m-0" href="/menu/menu" target="_blank">
-      <span class="ms-1 font-weight-bold text-white">Bienvenido Admin</span>
-    </a>
-  </div>
-<hr class="horizontal light mt-0 mb-2">
-  <div class="collapse navbar-collapse  w-auto " id="sidenav-collapse-main">
-    <ul class="navbar-nav"> 
-<li class="nav-item">
-  <a class="nav-link text-white " href="/admin/insertar">
-    
-      <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-        <i class="material-icons opacity-10">dashboard</i>
-      </div>
-    
-    <span class="nav-link-text ms-1">Revisa las garantias</span>
-  </a>
-</li> 
-<li class="nav-item">
-  <a class="nav-link text-white " href="/admin/consultar">
-    
-      <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-        <i class="material-icons opacity-10">table_view</i>
-      </div>
-    
-    <span class="nav-link-text ms-1">Revisa los usuarios  </span>
-  </a>
-</li>
-<li class="nav-item">
-  <a class="nav-link text-white " href="/admin/consultarR">
-    
-      <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-        <i class="material-icons opacity-10">receipt_long</i>
-      </div>
-    
-    <span class="nav-link-text ms-1">Revisa las reseñas</span>
-  </a>
-</li>
-<li class="nav-item">
-  <a class="nav-link text-white " href="/admin/consultarP">
-    
-      <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-        <i class="material-icons opacity-10">view_in_ar</i>
-      </div>
-    
-    <span class="nav-link-text ms-1">Revisa los PQR'S</span>
-  </a>
-</li>  
-    <li class="nav-item mt-3">
-      <h6 class="ps-4 ms-2 text-uppercase text-xs text-white font-weight-bolder opacity-8">Cuentas de páginas</h6>
-    </li>
-  
-<li class="nav-item">
-  <a class="nav-link text-white " href="/admin/admin">
-    
-      <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-        <i class="material-icons opacity-10">persona</i>
-      </div>
-    
-    <span class="nav-link-text ms-1">Perfil</span>
-  </a>
-</li>
-</ul>
-  </div>  
-</aside>
 
-      <main class="main-content border-radius-lg ">
-        <!-- Navbar -->
-<!-- Start Top Nav -->
-<nav class="navbar navbar-expand-lg bg-dark navbar-light d-none d-lg-block" id="templatemo_nav_top">
-  <div class="container text-light">
-      <div class="w-100 d-flex justify-content-between">
+  <aside
+    class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3   bg-gradient-dark"
+    id="sidenav-main">
+    <div class="sidenav-header">
+      <i class="fas fa-times p-3 cursor-pointer text-white opacity-5 position-absolute end-0 top-0 d-none d-xl-none"
+        aria-hidden="true" id="iconSidenav"></i>
+      <a class="navbar-brand m-0" href="/menu/menuAdmin" target="_blank">
+        <span class="ms-1 font-weight-bold text-white">Bienvenido Admin</span>
+      </a>
+    </div>
+    <hr class="horizontal light mt-0 mb-2">
+    <div class="collapse navbar-collapse  w-auto " id="sidenav-collapse-main">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link text-white " href="/admin/insertar">
+
+            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="material-icons opacity-10">dashboard</i>
+            </div>
+
+            <span class="nav-link-text ms-1">Revisa las garantias</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white " href="/admin/consultar">
+
+            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="material-icons opacity-10">table_view</i>
+            </div>
+
+            <span class="nav-link-text ms-1">Revisa los usuarios </span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white " href="/admin/consultarR">
+
+            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="material-icons opacity-10">receipt_long</i>
+            </div>
+
+            <span class="nav-link-text ms-1">Revisa las reseñas</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white " href="/admin/consultarP">
+
+            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="material-icons opacity-10">view_in_ar</i>
+            </div>
+
+            <span class="nav-link-text ms-1">Revisa los PQR'S</span>
+          </a>
+        </li>
+        <li class="nav-item mt-3">
+          <h6 class="ps-4 ms-2 text-uppercase text-xs text-white font-weight-bolder opacity-8">Cuentas de páginas</h6>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link text-white " href="/admin/admin">
+
+            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="material-icons opacity-10">persona</i>
+            </div>
+
+            <span class="nav-link-text ms-1">Perfil</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </aside>
+
+  <main class="main-content border-radius-lg ">
+    <!-- Navbar -->
+    <!-- Start Top Nav -->
+    <nav class="navbar navbar-expand-lg bg-dark navbar-light d-none d-lg-block" id="templatemo_nav_top">
+      <div class="container text-light">
+        <div class="w-100 d-flex justify-content-between">
           <div>
-              <i class="fa fa-envelope mx-2"></i>
-              <a class="navbar-sm-brand text-light text-decoration-none">fabriautomaticas@hotmail.com</a>
-              <i class="fa fa-phone mx-2"></i>
-              <a class="navbar-sm-brand text-light text-decoration-none">315-300-9936</a>
+            <i class="fa fa-envelope mx-2"></i>
+            <a class="navbar-sm-brand text-light text-decoration-none">fabriautomaticas@hotmail.com</a>
+            <i class="fa fa-phone mx-2"></i>
+            <a class="navbar-sm-brand text-light text-decoration-none">315-300-9936</a>
           </div>
           <div>
-              <a class="text-light" href="https://fb.com/templatemo" target="_blank" rel="sponsored"><i
-                      class="fab fa-facebook-f fa-sm fa-fw me-2"></i></a>
-              <a class="text-light" href="https://www.instagram.com/fabriautomaticas/?hl=es" target="_blank"><i
-                      class="fab fa-instagram fa-sm fa-fw me-2"></i></a>
-              <a class="text-light" href="https://twitter.com/" target="_blank"><i
-                      class="fab fa-twitter fa-sm fa-fw me-2"></i></a>
-              <a class="text-light" href="https://www.linkedin.com/" target="_blank"><i
-                      class="fab fa-linkedin fa-sm fa-fw"></i></a>
+            <a class="text-light" href="https://fb.com/templatemo" target="_blank" rel="sponsored"><i
+                class="fab fa-facebook-f fa-sm fa-fw me-2"></i></a>
+            <a class="text-light" href="https://www.instagram.com/fabriautomaticas/?hl=es" target="_blank"><i
+                class="fab fa-instagram fa-sm fa-fw me-2"></i></a>
+            <a class="text-light" href="https://twitter.com/" target="_blank"><i
+                class="fab fa-twitter fa-sm fa-fw me-2"></i></a>
+            <a class="text-light" href="https://www.linkedin.com/" target="_blank"><i
+                class="fab fa-linkedin fa-sm fa-fw"></i></a>
           </div>
+        </div>
       </div>
-  </div>
-</nav>
-<!-- Close Top Nav -->
+    </nav>
+    <!-- Close Top Nav -->
 
-<!-- Modal -->
-<div class="modal fade bg-white" id="templatemo_search" tabindex="-1" role="dialog"
-  aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg" role="document">
-      <div class="w-100 pt-1 mb-5 text-right">
+    <!-- Modal -->
+    <div class="modal fade bg-white" id="templatemo_search" tabindex="-1" role="dialog"
+      aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="w-100 pt-1 mb-5 text-right">
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <form action="" method="get" class="modal-content modal-body border-0 p-0">
+        </div>
+        <form action="" method="get" class="modal-content modal-body border-0 p-0">
           <div class="input-group mb-2">
-              <input type="text" class="form-control" id="inputModalSearch" name="q" placeholder="Search ...">
-              <button type="submit" class="input-group-text bg-success text-light">
-                  <i class="fa fa-fw fa-search text-white"></i>
-              </button>
+            <input type="text" class="form-control" id="inputModalSearch" name="q" placeholder="Search ...">
+            <button type="submit" class="input-group-text bg-success text-light">
+              <i class="fa fa-fw fa-search text-white"></i>
+            </button>
           </div>
-      </form>
-  </div>
-</div>
-<!-- End Navbar -->
-        <br>
+        </form>
+      </div>
+    </div>
+    <!-- End Navbar -->
+    <br>
+    <!-- Sección modificada con métricas -->
     <div class="row">
       <div class="col-lg-5 col-sm-5">
-        <div class="card  mb-5 width=10%">
-  <div class="card-header p-3s pt-2">
-    <div class="icon icon-lg icon-shape bg-gradient-dark shadow-dark shadow text-center border-radius-xl mt-n4 position-absolute">
-      <i class="material-icons opacity-10">weekend</i>
-    </div>
-    <div class="text-end pt-1">
-      <p class="text-sm mb-0 text-capitalize">Reseñas </p>
-      <h4 class="mb-0">281</h4>
-    </div>
-  </div>
-
-  <hr class="dark horizontal my-0">
-  <div class="card-footer p-3">
-    <p class="mb-0"><span class="text-success text-sm font-weight-bolder">+55% </span>La semana pasada</p>
-  </div>
-</div>
-
-        <div class="card  mb-2">
-  <div class="card-header p-3 pt-2">
-    <div class="icon icon-lg icon-shape bg-gradient-primary shadow-primary shadow text-center border-radius-xl mt-n4 position-absolute">
-      <i class="material-icons opacity-10">leaderboard</i>
-    </div>
-    <div class="text-end pt-1">
-      <p class="text-sm mb-0 text-capitalize">Total usuarios</p>
-      <h4 class="mb-0">2,300</h4>
-    </div>
-  </div>
-
-  <hr class="dark horizontal my-0">
-  <div class="card-footer p-3">
-    <p class="mb-0"><span class="text-success text-sm font-weight-bolder">+3% </span>El mes pasado</p>
-  </div>
-</div>
-
-      </div>
-      <div class="col-lg-5 col-sm-5 mt-sm-0 mt-4">
-        <div class="card  mb-2">
-  <div class="card-header p-3 pt-2 bg-transparent">
-    <div class="icon icon-lg icon-shape bg-gradient-success shadow-success text-center border-radius-xl mt-n4 position-absolute">
-      <i class="material-icons opacity-10">store</i>
-    </div>
-    <div class="text-end pt-1">
-      <p class="text-sm mb-0 text-capitalize ">Garantías</p>
-      <h4 class="mb-0 ">200</h4>
-    </div>
-  </div>
-
-  <hr class="horizontal my-0 dark">
-  <div class="card-footer p-3">
-    <p class="mb-0 "><span class="text-success text-sm font-weight-bolder">+1% </span>Ayer</p>
-  </div>
-</div>
-
-        <div class="card ">
-  <div class="card-header p-3 pt-2 bg-transparent">
-    <div class="icon icon-lg icon-shape bg-gradient-info shadow-info text-center border-radius-xl mt-n4 position-absolute">
-      <i class="material-icons opacity-10">person_add</i>
-    </div>
-    <div class="text-end pt-1">
-      <p class="text-sm mb-0 text-capitalize ">PQR'S</p>
-      <h4 class="mb-0 "></h4>
-    </div>
-  </div>
-
-  <hr class="horizontal my-0 dark">
-  <div class="card-footer p-3">
-    <p class="mb-0 "><span class="text-succes text-sm font-weight-bolder">+32% </span>Recién insertado</p>
-  </div>
-</div>
-
-      </div>
-    </div>
-
-
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="row mt-4">
-  <div class="col-lg-5 mb-lg-0 mb-4">
-    <div class="card z-index-2 mt-4">
-  <div class="card-body mt-n1 px-2">
-    <div class="bg-gradient-dark shadow-dark border-radius-lg py-1  pe-100 mb-1 px-1">
-      <img src="../../static/img/logo.png" alt="" class="img-fc">
-      <div class="chart">
-        <canvas id="chart-bars" class="chart-canvas" height="170"></canvas>
-      </div>
-    </div>
-    <h6 class="ms-2 mt-4 mb-0"> Usuarios activos </h6>
-    <p class="text-sm ms-2"> (<span class="font-weight-bolder">+11%</span>) La semana pasada </p>
-    <div class="container border-radius-lg">
-      <div class="row">
-        <div class="col-3 py-3 ps-0">
-          <div class="d-flex mb-2">
-            <div class="icon icon-shape icon-xxs shadow border-radius-sm bg-gradient-primary text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="material-icons opacity-10">groups</i>
-            </div>
-            <p class="text-xs my-auto font-weight-bold">Usuarios</p>
-          </div>
-          <h4 class="font-weight-bolder">42K</h4>
-          <div class="progress w-75">
-            <div class="progress-bar bg-dark w-60" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
-          </div>
-        </div>
-        <div class="col-3 py-3 ps-0">
-          <div class="d-flex mb-2">
-            <div class="icon icon-shape icon-xxs shadow border-radius-sm bg-gradient-info text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="material-icons opacity-10">ads_click</i>
-            </div>
-            <p class="text-xs mt-1 mb-0 font-weight-bold">Garantías</p>
-          </div>
-          <h4 class="font-weight-bolder">200</h4>
-          <div class="progress w-75">
-            <div class="progress-bar bg-dark w-90" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
-          </div>
-        </div>
-        <div class="col-3 py-3 ps-0">
-          <div class="d-flex mb-2">
-            <div class="icon icon-shape icon-xxs shadow border-radius-sm bg-gradient-warning text-center me-2 d-flex align-items-center justify-content-center">
+        <div class="card mb-5">
+          <div class="card-header p-3 pt-2">
+            <div
+              class="icon icon-lg icon-shape bg-gradient-warning shadow-dark shadow text-center border-radius-xl mt-n4 position-absolute">
               <i class="material-icons opacity-10">receipt</i>
             </div>
-            <p class="text-xs mt-1 mb-0 font-weight-bold">Reseñas</p>
+            <div class="text-end pt-1">
+              <p class="text-sm mb-0 text-capitalize">Reseñas</p>
+              <h4 class="mb-0">{{ total_reseñas }}</h4>
+
+              {% if cambio_usuarios > 0 %}
+              <p class="text-sm font-weight-bolder" style="color: green;">
+                ↑ {{ cambio_reseñas }}% Reseñas De Esta Semana
+              </p>
+              {% elif cambio_usuarios < 0 %} <p class="text-danger text-sm font-weight-bolder">
+                ↓ {{ cambio_reseñas | abs }}% Reseñas De Esta Semana
+                </p>
+                {% else %}
+                <p class="text-secondary text-sm font-weight-bolder">
+                  Sin Reseñas Esta Semana
+                </p>
+                {% endif %}
+            </div>
           </div>
-          <h4 class="font-weight-bolder">400</h4>
-          <div class="progress w-75">
-            <div class="progress-bar bg-dark w-30" role="progressbar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"></div>
-          </div>
+          <hr class="dark horizontal my-0">
         </div>
-        <div class="col-3 py-3 ps-0">
-          <div class="d-flex mb-2">
-            <div class="icon icon-shape icon-xxs shadow border-radius-sm bg-gradient-danger text-center me-2 d-flex align-items-center justify-content-center">
+
+        <div class="card mb-2">
+          <div class="card-header p-3 pt-2">
+            <div
+              class="icon icon-lg icon-shape bg-gradient-primary shadow-primary shadow text-center border-radius-xl mt-n4 position-absolute">
+              <i class="material-icons opacity-10">groups</i>
+            </div>
+            <div class="text-end pt-1">
+              <p class="text-sm mb-0 text-capitalize">Total Usuarios</p>
+              <h4 class="mb-0">{{ total_usuarios }}</h4>
+
+              {% if cambio_usuarios > 0 %}
+              <p class="text-sm font-weight-bolder" style="color: green;">
+                ↑ {{ cambio_usuarios }}% Usuarios De Esta Semana
+              </p>
+              {% elif cambio_usuarios < 0 %} <p class="text-danger text-sm font-weight-bolder">
+                ↓ {{ cambio_usuarios | abs }}% Usuarios De Esta Semana
+                </p>
+                {% else %}
+                <p class="text-secondary text-sm font-weight-bolder">
+                  Sin Usuarios Registrados Esta Semana
+                </p>
+                {% endif %}
+            </div>
+          </div>
+          <hr class="dark horizontal my-0">
+        </div>
+
+      </div>
+
+      <div class="col-lg-5 col-sm-5 mt-sm-0 mt-4">
+        <div class="card mb-2">
+          <div class="card-header p-3 pt-2 bg-transparent">
+            <div
+              class="icon icon-lg icon-shape bg-gradient-info shadow-success text-center border-radius-xl mt-n4 position-absolute">
+              <i class="material-icons opacity-10">ads_click</i>
+            </div>
+            <div class="text-end pt-1">
+              <p class="text-sm mb-0 text-capitalize">Garantias</p>
+              <h4 class="mb-0">{{ total_garantias }}</h4>
+
+              {% if cambio_garantias > 0 %}
+              <p class="text-sm font-weight-bolder" style="color: green;">
+                ↑ {{ cambio_garantias }}% Garantias De Esta Semana
+              </p>
+              {% elif cambio_garantias < 0 %} <p class="text-danger text-sm font-weight-bolder">
+                ↓ {{ cambio_garantias | abs }}% Garantias De Esta Semana
+                </p>
+                {% else %}
+                <p class="text-secondary text-sm font-weight-bolder">
+                  Sin Garantias esta semana
+                </p>
+                {% endif %}
+            </div>
+          </div>
+          <hr class="horizontal my-0 dark">
+        </div>
+
+        <div class="card">
+          <div class="card-header p-3 pt-2 bg-transparent">
+            <div
+              class="icon icon-lg icon-shape {% if alerta_pqrs == 'alta' %}bg-gradient-danger{% elif alerta_pqrs == 'media' %}bg-gradient-warning{% else %}bg-gradient-info{% endif %}  bg-gradient-danger  text-center border-radius-xl mt-n4 position-absolute">
               <i class="material-icons opacity-10">category</i>
             </div>
-            <p class="text-xs mt-1 mb-0 font-weight-bold">PQR'S</p>
+            <div class="text-end pt-1">
+              <p class="text-sm mb-0 text-capitalize">PQR'S</p>
+              <h4 class="mb-0">{{ total_pqrs }}</h4>
+
+              {% if cambio_pqrs > 0 %}
+              <p class="text-sm font-weight-bolder" style="color: green;">
+                ↑ {{ cambio_pqrs }}% Pqr's De Esta Semana
+              </p>
+              {% elif cambio_pqrs < 0 %} <p class="text-danger text-sm font-weight-bolder">
+                ↓ {{ cambio_pqrs | abs }}% Pqr's De Esta Semana
+                </p>
+                {% else %}
+                <p class="text-secondary text-sm font-weight-bolder">
+                  Sin Pqr's esta semana
+                </p>
+                {% endif %}
+            </div>
           </div>
-          <h4 class="font-weight-bolder">74</h4>
-          <div class="progress w-75">
-            <div class="progress-bar bg-dark w-50" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+          <hr class="horizontal my-0 dark">
+        </div>
+      </div>
+    </div>
+
+
+    <div class="row mt-4">
+      <div class="col-lg-5 mb-lg-0 mb-4">
+        <div class="card z-index-2 mt-4">
+          <div class="card-body mt-n1 px-2">
+            <div class="bg-gradient-dark shadow-dark border-radius-lg py-1 pe-100 mb-1 px-1">
+              <img src="../../static/img/logo.png" alt="" class="img-fc">
+              <div class="chart">
+                <canvas id="chart-bars" class="chart-canvas" height="170"></canvas>
+              </div>
+            </div>
+            <h6 class="ms-2 mt-4 mb-0">Usuarios activos</h6>
+            <p class="text-sm ms-2">
+              (<span class="font-weight-bolder">
+                {% if cambio_usuarios >= 0 %}+{{ cambio_usuarios }}{% else %}{{ cambio_usuarios }}{% endif %}
+              </span>) Comparado con la semana pasada
+            </p>
+
+            <div class="container border-radius-lg">
+              <div class="row">
+                <!-- Usuarios -->
+                <div class="col-3 py-3 ps-0">
+                  <div class="d-flex mb-2">
+                    <div
+                      class="icon icon-shape icon-xxs shadow border-radius-sm bg-gradient-primary text-center me-2 d-flex align-items-center justify-content-center">
+                      <i class="material-icons opacity-10">groups</i>
+                    </div>
+                    <p class="text-xs my-auto font-weight-bold">Usuarios</p>
+                  </div>
+                  <h4 class="font-weight-bolder">{{ total_usuarios }}</h4>
+                  <p
+                    class="text-xs font-weight-bold mb-0 {% if crecimiento_usuarios > 0 %}text-success{% elif crecimiento_usuarios < 0 %}text-danger{% else %}text-secondary{% endif %}">
+                    {% if total_usuarios > 0 and crecimiento_usuarios == 0 %}
+                  <p class="text-secondary text-sm font-weight-bolder">
+                    Hay usuarios registrados, sin nuevos esta semana
+                  </p>
+                  {% elif crecimiento_usuarios > 0 %}
+                  <p class="metric-message text-sm font-weight-bolder" style="color: green;">
+                    ↑ {{ crecimiento_usuarios }}% Usuarios esta semana
+                  </p>
+                  {% elif crecimiento_usuarios < 0 %} <p class="text-danger text-sm font-weight-bolder">
+                    ↓ {{ crecimiento_usuarios | abs }}% Usuarios esta semana
+                    </p>
+                    {% else %}
+                    <p class="text-secondary text-sm font-weight-bolder">
+                      Sin usuarios registrados aún
+                    </p>
+                    {% endif %}
+                    </p>
+                    <p>{{ porc_usuarios }}%</p>
+                    <div class="progress w-75">
+                      <div class="progress-bar bg-dark" role="progressbar" style="width: {{ porc_usuarios }}%;"
+                        aria-valuenow="{{ porc_usuarios }}" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                </div>
+
+                <!-- Garantías -->
+                <div class="col-3 py-3 ps-0">
+                  <div class="d-flex mb-2">
+                    <div
+                      class="icon icon-shape icon-xxs shadow border-radius-sm bg-gradient-info text-center me-2 d-flex align-items-center justify-content-center">
+                      <i class="material-icons opacity-10">ads_click</i>
+                    </div>
+                    <p class="text-xs mt-1 mb-0 font-weight-bold">Garantías</p>
+                  </div>
+                  <h4 class="font-weight-bolder">{{ total_garantias }}</h4>
+
+                  {% if crecimiento_garantias > 0 %}
+                  <p class="metric-message text-sm font-weight-bolder" style="color: green;">
+                    ↑ {{ crecimiento_garantias }}% esta semana
+                  </p>
+                  {% elif crecimiento_garantias < 0 %} <p class="text-danger text-sm font-weight-bolder">
+                    ↓ {{ crecimiento_garantias | abs }}% esta semana
+                    </p>
+                    {% elif total_garantias > 0 %}
+                    <p class="text-secondary text-sm font-weight-bolder">
+                      Hay garantías registradas, sin nuevas esta semana
+                    </p>
+                    {% else %}
+                    <p class="text-secondary text-sm font-weight-bolder">
+                      Aún no hay garantías registradas
+                    </p>
+                    {% endif %}
+                    <p>{{ porc_garantias }}%</p>
+                    <div class="progress w-75">
+                      <div class="progress-bar bg-dark" role="progressbar" style="width: {{ porc_garantias }}%;"
+                        aria-valuenow="{{ porc_garantias }}" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                </div>
+
+
+                <!-- Reseñas -->
+                <div class="col-3 py-3 ps-0">
+                  <div class="d-flex mb-2">
+                    <div
+                      class="icon icon-shape icon-xxs shadow border-radius-sm bg-gradient-warning text-center me-2 d-flex align-items-center justify-content-center">
+                      <i class="material-icons opacity-10">receipt</i>
+                    </div>
+                    <p class="text-xs mt-1 mb-0 font-weight-bold">Reseñas</p>
+                  </div>
+                  <h4 class="font-weight-bolder">{{ total_reseñas }}</h4>
+
+                  {% if crecimiento_reseñas > 0 %}
+                  <p class=" metric-message text-sm font-weight-bolder" style="color: green;">
+                    ↑ {{ crecimiento_reseñas }}% esta semana
+                  </p>
+                  {% elif crecimiento_reseñas < 0 %} <p class="text-danger text-sm font-weight-bolder">
+                    ↓ {{ crecimiento_reseñas | abs }}% esta semana
+                    </p>
+                    {% elif total_reseñas > 0 %}
+                    <p class="text-secondary text-sm font-weight-bolder">
+                      Hay reseñas registradas, sin nuevas esta semana
+                    </p>
+                    {% else %}
+                    <p class="text-secondary text-sm font-weight-bolder">
+                      Aún no hay reseñas registradas
+                    </p>
+                    {% endif %}
+                    <p>{{ porc_reseñas }}%</p>
+                    <div class="progress w-75">
+                      <div class="progress-bar bg-dark" role="progressbar" style="width: {{ porc_reseñas }}%;"
+                        aria-valuenow="{{ porc_reseñas }}" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                </div>
+
+
+                <!-- PQRs -->
+                <div class="col-3 py-3 ps-0">
+                  <div class="d-flex mb-2">
+                    <div class="icon icon-shape icon-xxs shadow border-radius-sm {% if alerta_pqrs == 'alta' %}bg-gradient-danger {% elif alerta_pqrs == 'media' %}bg-gradient-warning {% else %}bg-gradient-success{% endif %} text-center me-2 d-flex align-items-center justify-content-center">
+                      <i class="material-icons opacity-10">category</i>
+                    </div>
+                    <p class="text-xs mt-1 mb-0 font-weight-bold">PQR'S</p>
+                  </div>
+                  <h4 class="font-weight-bolder">{{ total_pqrs }}</h4>
+
+                  {% if crecimiento_pqrs > 0 %}
+                  <p class="metric-message text-sm font-weight-bolder" style="color: green;">
+                    ↑ {{ crecimiento_pqrs }}% esta semana
+                  </p>
+                  {% elif crecimiento_pqrs < 0 %} <p class="text-danger text-sm font-weight-bolder">
+                    ↓ {{ crecimiento_pqrs | abs }}% esta semana
+                    </p>
+                    {% elif total_pqrs > 0 %}
+                    <p class="text-secondary text-sm font-weight-bolder">
+                      Hay PQRs registradas, sin nuevas esta semana
+                    </p>
+                    {% else %}
+                    <p class="text-secondary text-sm font-weight-bolder">
+                      Aún no hay PQRs registradas
+                    </p>
+                    {% endif %}
+                    <p>{{ porc_pqrs }}%</p>
+                    <div class="progress w-75">
+                      <div class="progress-bar bg-dark" role="progressbar" style="width: {{ porc_pqrs }}%;"
+                        aria-valuenow="{{ porc_pqrs }}" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                </div>
+
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-</div>
 
-  </div>
-<div class="row">
-  <div class="col-12">
-    <div id="globe" class="position-absolute end-0 top-10 mt-sm-3 mt-7 me-lg-7">
-      <canvas width="700" height="600" class="w-lg-100 h-lg-100 w-75 h-75 me-lg-0 me-n10 mt-lg-5"></canvas>
-    </div>
-  </div>
-</div>
-<br>
+    <br>
     <!-- Start Footer -->
     <footer class="bg-dark" id="tempaltemo_footer">
       <div class="container">
-          <div class="row">
+        <div class="row">
 
-              <div class="col-md-4 pt-5">
-                  <h2 class="h2 text-success border-bottom pb-3 border-light logo">Fabriautomaticas SAS</h2>
-                  <ul class="list-unstyled text-light footer-link-list">
-                      <li>
-                          <i class="fas fa-map-marker-alt fa-fw"></i>
-                          Cll 129 C #98 a 09
-                      </li>
-                      <li>
-                          <i class="fa fa-phone fa-fw"></i>
-                          <a class="text-decoration-none">315-300-9936</a>
-                      </li>
-                      <li>
-                          <i class="fa fa-envelope fa-fw"></i>
-                          <a class="text-decoration-none">fabriautomaticas@hotmail.com</a>
-                      </li>
-                  </ul>
-              </div>
-
-              <div class="col-md-4 pt-5">
-                  <h2 class="h2 text-light border-bottom pb-3 border-light">Productos</h2>
-                  <ul class="list-unstyled text-light footer-link-list">
-                      <li><a class="text-decoration-none" href="#">Motores</a></li>
-                      <li><a class="text-decoration-none" href="#">Brazos Mecánicos</a></li>
-                      <li><a class="text-decoration-none" href="#">Talanqueras</a></li>
-                  </ul>
-              </div>
-
-              <div class="col-md-4 pt-5">
-                  <h2 class="h2 text-light border-bottom pb-3 border-light">Acerca de</h2>
-                  <ul class="list-unstyled text-light footer-link-list">
-                      <li><a class="text-decoration-none" href="#">Inicio</a></li>
-                      <li><a class="text-decoration-none" href="#">Compra</a></li>
-                      <li><a class="text-decoration-none" href="#">Contactanos</a></li>
-                      <li><a class="text-decoration-none" href="#">PQR'S</a></li>
-                      <li><a class="text-decoration-none" href="#">Garantías</a></li>
-                  </ul>
-              </div>
-
+          <div class="col-md-4 pt-5">
+            <h2 class="h2 text-success border-bottom pb-3 border-light logo">Fabriautomaticas SAS</h2>
+            <ul class="list-unstyled text-light footer-link-list">
+              <li>
+                <i class="fas fa-map-marker-alt fa-fw"></i>
+                Cll 129 C #98 a 09
+              </li>
+              <li>
+                <i class="fa fa-phone fa-fw"></i>
+                <a class="text-decoration-none">315-300-9936</a>
+              </li>
+              <li>
+                <i class="fa fa-envelope fa-fw"></i>
+                <a class="text-decoration-none">fabriautomaticas@hotmail.com</a>
+              </li>
+            </ul>
           </div>
 
-          <div class="row text-light mb-4">
-              <div class="col-12 mb-3">
-                  <div class="w-100 my-3 border-top border-light"></div>
-              </div>
-              <div class="col-auto me-auto">
-                  <ul class="list-inline text-left footer-icons">
-                      <li class="list-inline-item border border-light rounded-circle text-center">
-                          <a class="text-light text-decoration-none" target="_blank" href="http://facebook.com/"><i
-                                  class="fab fa-facebook-f fa-lg fa-fw"></i></a>
-                      </li>
-                      <li class="list-inline-item border border-light rounded-circle text-center">
-                          <a class="text-light text-decoration-none" target="_blank"
-                              href="https://www.instagram.com/fabriautomaticas/?hl=es"><i
-                                  class="fab fa-instagram fa-lg fa-fw"></i></a>
-                      </li>
-                      <li class="list-inline-item border border-light rounded-circle text-center">
-                          <a class="text-light text-decoration-none" target="_blank" href="https://twitter.com/"><i
-                                  class="fab fa-twitter fa-lg fa-fw"></i></a>
-                      </li>
-                      <li class="list-inline-item border border-light rounded-circle text-center">
-                          <a class="text-light text-decoration-none" target="_blank"
-                              href="https://www.linkedin.com/"><i class="fab fa-linkedin fa-lg fa-fw"></i></a>
-                      </li>
-                  </ul>
-              </div>
+          <div class="col-md-4 pt-5">
+            <h2 class="h2 text-light border-bottom pb-3 border-light">Productos</h2>
+            <ul class="list-unstyled text-light footer-link-list">
+              <li><a class="text-decoration-none" href="#">Motores</a></li>
+              <li><a class="text-decoration-none" href="#">Brazos Mecánicos</a></li>
+              <li><a class="text-decoration-none" href="#">Talanqueras</a></li>
+            </ul>
+          </div>
 
-              <div class="w-100 bg-black py-3">
-                  <div class="container">
-                      <div class="row pt-2">
-                          <div class="col-12">
-                              <p class="text-left text-light">
-                                  <a rel="sponsored" href="/privacy/legalcy" target="_blank">Terminos y
-                                      condiciones</a>
-                              </p>
-                          </div>
-                      </div>
-                  </div>
-              </div>
+          <div class="col-md-4 pt-5">
+            <h2 class="h2 text-light border-bottom pb-3 border-light">Acerca de</h2>
+            <ul class="list-unstyled text-light footer-link-list">
+              <li><a class="text-decoration-none" href="#">Inicio</a></li>
+              <li><a class="text-decoration-none" href="#">Compra</a></li>
+              <li><a class="text-decoration-none" href="#">Contactanos</a></li>
+              <li><a class="text-decoration-none" href="#">PQR'S</a></li>
+              <li><a class="text-decoration-none" href="#">Garantías</a></li>
+            </ul>
+          </div>
 
-  </footer>
-  <!-- End Footer -->
-</div>
-</main>
-<div class="fixed-plugin">
+        </div>
+
+        <div class="row text-light mb-4">
+          <div class="col-12 mb-3">
+            <div class="w-100 my-3 border-top border-light"></div>
+          </div>
+          <div class="col-auto me-auto">
+            <ul class="list-inline text-left footer-icons">
+              <li class="list-inline-item border border-light rounded-circle text-center">
+                <a class="text-light text-decoration-none" target="_blank" href="http://facebook.com/"><i
+                    class="fab fa-facebook-f fa-lg fa-fw"></i></a>
+              </li>
+              <li class="list-inline-item border border-light rounded-circle text-center">
+                <a class="text-light text-decoration-none" target="_blank"
+                  href="https://www.instagram.com/fabriautomaticas/?hl=es"><i
+                    class="fab fa-instagram fa-lg fa-fw"></i></a>
+              </li>
+              <li class="list-inline-item border border-light rounded-circle text-center">
+                <a class="text-light text-decoration-none" target="_blank" href="https://twitter.com/"><i
+                    class="fab fa-twitter fa-lg fa-fw"></i></a>
+              </li>
+              <li class="list-inline-item border border-light rounded-circle text-center">
+                <a class="text-light text-decoration-none" target="_blank" href="https://www.linkedin.com/"><i
+                    class="fab fa-linkedin fa-lg fa-fw"></i></a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="w-100 bg-black py-3">
+            <div class="container">
+              <div class="row pt-2">
+                <div class="col-12">
+                  <p class="text-left text-light">
+                    <a rel="sponsored" href="/privacy/legalcy" target="_blank">Terminos y
+                      condiciones</a>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+    </footer>
+    <!-- End Footer -->
+    </div>
+  </main>
+  <div class="fixed-plugin">
     <a class="fixed-plugin-button text-dark position-fixed px-3 py-2">
       <i class="material-icons py-2">settings</i>
     </a>
@@ -419,22 +547,25 @@
         </div>
 
         <div class="d-flex">
-          <button class="btn bg-gradient-dark px-3 mb-2 active" data-class="bg-gradient-dark" onclick="sidebarType(this)">Negro</button> 
+          <button class="btn bg-gradient-dark px-3 mb-2 active" data-class="bg-gradient-dark"
+            onclick="sidebarType(this)">Negro</button>
           <br>
-          <button class="btn bg-gradient-dark px-3 mb-2 ms-2" data-class="bg-transparent" onclick="sidebarType(this)">Transparente</button>
-          <button class="btn bg-gradient-dark px-3 mb-2 ms-2" data-class="bg-white" onclick="sidebarType(this)">Blanco</button>
+          <button class="btn bg-gradient-dark px-3 mb-2 ms-2" data-class="bg-transparent"
+            onclick="sidebarType(this)">Transparente</button>
+          <button class="btn bg-gradient-dark px-3 mb-2 ms-2" data-class="bg-white"
+            onclick="sidebarType(this)">Blanco</button>
         </div>
         <!-- Navbar Fixed -->
-        
+
         <div class="mt-3 d-flex">
           <h6 class="mb-0">Color de barra de navegacion</h6>
           <div class="form-check form-switch ps-0 ms-auto my-auto">
             <input class="form-check-input mt-1 ms-auto" type="checkbox" id="navbarFixed" onclick="navbarFixed(this)">
           </div>
         </div>
-        
 
-        
+
+
         <hr class="horizontal dark my-3">
         <div class="mt-2 d-flex">
           <h6 class="mb-0">Activar modo oscuro:</h6>
@@ -443,44 +574,47 @@
           </div>
         </div>
         <hr class="horizontal dark my-sm-4">
-      
+
         <div class="w-100 text-center">
           <h6 class="mt-3">Gracias por iniciar sesión!</h6>
-          
-          <a href="https://twitter.com/intent/tweet?text=Check%20Material%20UI%20Dashboard%20made%20by%20%40CreativeTim%20%23webdesign%20%23dashboard%20%23bootstrap5&amp;url=https%3A%2F%2Fwww.creative-tim.com%2Fproduct%2Fsoft-ui-dashboard" class="btn btn-dark mb-0 me-2" target="_blank">
+
+          <a href="https://twitter.com/intent/tweet?text=Check%20Material%20UI%20Dashboard%20made%20by%20%40CreativeTim%20%23webdesign%20%23dashboard%20%23bootstrap5&amp;url=https%3A%2F%2Fwww.creative-tim.com%2Fproduct%2Fsoft-ui-dashboard"
+            class="btn btn-dark mb-0 me-2" target="_blank">
             <i class="fab fa-twitter me-1" aria-hidden="true"></i> Twitter
           </a>
-          
 
-          
-          <a href="https://www.facebook.com/sharer/sharer.php?u=https://www.creative-tim.com/product/material-dashboard" class="btn btn-dark mb-0 me-2" target="_blank">
+
+
+          <a href="https://www.facebook.com/sharer/sharer.php?u=https://www.creative-tim.com/product/material-dashboard"
+            class="btn btn-dark mb-0 me-2" target="_blank">
             <i class="fab fa-facebook-square me-1" aria-hidden="true"></i> Facebook
           </a>
-          
+
         </div>
       </div>
     </div>
-</div>
-<!--   Core JS Files   -->
-<script src="../../static/js/core/popper.min.js" ></script>
-<script src="../../static/js/core/bootstrap.min.js" ></script>
-<script src="../../static/js/plugins/perfect-scrollbar.min.js" ></script>
-<script src="../../static/js/plugins/smooth-scrollbar.min.js" ></script>
-<script>
-  var win = navigator.platform.indexOf('Win') > -1;
-  if (win && document.querySelector('#sidenav-scrollbar')) {
-    var options = {
-      damping: '0.5'
+  </div>
+  <!--   Core JS Files   -->
+  <script src="../../static/js/core/popper.min.js"></script>
+  <script src="../../static/js/core/bootstrap.min.js"></script>
+  <script src="../../static/js/plugins/perfect-scrollbar.min.js"></script>
+  <script src="../../static/js/plugins/smooth-scrollbar.min.js"></script>
+  <script>
+    var win = navigator.platform.indexOf('Win') > -1;
+    if (win && document.querySelector('#sidenav-scrollbar')) {
+      var options = {
+        damping: '0.5'
+      }
+      Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
     }
-    Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
-  }
-</script>
+  </script>
 
-<!-- Github buttons -->
-<script async defer src="https://buttons.github.io/buttons.js"></script>
+  <!-- Github buttons -->
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
 
 
-<!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc --><script src="../../static/js/material-dashboard.min.js?v=3.1.0"></script>
-  </body>
+  <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
+  <script src="../../static/js/material-dashboard.min.js?v=3.1.0"></script>
+</body>
 
 </html>

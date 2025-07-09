@@ -70,7 +70,7 @@
                 <div class="flex-fill">
                     <ul class="nav navbar-nav d-flex justify-content-between mx-lg-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="/pqr/register_pqr">PQR'S</a>
+                            <a class="nav-link" href="/servicio/insertar_pqrs">PQR'S</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="/contactanos/contactanos">Contactanos</a>
@@ -87,7 +87,7 @@
         <h1>!Cuentanos que pasó con tu servicio¡</h1>
         <div class="underline">
         </div>
-        <form action="/servicio/insertar" method="post" id="contact_form">
+        <form action="/servicio/insertar_pqrs" method="POST" id="contact_form">
             <div class="subject">
                 <label for="lang">Tipo de Pqr's</label>
                 <select name="tipoPqrs" id="lang" required>
@@ -124,17 +124,17 @@
                     <td><strong>Opciones</strong></td>
                 </tr>
             <tbody>
-                {% for servicio in servicios %}
+                {% for pqr in pqrs %}
                 <tr>
-                    <td>{{ servicio.tipoPqrs }}</td>
-                    <td>{{ servicio.descripcionPqrs }}</td>
-                    <td>{{ servicio.idGarantiaFk }}</td>
-                    <td>{{ servicio.idContratoFk }}</td>
-                    <td>
+                    <td>{{ pqr.tipoPqrs }}</td>
+                    <td>{{ pqr.descripcionPqrs }}</td>
+                    <td>{{ pqr.idGarantiaFk }}</td>
+                    <td>{{ pqr.idContratoFk }}</td>
+                    <!--<td>
                         <a href="/servicio/editar_servicio/{{ servicio[0] }}" class="btn btn-light">Editar</a>
                         <a href="/servicio/eliminar_servicio/{{ servicio[0] }}"
                             class="btn btn-dark btn-delete">Eliminar</a>
-                    </td>
+                    </td>-->
                 </tr>
                 {% endfor %}
             </tbody>

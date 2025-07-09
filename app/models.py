@@ -9,6 +9,7 @@ from datetime import datetime
 from sqlalchemy import create_engine, Column, Integer, String, ForeignKey, Date, Text, DECIMAL
 from sqlalchemy.orm import relationship
 from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.sql import func
 
 # Crear una instancia de Base
 
@@ -28,7 +29,7 @@ class Usuario(db.Model):
     emailUsuario= Column(String(45), nullable = False)
     contrasenaUsuario = Column(String(45), nullable = False)
     idRolFk = Column(Integer, ForeignKey('Rol.id'))
-    
+    fecha_creacion = db.Column(db.DateTime, default=db.func.now())
     rol = db.relationship('Rol', backref='usuarios')
     
 class Garantias(db.Model):
@@ -39,6 +40,7 @@ class Garantias(db.Model):
     tipoGarantia = Column(String(255), nullable = False)
     estadoGarantia = Column(String(255), nullable = False)
     idUsuFk = Column(Integer, ForeignKey('Usuario.idUsu'))
+    fecha_creacion = db.Column(db.DateTime, default=db.func.now())
 
 class Contrato(db.Model):
     __tablename__ = 'Contrato'
@@ -56,6 +58,7 @@ class Pqrs(db.Model):
     estadopqrs = db.Column(db.Text, nullable=False)
     idGarantiaFk = db.Column(db.Integer, db.ForeignKey('Garantia.idGarantia'))
     idContratoFk = db.Column(db.Integer, db.ForeignKey('Contrato.idContrato'))
+    fecha_creacion = db.Column(db.DateTime, default=db.func.now())
 
     reseñas = db.relationship('Reseñas', backref='pqr', lazy=True)
 
@@ -68,6 +71,7 @@ class Reseñas(db.Model):
     calificacion = Column(String(50), nullable = False)
     idUsuFk = Column(Integer, ForeignKey('Usuario.idUsu'))
     idPqrFk = Column(Integer, ForeignKey('Pqrs.idPqrs'))
+    fecha_creacion = db.Column(db.DateTime, default=db.func.now())
 
 class ReporteVentas(db.Model):
     __tablename__ = 'ReporteVentas'

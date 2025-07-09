@@ -4,9 +4,6 @@ from app.models import Reseñas, Pqrs
 from app import db
 from app.decoradores import login_requerido
 
-
-
-
 @modelo_servicio.route('/reseña')
 def reseña():
     reseñas = Reseñas.query.all()
@@ -18,7 +15,6 @@ def reseña():
     ]
     return render_template('serviciocliente.html', reseñas=Reseñas.query.all())
 
-@modelo_servicio.route("/insertar_reseña")
 @modelo_servicio.route("/insertar_reseña")
 @login_requerido
 def insertar_reseña():
@@ -55,33 +51,41 @@ def eliminar_reseña(id):
     flash('Reseña eliminada satisfactoriamente')
     return redirect(url_for('modelo_servicio.insertar_reseña'))
 
-@modelo_servicio.route('/insertar')
+
+#_____________________________________________________ pqrs
+
+@modelo_servicio.route('/pqrs')
 @login_requerido
-def insertar():
-    servicios = Pqrs.query.all()
+def pqrs():
+    pqrs = Pqrs.query.all()
     # CONVIERTE a listas o tuplas explícitamente:
     lista = [
         (g.tipoPqrs, g.descripcionPqrs, g.idGarantiaFk, g.idContratoFk)
-        for g in servicios
+        for g in pqrs
     ]
-    return render_template('registrarpqr.html', servicios=Pqrs.query.all())
+    return render_template('registrarpqr.html', pqrs=Pqrs.query.all())
 
+@modelo_servicio.route('/insertar_pqrs')
+@login_requerido
+def insertar_pqrs():
+    pqrs = Pqrs.query.all()
+    return render_template('registrarpqr.html', pqrs=pqrs)
 
-@modelo_servicio.route('/insertar', methods=['POST'])
+@modelo_servicio.route('/insertar_pqrs', methods=['POST'])
 @login_requerido
 def agregar_pqrs():
     if request.method == 'POST':
         nuevo = Pqrs(
             tipoPqrs=request.form['tipoPqrs'],
             descripcionPqrs=request.form['descripcionPqrs'],
-            #estadopqrs='Pendiente',   Puedes ajustar esto
-            idGarantiaFk=request.form['idGarantiaFk'],       # Ajustar si aplica
-            idContratoFk=request.form['idContratoFk']      # Ajustar si aplica
+            estadopqrs='Pendiente',
+            idGarantiaFk=request.form.get('idGarantiaFk') or None,
+            idContratoFk=request.form.get('idContratoFk') or None
         )
         db.session.add(nuevo)
         db.session.commit()
         flash("¡PQR'S registrado exitosamente!")
-    return redirect(url_for('modelo_servicio.insertar'))
+    return redirect(url_for('modelo_servicio.insertar_pqrs'))
 
 @modelo_servicio.route('/eliminar_servicio/<int:id>')
 @login_requerido
@@ -90,13 +94,13 @@ def eliminar_pqrs(id):
     db.session.delete(pqrs)
     db.session.commit()
     flash('Pqrs eliminado satisfactoriamente')
-    return redirect(url_for('modelo_servicio.insertar'))
+    return redirect(url_for('modelo_servicio.insertar_pqrs'))
 
 @modelo_servicio.route('/editar_servicio/<int:id>')
 @login_requerido
 def obtener_pqrs(id):
-    servicio = Pqrs.query.get_or_404(id)
-    return render_template('editarpqr.html', servicio=servicio)
+    pqrs = Pqrs.query.get_or_404(id)
+    return render_template('editarpqr.html', pqrs=pqrs)
 
 @modelo_servicio.route('/actualizar_servicio/<int:id>', methods=['POST'])
 @login_requerido
@@ -106,4 +110,4 @@ def actualizar_pqrs(id):
     pqrs.descripcionPqrs = request.form['descripcionPqrs']
     db.session.commit()
     flash('Pqrs actualizado satisfactoriamente')
-    return redirect(url_for('modelo_servicio.insertar'))
+    return redirect(url_for('modelo_servicio.insertar_pqrs'))

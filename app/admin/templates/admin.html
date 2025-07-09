@@ -29,29 +29,36 @@
     </h1>
   </header>
 
+<!-- Perfil del usuario -->
   <div id="profile-container">
-    <!-- El input ayuda a acomodar los pixeles de la imagen del usuario -->
     <input type="file" id="profile-image-upload" accept="image/*">
+
     <div id="profile-header">
-        <div id="profile-image">
-        </div>
-        <div id="profile-name">Nombre del Usuario</div>
-        <div id="profile-email">correo@example.com</div>
-        <br>
-        <button class="edit-profile-button">Editar perfil</button>
+      <div id="profile-image">
+        <img src="../../static/img/avatar.png" alt="Foto de perfil" style="width: 100px; height: 100px; border-radius: 50%;">
+      </div>
+
+{% if usuario %}
+  <div id="profile-name">{{ usuario.nombreUsuario }}</div>
+  <div id="profile-email">{{ usuario.emailUsuario }}</div>
+{% else %}
+  <div id="profile-name">Nombre del Usuario</div>
+  <div id="profile-email">correo@example.com</div>
+{% endif %}
+      <br>
+      <button class="edit-profile-button">Editar perfil</button>
     </div>
-<!-- Fin del input -->
 
     <div id="profile-info">
-        Perfil exclusivamente para Administradores
-    </div>>
-    <a id="recent-activity" href="#">
-      Ultimas contestaciones
-    </a>
-</div>
+      Perfil exclusivamente para Administradores
+    </div>
+
+    <a id="recent-activity" href="#">Últimas contestaciones</a>
+  </div>
+
 <!-- boton para volver -->
 <div class="button-container">
- <a href="/admin/menu"><button class="button" type="submit" >Volver al Menú Principal</button>
+ <a href="/admin/menuAdmin"><button class="button" type="submit" >Volver al Menú Principal</button>
 </a></div>
  <!-- Start Footer -->
  <br>

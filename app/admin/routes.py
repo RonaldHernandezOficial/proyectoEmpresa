@@ -6,6 +6,10 @@ from app.decoradores import solo_admin
 from sqlalchemy import func
 from datetime import datetime, timedelta
 
+@modelo_admin.route('/perfilAdmin')
+def perfil_admin():
+    usuario = Usuario.query.first()
+    return render_template('admin.html', usuario=usuario)
 @modelo_admin.route("/menuAdmin")
 @solo_admin
 def menu():

@@ -13,7 +13,7 @@
   <link href="../../static/css/nucleo-icons.css" rel="stylesheet" />
   <link href="../../static/css/nucleo-svg.css" rel="stylesheet" />
   <!-- Font Awesome Icons -->
-  <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <!-- Material Icons -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
   <!-- CSS Files -->
@@ -21,6 +21,7 @@
   <link rel="stylesheet" href="../../static/assets/css/bootstrap.min.css">
   <link rel="stylesheet" href="../../static/assets/css/templatemo.css">
   <link rel="stylesheet" href="../../static/assets/css/custom.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <title>
     Fabriautomaticas SAS
   </title>
@@ -143,6 +144,24 @@
         </form>
       </div>
     </div>
+    <br>
+  <form method="get" action="{{ url_for('modelo_admin.menu') }}" class="row g-3 mb-4">
+    <div class="col-md-3">
+      <label for="fecha_inicio" class="form-label">Desde</label>
+      <input type="date" id="fecha_inicio" name="fecha_inicio" class="form-control" value="{{ request.args.get('fecha_inicio', '') }}">
+    </div>
+    <div class="col-md-3">
+      <label for="fecha_fin" class="form-label">Hasta</label>
+      <input type="date" id="fecha_fin" name="fecha_fin" class="form-control" value="{{ request.args.get('fecha_fin', '') }}">
+    </div>
+    <div class="col-md-3 align-self-end">
+      <button type="submit" class="btn btn-primary w-100" id="btnFiltrar">Aplicar filtro</button>
+    </div>
+  </form>
+<a id="btnExportarCSV" download="pqrs_filtradas.csv" class="btn btn-outline-dark ms-2" target="_blank"
+   href="{{ url_for('modelo_admin.exportar_pqrs_csv') }}?fecha_inicio={{ request.args.get('fecha_inicio', '') }}&fecha_fin={{ request.args.get('fecha_fin', '') }}">
+  Exportar CSV
+</a>
     <!-- End Navbar -->
     <br>
     <!-- Sección modificada con métricas -->
@@ -158,12 +177,14 @@
               <p class="text-sm mb-0 text-capitalize">Reseñas</p>
               <h4 class="mb-0">{{ total_reseñas }}</h4>
 
-              {% if cambio_usuarios > 0 %}
+              {% if cambio_reseñas > 0 %}
               <p class="text-sm font-weight-bolder" style="color: green;">
-                ↑ {{ cambio_reseñas }}% Reseñas De Esta Semana
+                <i class="material-icons">arrow_upward</i>
+                {{ cambio_reseñas }}% Reseñas De Esta Semana
               </p>
-              {% elif cambio_usuarios < 0 %} <p class="text-danger text-sm font-weight-bolder">
-                ↓ {{ cambio_reseñas | abs }}% Reseñas De Esta Semana
+              {% elif cambio_reseñas < 0 %} <p class="text-sm font-weight-bolder text-danger">
+                <i class="material-icons text-danger">arrow_downward</i>
+                {{ cambio_reseñas | abs }}% Reseñas De Esta Semana
                 </p>
                 {% else %}
                 <p class="text-secondary text-sm font-weight-bolder">
@@ -187,10 +208,12 @@
 
               {% if cambio_usuarios > 0 %}
               <p class="text-sm font-weight-bolder" style="color: green;">
-                ↑ {{ cambio_usuarios }}% Usuarios De Esta Semana
+                <i class="material-icons">arrow_upward</i>
+                {{ cambio_usuarios }}% Usuarios De Esta Semana
               </p>
-              {% elif cambio_usuarios < 0 %} <p class="text-danger text-sm font-weight-bolder">
-                ↓ {{ cambio_usuarios | abs }}% Usuarios De Esta Semana
+              {% elif cambio_usuarios < 0 %} <p class="text-sm font-weight-bolder text-danger">
+                <i class="material-icons text-danger">arrow_downward</i>
+                {{ cambio_usuarios | abs }}% Usuarios De Esta Semana
                 </p>
                 {% else %}
                 <p class="text-secondary text-sm font-weight-bolder">
@@ -217,14 +240,16 @@
 
               {% if cambio_garantias > 0 %}
               <p class="text-sm font-weight-bolder" style="color: green;">
-                ↑ {{ cambio_garantias }}% Garantias De Esta Semana
+                <i class="material-icons">arrow_upward</i>
+                {{ cambio_garantias }}% Garantías De Esta Semana
               </p>
-              {% elif cambio_garantias < 0 %} <p class="text-danger text-sm font-weight-bolder">
-                ↓ {{ cambio_garantias | abs }}% Garantias De Esta Semana
+              {% elif cambio_garantias < 0 %} <p class="text-sm font-weight-bolder text-danger">
+                <i class="material-icons text-danger">arrow_downward</i>
+                {{ cambio_garantias | abs }}% Garantías De Esta Semana
                 </p>
                 {% else %}
                 <p class="text-secondary text-sm font-weight-bolder">
-                  Sin Garantias esta semana
+                  Sin Garantías esta semana
                 </p>
                 {% endif %}
             </div>
@@ -241,17 +266,18 @@
             <div class="text-end pt-1">
               <p class="text-sm mb-0 text-capitalize">PQR'S</p>
               <h4 class="mb-0">{{ total_pqrs }}</h4>
-
               {% if cambio_pqrs > 0 %}
               <p class="text-sm font-weight-bolder" style="color: green;">
-                ↑ {{ cambio_pqrs }}% Pqr's De Esta Semana
+                <i class="material-icons">arrow_upward</i>
+                {{ cambio_pqrs }}% PQR's De Esta Semana
               </p>
-              {% elif cambio_pqrs < 0 %} <p class="text-danger text-sm font-weight-bolder">
-                ↓ {{ cambio_pqrs | abs }}% Pqr's De Esta Semana
+              {% elif cambio_pqrs < 0 %} <p class="text-sm font-weight-bolder text-danger">
+                <i class="material-icons text-danger">arrow_downward</i>
+                {{ cambio_pqrs | abs }}% PQR's De Esta Semana
                 </p>
                 {% else %}
                 <p class="text-secondary text-sm font-weight-bolder">
-                  Sin Pqr's esta semana
+                  Sin PQR's esta semana
                 </p>
                 {% endif %}
             </div>
@@ -281,39 +307,39 @@
 
             <div class="container border-radius-lg">
               <div class="row">
-                <!-- Usuarios -->
+                <!-- Reseñas -->
                 <div class="col-3 py-3 ps-0">
                   <div class="d-flex mb-2">
                     <div
-                      class="icon icon-shape icon-xxs shadow border-radius-sm bg-gradient-primary text-center me-2 d-flex align-items-center justify-content-center">
-                      <i class="material-icons opacity-10">groups</i>
+                      class="icon icon-shape icon-xxs shadow border-radius-sm bg-gradient-warning text-center me-2 d-flex align-items-center justify-content-center">
+                      <i class="material-icons opacity-10">receipt</i>
                     </div>
-                    <p class="text-xs my-auto font-weight-bold">Usuarios</p>
+                    <p class="text-xs mt-1 mb-0 font-weight-bold">Reseñas</p>
                   </div>
-                  <h4 class="font-weight-bolder">{{ total_usuarios }}</h4>
-                  <p
-                    class="text-xs font-weight-bold mb-0 {% if crecimiento_usuarios > 0 %}text-success{% elif crecimiento_usuarios < 0 %}text-danger{% else %}text-secondary{% endif %}">
-                    {% if total_usuarios > 0 and crecimiento_usuarios == 0 %}
-                  <p class="text-secondary text-sm font-weight-bolder">
-                    Hay usuarios registrados, sin nuevos esta semana
+                  <h4 class="font-weight-bolder">{{ total_reseñas }}</h4>
+
+                  <!-- RESEÑAS -->
+                  {% if crecimiento_reseñas > 0 %}
+                  <p class=" metric-message text-sm font-weight-bolder" style="color: green;">
+                    <i class="material-icons">arrow_upward</i> {{ crecimiento_reseñas }}% Reseñas De Esta Semana
                   </p>
-                  {% elif crecimiento_usuarios > 0 %}
-                  <p class="metric-message text-sm font-weight-bolder" style="color: green;">
-                    ↑ {{ crecimiento_usuarios }}% Usuarios esta semana
-                  </p>
-                  {% elif crecimiento_usuarios < 0 %} <p class="text-danger text-sm font-weight-bolder">
-                    ↓ {{ crecimiento_usuarios | abs }}% Usuarios esta semana
+                  {% elif crecimiento_reseñas < 0 %} <p class="text-danger text-sm font-weight-bolder">
+                    <i class="material-icons text-danger">arrow_downward</i> {{ crecimiento_reseñas | abs }}% Reseñas De
+                    Esta Semana
+                    </p>
+                    {% elif total_reseñas > 0 %}
+                    <p class="text-secondary text-sm font-weight-bolder">
+                      Hay Reseñas Registradas, Sin Nuevas Esta Semana
                     </p>
                     {% else %}
                     <p class="text-secondary text-sm font-weight-bolder">
-                      Sin usuarios registrados aún
+                      Aún No Hay Reseñas Registradas
                     </p>
                     {% endif %}
-                    </p>
-                    <p>{{ porc_usuarios }}%</p>
+                    <p>{{ porc_reseñas }}%</p>
                     <div class="progress w-75">
-                      <div class="progress-bar bg-dark" role="progressbar" style="width: {{ porc_usuarios }}%;"
-                        aria-valuenow="{{ porc_usuarios }}" aria-valuemin="0" aria-valuemax="100"></div>
+                      <div class="progress-bar bg-dark" role="progressbar" style="width: {{ porc_reseñas }}%;"
+                        aria-valuenow="{{ porc_reseñas }}" aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
                 </div>
 
@@ -328,89 +354,97 @@
                   </div>
                   <h4 class="font-weight-bolder">{{ total_garantias }}</h4>
 
+                  <!-- GARANTÍAS -->
                   {% if crecimiento_garantias > 0 %}
                   <p class="metric-message text-sm font-weight-bolder" style="color: green;">
-                    ↑ {{ crecimiento_garantias }}% esta semana
+                    <i class="material-icons">arrow_upward</i> {{ crecimiento_garantias }}% Garantías De Esta Semana
                   </p>
                   {% elif crecimiento_garantias < 0 %} <p class="text-danger text-sm font-weight-bolder">
-                    ↓ {{ crecimiento_garantias | abs }}% esta semana
+                    <i class="material-icons text-danger">arrow_downward</i> {{ crecimiento_garantias | abs }}%
+                    Garantías De Esta Semana
                     </p>
                     {% elif total_garantias > 0 %}
                     <p class="text-secondary text-sm font-weight-bolder">
-                      Hay garantías registradas, sin nuevas esta semana
+                      Hay Garantías Registradas, Sin Nuevas Esta Semana
                     </p>
                     {% else %}
                     <p class="text-secondary text-sm font-weight-bolder">
-                      Aún no hay garantías registradas
+                      Aún no hay Garantías registradas
                     </p>
                     {% endif %}
+
                     <p>{{ porc_garantias }}%</p>
                     <div class="progress w-75">
                       <div class="progress-bar bg-dark" role="progressbar" style="width: {{ porc_garantias }}%;"
                         aria-valuenow="{{ porc_garantias }}" aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
                 </div>
-
-
-                <!-- Reseñas -->
+                <!-- Usuarios -->
                 <div class="col-3 py-3 ps-0">
                   <div class="d-flex mb-2">
                     <div
-                      class="icon icon-shape icon-xxs shadow border-radius-sm bg-gradient-warning text-center me-2 d-flex align-items-center justify-content-center">
-                      <i class="material-icons opacity-10">receipt</i>
+                      class="icon icon-shape icon-xxs shadow border-radius-sm bg-gradient-primary text-center me-2 d-flex align-items-center justify-content-center">
+                      <i class="material-icons opacity-10">groups</i>
                     </div>
-                    <p class="text-xs mt-1 mb-0 font-weight-bold">Reseñas</p>
+                    <p class="text-xs my-auto font-weight-bold">Usuarios</p>
                   </div>
-                  <h4 class="font-weight-bolder">{{ total_reseñas }}</h4>
-
-                  {% if crecimiento_reseñas > 0 %}
-                  <p class=" metric-message text-sm font-weight-bolder" style="color: green;">
-                    ↑ {{ crecimiento_reseñas }}% esta semana
+                  <h4 class="font-weight-bolder">{{ total_usuarios }}</h4>
+                  <!-- Usuarios -->
+                  <p
+                    class="text-xs font-weight-bold mb-0 {% if crecimiento_usuarios > 0 %}text-success{% elif crecimiento_usuarios < 0 %}text-danger{% else %}text-secondary{% endif %}">
+                    {% if total_usuarios > 0 and crecimiento_usuarios == 0 %}
+                  <p class="text-secondary text-sm font-weight-bolder">
+                    Hay usuarios registrados, Sin Nuevos Esta Semana
                   </p>
-                  {% elif crecimiento_reseñas < 0 %} <p class="text-danger text-sm font-weight-bolder">
-                    ↓ {{ crecimiento_reseñas | abs }}% esta semana
-                    </p>
-                    {% elif total_reseñas > 0 %}
-                    <p class="text-secondary text-sm font-weight-bolder">
-                      Hay reseñas registradas, sin nuevas esta semana
+                  {% elif crecimiento_usuarios > 0 %}
+                  <p class="metric-message text-sm font-weight-bolder" style="color: green;">
+                    <i class="material-icons">arrow_upward</i> {{ crecimiento_usuarios }}% Usuarios De Esta Semana
+                  </p>
+                  {% elif crecimiento_usuarios < 0 %} <p class="text-danger text-sm font-weight-bolder">
+                    <i class="material-icons text-danger">arrow_downward</i> {{ crecimiento_usuarios | abs }}% Usuarios
+                    De Esta Semana
                     </p>
                     {% else %}
                     <p class="text-secondary text-sm font-weight-bolder">
-                      Aún no hay reseñas registradas
+                      Sin Usuarios Registrados Aún
                     </p>
                     {% endif %}
-                    <p>{{ porc_reseñas }}%</p>
+
+                    </p>
+                    <p>{{ porc_usuarios }}%</p>
                     <div class="progress w-75">
-                      <div class="progress-bar bg-dark" role="progressbar" style="width: {{ porc_reseñas }}%;"
-                        aria-valuenow="{{ porc_reseñas }}" aria-valuemin="0" aria-valuemax="100"></div>
+                      <div class="progress-bar bg-dark" role="progressbar" style="width: {{ porc_usuarios }}%;"
+                        aria-valuenow="{{ porc_usuarios }}" aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
                 </div>
-
 
                 <!-- PQRs -->
                 <div class="col-3 py-3 ps-0">
                   <div class="d-flex mb-2">
-                    <div class="icon icon-shape icon-xxs shadow border-radius-sm {% if alerta_pqrs == 'alta' %}bg-gradient-danger {% elif alerta_pqrs == 'media' %}bg-gradient-warning {% else %}bg-gradient-success{% endif %} text-center me-2 d-flex align-items-center justify-content-center">
+                    <div
+                      class="icon icon-shape icon-xxs shadow border-radius-sm bg-gradient-danger text-center me-2 d-flex align-items-center justify-content-center">
                       <i class="material-icons opacity-10">category</i>
                     </div>
                     <p class="text-xs mt-1 mb-0 font-weight-bold">PQR'S</p>
                   </div>
                   <h4 class="font-weight-bolder">{{ total_pqrs }}</h4>
 
+                  <!-- PQRs -->
                   {% if crecimiento_pqrs > 0 %}
                   <p class="metric-message text-sm font-weight-bolder" style="color: green;">
-                    ↑ {{ crecimiento_pqrs }}% esta semana
+                    <i class="material-icons">arrow_upward</i> {{ crecimiento_pqrs }}% PQR'S De Esta Semana
                   </p>
                   {% elif crecimiento_pqrs < 0 %} <p class="text-danger text-sm font-weight-bolder">
-                    ↓ {{ crecimiento_pqrs | abs }}% esta semana
+                    <i class="material-icons text-danger">arrow_downward</i> {{ crecimiento_pqrs | abs }}% PQR'S De Esta
+                    Semana
                     </p>
                     {% elif total_pqrs > 0 %}
                     <p class="text-secondary text-sm font-weight-bolder">
-                      Hay PQRs registradas, sin nuevas esta semana
+                      Hay PQRs Registradas, Sin Nuevas Esta Semana
                     </p>
                     {% else %}
                     <p class="text-secondary text-sm font-weight-bolder">
-                      Aún no hay PQRs registradas
+                      Aún No Hay PQRs Registradas
                     </p>
                     {% endif %}
                     <p>{{ porc_pqrs }}%</p>
@@ -418,6 +452,23 @@
                       <div class="progress-bar bg-dark" role="progressbar" style="width: {{ porc_pqrs }}%;"
                         aria-valuenow="{{ porc_pqrs }}" aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
+                    {% if alerta_pqrs == 'alta' %}
+                    <p class="text-danger text-sm font-weight-bolder mt-1">
+                      🔴 Alerta Crítica: Muchas PQR'S Negativas Esta Semana
+                    </p>
+                    {% elif alerta_pqrs == 'media' %}
+                    <p class="text-sm font-weight-bolder mt-1" style="color: orange;">
+                      🟠 Alerta Moderada: PQR'S De Sugerencias En Aumento
+                    </p>
+                    {% elif alerta_pqrs == 'Peticion' %}
+                    <p class="text-primary text-sm font-weight-bolder mt-1">
+                      🔵 Muchas PQR'S De Tipo Petición Esta Semana
+                    </p>
+                    {% elif alerta_pqrs == 'baja' %}
+                    <p class="text-purple text-sm font-weight-bolder mt-1" style="color: purple;">
+                      🟣 Estado Tranquilo: Pocas PQR'S Registradas
+                    </p>
+                    {% endif %}
                 </div>
 
               </div>
@@ -426,7 +477,33 @@
         </div>
       </div>
     </div>
+    <div class="row mt-4">
+      <div class="col-lg-12">
+        <div class="card z-index-2">
+          <div class="card-header pb-0 d-flex justify-content-between align-items-center">
+            <div>
+              <h6>Actividad diaria (últimos 14 días)</h6>
+              <p class="text-sm">Tendencia de registros por tipo</p>
+            </div>
+            <div class="d-flex justify-content-end mb-3">
+              <select id="chartTypeSelect" class="form-select w-auto">
+                <option value="line">Línea</option>
+                <option value="bar">Barras</option>
+                <option value="pie">Pastel</option>
+              </select>
+            </div>
+          </div>
+          <div class="chart-container">
+            <canvas id="chartCanvas" class="chart-canvas" height="100"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
 
+    <div id="chart-data" data-labels='{{ labels | tojson | safe }}' data-usuarios='{{ usuarios_dia | tojson | safe }}'
+      data-garantias='{{ garantias_dia | tojson | safe }}' data-reseñas='{{ reseñas_dia | tojson | safe }}'
+      data-pqrs='{{ pqrs_dia | tojson | safe }}'>
+    </div>
     <br>
     <!-- Start Footer -->
     <footer class="bg-dark" id="tempaltemo_footer">
@@ -594,6 +671,127 @@
       </div>
     </div>
   </div>
+
+
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+    const chartContainer = document.getElementById("chart-data");
+    const labels = JSON.parse(chartContainer.dataset.labels || "[]");
+    const usuarios = JSON.parse(chartContainer.dataset.usuarios || "[]");
+    const garantias = JSON.parse(chartContainer.dataset.garantias || "[]");
+    const reseñas = JSON.parse(chartContainer.dataset.reseñas || "[]");
+    const pqrs = JSON.parse(chartContainer.dataset.pqrs || "[]");
+
+    let chart;
+    const ctx = document.getElementById('chartCanvas').getContext('2d');
+
+    function createChart(type = 'line') {
+      if (chart) chart.destroy();
+
+      if (type === 'pie') {
+        chart = new Chart(ctx, {
+          type: 'pie',
+          data: {
+            labels: ['Usuarios', 'Garantías', 'Reseñas', 'PQRs'],
+            datasets: [{
+              label: 'Totales últimos 14 días',
+              data: [
+                usuarios.reduce((a, b) => a + b, 0),
+                garantias.reduce((a, b) => a + b, 0),
+                reseñas.reduce((a, b) => a + b, 0),
+                pqrs.reduce((a, b) => a + b, 0)
+              ],
+              backgroundColor: [
+                'rgba(66, 134, 244, 0.6)',
+                'rgba(0, 200, 83, 0.6)',
+                'rgba(255, 193, 7, 0.6)',
+                'rgba(220, 53, 69, 0.6)'
+              ],
+              borderColor: 'rgba(255,255,255,0.8)',
+              borderWidth: 1
+            }]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: true,
+            aspectRatio: 2,
+            plugins: {
+              legend: { position: 'bottom' }
+            }
+          }
+        });
+      } else {
+        chart = new Chart(ctx, {
+          type: type,
+          data: {
+            labels: labels,
+            datasets: [
+              {
+                label: 'Usuarios',
+                data: usuarios,
+                backgroundColor: 'rgba(66, 134, 244, 0.5)',
+                borderColor: 'rgb(66, 134, 244)',
+                fill: type === 'line',
+                tension: 0.3
+              },
+              {
+                label: 'Garantías',
+                data: garantias,
+                backgroundColor: 'rgba(0, 200, 83, 0.5)',
+                borderColor: 'rgb(0, 200, 83)',
+                fill: type === 'line',
+                tension: 0.3
+              },
+              {
+                label: 'Reseñas',
+                data: reseñas,
+                backgroundColor: 'rgba(255, 193, 7, 0.5)',
+                borderColor: 'rgb(255, 193, 7)',
+                fill: type === 'line',
+                tension: 0.3
+              },
+              {
+                label: 'PQRs',
+                data: pqrs,
+                backgroundColor: 'rgba(220, 53, 69, 0.5)',
+                borderColor: 'rgb(220, 53, 69)',
+                fill: type === 'line',
+                tension: 0.3
+              }
+            ]
+          },
+          options: {
+            responsive: true,
+            plugins: {
+              legend: { position: 'bottom' },
+              tooltip: { mode: 'index', intersect: false }
+            },
+            interaction: { mode: 'nearest', axis: 'x', intersect: false },
+            scales: {
+              y: { beginAtZero: true, ticks: { precision: 0 } }
+            }
+          }
+        });
+      }
+    }
+    document.addEventListener("DOMContentLoaded", function () {
+      const selector = document.getElementById('chartTypeSelect');
+      if (selector) {
+        selector.addEventListener('change', function (e) {
+          createChart(e.target.value);
+        });
+      }
+      createChart(); // render inicial
+    });
+    // Inicializar con gráfico de línea
+    createChart('line');
+
+    // Cambiar gráfico con selector
+    document.getElementById('chartTypeSelect').addEventListener('change', function () {
+      createChart(this.value);
+    });
+  </script>
   <!--   Core JS Files   -->
   <script src="../../static/js/core/popper.min.js"></script>
   <script src="../../static/js/core/bootstrap.min.js"></script>
@@ -615,6 +813,18 @@
 
   <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
   <script src="../../static/js/material-dashboard.min.js?v=3.1.0"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const fechaInicio = document.getElementById("fecha_inicio").value;
+  const fechaFin = document.getElementById("fecha_fin").value;
+  const linkExportar = document.getElementById("btnExportarCSV");
+  if (linkExportar) {
+    // Actualiza el href con las fechas actuales del form
+    linkExportar.href = `/exportar_pqrs_csv?fecha_inicio=${fechaInicio}&fecha_fin=${fechaFin}`;
+  }
+});
+</script>
+
 </body>
 
 </html>

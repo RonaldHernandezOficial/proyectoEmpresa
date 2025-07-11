@@ -5,101 +5,106 @@ from app import db
 from app.decoradores import solo_admin
 from sqlalchemy import func
 from datetime import datetime, timedelta
+import csv
+from flask import Response
 
 @modelo_admin.route('/perfilAdmin')
 def perfil_admin():
     usuario = Usuario.query.first()
     return render_template('admin.html', usuario=usuario)
+from flask import render_template, request
+from datetime import datetime, timedelta
+from sqlalchemy import func
+from . import modelo_admin
+from app.models import Usuario, Reseñas, Garantias, Pqrs
+from app.decoradores import solo_admin
+
 @modelo_admin.route("/menuAdmin")
 @solo_admin
 def menu():
-    # Fechas
+    # Filtro por fechas (rango personalizado o últimos 14 días por defecto)
+    fecha_inicio_str = request.args.get("fecha_inicio")
+    fecha_fin_str = request.args.get("fecha_fin")
+
     hoy = datetime.now()
+    if fecha_inicio_str and fecha_fin_str:
+        try:
+            fecha_inicio = datetime.strptime(fecha_inicio_str, "%Y-%m-%d")
+            fecha_fin = datetime.strptime(fecha_fin_str, "%Y-%m-%d") + timedelta(days=1)
+        except ValueError:
+            fecha_inicio = hoy - timedelta(days=14)
+            fecha_fin = hoy
+    else:
+        fecha_inicio = hoy - timedelta(days=14)
+        fecha_fin = hoy
+
     hace_una_semana = hoy - timedelta(days=7)
     hace_dos_semanas = hoy - timedelta(days=14)
 
-    # Totales
-    total_usuarios = Usuario.query.count()
-    total_reseñas = Reseñas.query.count()
-    total_garantias = Garantias.query.count()
-    total_pqrs = Pqrs.query.count()
+    # Totales filtrados por rango
+    total_usuarios = Usuario.query.filter(Usuario.fecha_creacion >= fecha_inicio, Usuario.fecha_creacion < fecha_fin).count()
+    total_reseñas = Reseñas.query.filter(Reseñas.fecha_creacion >= fecha_inicio, Reseñas.fecha_creacion < fecha_fin).count()
+    total_garantias = Garantias.query.filter(Garantias.fecha_creacion >= fecha_inicio, Garantias.fecha_creacion < fecha_fin).count()
+    total_pqrs = Pqrs.query.filter(Pqrs.fecha_creacion >= fecha_inicio, Pqrs.fecha_creacion < fecha_fin).count()
 
-    # Crecimiento por semana
+    # Crecimiento semanal (última semana vs anterior)
+    def calcular_crecimiento(actual, pasada):
+        if pasada > 0:
+            return round((actual - pasada) * 100 / pasada, 0)
+        elif actual > 0:
+            return 100
+        else:
+            return 0
 
-    # Usuarios
     usuarios_semana_actual = Usuario.query.filter(Usuario.fecha_creacion >= hace_una_semana).count()
-    usuarios_semana_pasada = Usuario.query.filter(
-        Usuario.fecha_creacion >= hace_dos_semanas,
-        Usuario.fecha_creacion < hace_una_semana
-    ).count()
+    usuarios_semana_pasada = Usuario.query.filter(Usuario.fecha_creacion >= hace_dos_semanas, Usuario.fecha_creacion < hace_una_semana).count()
+    crecimiento_usuarios = calcular_crecimiento(usuarios_semana_actual, usuarios_semana_pasada)
     cambio_usuarios = usuarios_semana_actual - usuarios_semana_pasada
-    if usuarios_semana_pasada > 0:
-        crecimiento_usuarios = round((cambio_usuarios * 100 / usuarios_semana_pasada), 0)
-    elif usuarios_semana_actual > 0:
-        crecimiento_usuarios = 100
-    else:
-        crecimiento_usuarios = 0
 
-    # Reseñas
     reseñas_semana_actual = Reseñas.query.filter(Reseñas.fecha_creacion >= hace_una_semana).count()
-    reseñas_semana_pasada = Reseñas.query.filter(
-        Reseñas.fecha_creacion >= hace_dos_semanas,
-        Reseñas.fecha_creacion < hace_una_semana
-    ).count()
+    reseñas_semana_pasada = Reseñas.query.filter(Reseñas.fecha_creacion >= hace_dos_semanas, Reseñas.fecha_creacion < hace_una_semana).count()
+    crecimiento_reseñas = calcular_crecimiento(reseñas_semana_actual, reseñas_semana_pasada)
     cambio_reseñas = reseñas_semana_actual - reseñas_semana_pasada
-    if reseñas_semana_pasada > 0:
-        crecimiento_reseñas = round((cambio_reseñas * 100 / reseñas_semana_pasada), 0)
-    elif reseñas_semana_actual > 0:
-        crecimiento_reseñas = 100
-    else:
-        crecimiento_reseñas = 0
 
-    # Garantías
     garantias_semana_actual = Garantias.query.filter(Garantias.fecha_creacion >= hace_una_semana).count()
-    garantias_semana_pasada = Garantias.query.filter(
-        Garantias.fecha_creacion >= hace_dos_semanas,
-        Garantias.fecha_creacion < hace_una_semana
-    ).count()
+    garantias_semana_pasada = Garantias.query.filter(Garantias.fecha_creacion >= hace_dos_semanas, Garantias.fecha_creacion < hace_una_semana).count()
+    crecimiento_garantias = calcular_crecimiento(garantias_semana_actual, garantias_semana_pasada)
     cambio_garantias = garantias_semana_actual - garantias_semana_pasada
-    if garantias_semana_pasada > 0:
-        crecimiento_garantias = round((cambio_garantias * 100 / garantias_semana_pasada), 0)
-    elif garantias_semana_actual > 0:
-        crecimiento_garantias = 100
-    else:
-        crecimiento_garantias = 0
 
-    # PQRs
     pqrs_semana_actual = Pqrs.query.filter(Pqrs.fecha_creacion >= hace_una_semana).count()
-    pqrs_semana_pasada = Pqrs.query.filter(
-        Pqrs.fecha_creacion >= hace_dos_semanas,
-        Pqrs.fecha_creacion < hace_una_semana
-    ).count()
+    pqrs_semana_pasada = Pqrs.query.filter(Pqrs.fecha_creacion >= hace_dos_semanas, Pqrs.fecha_creacion < hace_una_semana).count()
+    crecimiento_pqrs = calcular_crecimiento(pqrs_semana_actual, pqrs_semana_pasada)
     cambio_pqrs = pqrs_semana_actual - pqrs_semana_pasada
-    if pqrs_semana_pasada > 0:
-        crecimiento_pqrs = round((cambio_pqrs * 100 / pqrs_semana_pasada), 0)
-    elif pqrs_semana_actual > 0:
-        crecimiento_pqrs = 100
-    else:
-        crecimiento_pqrs = 0
 
-    # Alertas PQR
-    pqr_negativas = Pqrs.query.filter(Pqrs.tipoPqrs == 'negativa').count()
-    pqr_deficientes = Pqrs.query.filter(Pqrs.tipoPqrs == 'deficiente').count()
+    # Alertas PQRs (última semana)
+    pqr_negativas = Pqrs.query.filter(Pqrs.tipoPqrs.in_(['Queja', 'Reclamo']), Pqrs.fecha_creacion >= hace_una_semana).count()
+    pqr_deficientes = Pqrs.query.filter(Pqrs.tipoPqrs == 'Sugerencia', Pqrs.fecha_creacion >= hace_una_semana).count()
+    pqr_peticion = Pqrs.query.filter(Pqrs.tipoPqrs == 'Peticion', Pqrs.fecha_creacion >= hace_una_semana).count()
 
     if pqr_negativas >= 10:
         alerta_pqrs = "alta"
     elif pqr_deficientes >= 5:
         alerta_pqrs = "media"
+    elif pqr_peticion >= 10:
+        alerta_pqrs = "peticiones"
     else:
         alerta_pqrs = "baja"
 
-    # Porcentajes para barras de progreso
     total_global = total_usuarios + total_reseñas + total_garantias + total_pqrs
     porc_usuarios = round((total_usuarios / total_global) * 100) if total_global > 0 else 0
     porc_reseñas = round((total_reseñas / total_global) * 100) if total_global > 0 else 0
     porc_garantias = round((total_garantias / total_global) * 100) if total_global > 0 else 0
     porc_pqrs = round((total_pqrs / total_global) * 100) if total_global > 0 else 0
 
+    # Datos por día
+    fechas = [fecha_inicio + timedelta(days=i) for i in range((fecha_fin - fecha_inicio).days)]
+    labels = [f.strftime('%d-%b') for f in fechas]
+    usuarios_dia = [Usuario.query.filter(func.date(Usuario.fecha_creacion) == f.date()).count() for f in fechas]
+    reseñas_dia = [Reseñas.query.filter(func.date(Reseñas.fecha_creacion) == f.date()).count() for f in fechas]
+    garantias_dia = [Garantias.query.filter(func.date(Garantias.fecha_creacion) == f.date()).count() for f in fechas]
+    pqrs_dia = [Pqrs.query.filter(func.date(Pqrs.fecha_creacion) == f.date()).count() for f in fechas]
+
+    
     return render_template(
         "indexadmin.html",
         total_usuarios=total_usuarios,
@@ -118,12 +123,38 @@ def menu():
         porc_usuarios=porc_usuarios,
         porc_reseñas=porc_reseñas,
         porc_garantias=porc_garantias,
-        porc_pqrs=porc_pqrs
+        porc_pqrs=porc_pqrs,
+        labels=labels,
+        usuarios_dia=usuarios_dia,
+        reseñas_dia=reseñas_dia,
+        garantias_dia=garantias_dia,
+        pqrs_dia=pqrs_dia,
+        fecha_inicio=fecha_inicio.strftime('%Y-%m-%d'),
+        fecha_fin=(fecha_fin - timedelta(days=1)).strftime('%Y-%m-%d')
     )
+@modelo_admin.route("/exportar_pqrs_csv")
+@solo_admin
+def exportar_pqrs_csv():
+    fecha_inicio = request.args.get("fecha_inicio")
+    fecha_fin = request.args.get("fecha_fin")
 
+    query = Pqrs.query
+    if fecha_inicio and fecha_fin:
+        query = query.filter(Pqrs.fecha_creacion.between(fecha_inicio, fecha_fin))
+
+    pqrs = query.all()
+
+    def generar_csv():
+        yield "ID,Tipo,Descripción,Estado,Fecha\n"
+        for p in pqrs:
+            yield f"{p.idPqrs},{p.tipoPqrs},{p.descripcionPqrs},{p.estadopqrs},{p.fecha_creacion.strftime('%Y-%m-%d %H:%M:%S')}\n"
+
+    return Response(
+        generar_csv(),
+        mimetype="text/csv",
+        headers={"Content-Disposition": "attachment; filename=pqrs_filtradas.csv"}
+    )
     
-
-
 @modelo_admin.route('/insertar')
 def insertar():
     garantias = Garantias.query.all()

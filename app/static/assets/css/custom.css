@@ -10,3 +10,15 @@ Custom Css
   display: flex;
   align-items: center;
 }
+
+.chart-container {
+  position: relative;
+  width: 100%;
+  max-width: 700px; /* O ajusta como prefieras */
+  margin: 0 auto;
+}
+
+canvas#chartCanvas {
+  width: 100% !important;
+  height: auto !important;
+}

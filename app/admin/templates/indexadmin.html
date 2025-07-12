@@ -144,24 +144,32 @@
         </form>
       </div>
     </div>
-    <br>
-  <form method="get" action="{{ url_for('modelo_admin.menu') }}" class="row g-3 mb-4">
-    <div class="col-md-3">
-      <label for="fecha_inicio" class="form-label">Desde</label>
-      <input type="date" id="fecha_inicio" name="fecha_inicio" class="form-control" value="{{ request.args.get('fecha_inicio', '') }}">
-    </div>
-    <div class="col-md-3">
-      <label for="fecha_fin" class="form-label">Hasta</label>
-      <input type="date" id="fecha_fin" name="fecha_fin" class="form-control" value="{{ request.args.get('fecha_fin', '') }}">
-    </div>
-    <div class="col-md-3 align-self-end">
-      <button type="submit" class="btn btn-primary w-100" id="btnFiltrar">Aplicar filtro</button>
-    </div>
-  </form>
-<a id="btnExportarCSV" download="pqrs_filtradas.csv" class="btn btn-outline-dark ms-2" target="_blank"
-   href="{{ url_for('modelo_admin.exportar_pqrs_csv') }}?fecha_inicio={{ request.args.get('fecha_inicio', '') }}&fecha_fin={{ request.args.get('fecha_fin', '') }}">
-  Exportar CSV
-</a>
+<form method="get" action="{{ url_for('modelo_admin.menu') }}" class="row g-3 mb-4">
+  <div class="col-md-3">
+    <label for="fecha_inicio" class="form-label">Desde</label>
+    <input type="date" id="fecha_inicio" name="fecha_inicio" class="form-control" value="{{ request.args.get('fecha_inicio', '') }}">
+  </div>
+  <div class="col-md-3">
+    <label for="fecha_fin" class="form-label">Hasta</label>
+    <input type="date" id="fecha_fin" name="fecha_fin" class="form-control" value="{{ request.args.get('fecha_fin', '') }}">
+  </div>
+  <div class="col-md-3">
+    <label for="selectTabla" class="form-label">Tabla a exportar</label>
+  <select id="selectTabla" name="tabla" class="form-select">
+    <option value="pqrs" {% if request.args.get('tabla') == 'pqrs' %}selected{% endif %}>PQRs</option>
+    <option value="resenas" {% if request.args.get('tabla') == 'resenas' %}selected{% endif %}>Reseñas</option>
+    <option value="garantias" {% if request.args.get('tabla') == 'garantias' %}selected{% endif %}>Garantías</option>
+    <option value="usuarios" {% if request.args.get('tabla') == 'usuarios' %}selected{% endif %}>Usuarios</option>
+  </select>
+  </div>
+  <div class="col-md-3 d-flex align-items-end gap-2">
+    <!-- Botón para aplicar filtros -->
+    <button type="submit" class="btn btn-primary w-100" id="btnFiltrar">Aplicar filtro</button>
+    <button type="button" id="btnExportarCSV" class="btn boton w-100" onclick="actualizarBotonExportar()">Exportar Excel</button>
+
+  </div>
+</form>
+
     <!-- End Navbar -->
     <br>
     <!-- Sección modificada con métricas -->
@@ -319,12 +327,12 @@
                   <h4 class="font-weight-bolder">{{ total_reseñas }}</h4>
 
                   <!-- RESEÑAS -->
-                  {% if crecimiento_reseñas > 0 %}
+                  {% if cambio_reseñas > 0 %}
                   <p class=" metric-message text-sm font-weight-bolder" style="color: green;">
-                    <i class="material-icons">arrow_upward</i> {{ crecimiento_reseñas }}% Reseñas De Esta Semana
+                    <i class="material-icons">arrow_upward</i> {{ cambio_reseñas }}% Reseñas De Esta Semana
                   </p>
-                  {% elif crecimiento_reseñas < 0 %} <p class="text-danger text-sm font-weight-bolder">
-                    <i class="material-icons text-danger">arrow_downward</i> {{ crecimiento_reseñas | abs }}% Reseñas De
+                  {% elif cambio_reseñas < 0 %} <p class="text-danger text-sm font-weight-bolder">
+                    <i class="material-icons text-danger">arrow_downward</i> {{ cambio_reseñas | abs }}% Reseñas De
                     Esta Semana
                     </p>
                     {% elif total_reseñas > 0 %}
@@ -355,15 +363,15 @@
                   <h4 class="font-weight-bolder">{{ total_garantias }}</h4>
 
                   <!-- GARANTÍAS -->
-                  {% if crecimiento_garantias > 0 %}
+                  {% if cambio_garantias > 0 %}
                   <p class="metric-message text-sm font-weight-bolder" style="color: green;">
-                    <i class="material-icons">arrow_upward</i> {{ crecimiento_garantias }}% Garantías De Esta Semana
+                    <i class="material-icons">arrow_upward</i> {{ cambio_garantias }}% Garantías De Esta Semana
                   </p>
-                  {% elif crecimiento_garantias < 0 %} <p class="text-danger text-sm font-weight-bolder">
-                    <i class="material-icons text-danger">arrow_downward</i> {{ crecimiento_garantias | abs }}%
+                  {% elif cambio_garantias < 0 %} <p class="text-danger text-sm font-weight-bolder">
+                    <i class="material-icons text-danger">arrow_downward</i> {{ cambio_garantias | abs }}%
                     Garantías De Esta Semana
                     </p>
-                    {% elif total_garantias > 0 %}
+                    {% elif cambio_garantias > 0 %}
                     <p class="text-secondary text-sm font-weight-bolder">
                       Hay Garantías Registradas, Sin Nuevas Esta Semana
                     </p>
@@ -396,12 +404,12 @@
                   <p class="text-secondary text-sm font-weight-bolder">
                     Hay usuarios registrados, Sin Nuevos Esta Semana
                   </p>
-                  {% elif crecimiento_usuarios > 0 %}
+                  {% elif cambio_usuarios > 0 %}
                   <p class="metric-message text-sm font-weight-bolder" style="color: green;">
-                    <i class="material-icons">arrow_upward</i> {{ crecimiento_usuarios }}% Usuarios De Esta Semana
+                    <i class="material-icons">arrow_upward</i> {{ cambio_usuarios }}% Usuarios De Esta Semana
                   </p>
-                  {% elif crecimiento_usuarios < 0 %} <p class="text-danger text-sm font-weight-bolder">
-                    <i class="material-icons text-danger">arrow_downward</i> {{ crecimiento_usuarios | abs }}% Usuarios
+                  {% elif cambio_usuarios < 0 %} <p class="text-danger text-sm font-weight-bolder">
+                    <i class="material-icons text-danger">arrow_downward</i> {{ cambio_usuarios | abs }}% Usuarios
                     De Esta Semana
                     </p>
                     {% else %}
@@ -430,12 +438,12 @@
                   <h4 class="font-weight-bolder">{{ total_pqrs }}</h4>
 
                   <!-- PQRs -->
-                  {% if crecimiento_pqrs > 0 %}
+                  {% if cambio_pqrs > 0 %}
                   <p class="metric-message text-sm font-weight-bolder" style="color: green;">
-                    <i class="material-icons">arrow_upward</i> {{ crecimiento_pqrs }}% PQR'S De Esta Semana
+                    <i class="material-icons">arrow_upward</i> {{ cambio_pqrs }}% PQR'S De Esta Semana
                   </p>
-                  {% elif crecimiento_pqrs < 0 %} <p class="text-danger text-sm font-weight-bolder">
-                    <i class="material-icons text-danger">arrow_downward</i> {{ crecimiento_pqrs | abs }}% PQR'S De Esta
+                  {% elif cambio_pqrs < 0 %} <p class="text-danger text-sm font-weight-bolder">
+                    <i class="material-icons text-danger">arrow_downward</i> {{ cambio_pqrs | abs }}% PQR'S De Esta
                     Semana
                     </p>
                     {% elif total_pqrs > 0 %}
@@ -814,16 +822,34 @@
   <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
   <script src="../../static/js/material-dashboard.min.js?v=3.1.0"></script>
 <script>
-document.addEventListener("DOMContentLoaded", function () {
-  const fechaInicio = document.getElementById("fecha_inicio").value;
-  const fechaFin = document.getElementById("fecha_fin").value;
-  const linkExportar = document.getElementById("btnExportarCSV");
-  if (linkExportar) {
-    // Actualiza el href con las fechas actuales del form
-    linkExportar.href = `/exportar_pqrs_csv?fecha_inicio=${fechaInicio}&fecha_fin=${fechaFin}`;
-  }
-});
+function actualizarBotonExportar() {
+    const fechaInicio = document.getElementById("fecha_inicio").value;
+    const fechaFin = document.getElementById("fecha_fin").value;
+    const tabla = document.getElementById("selectTabla").value;
+
+    if (!fechaInicio || !fechaFin || !tabla) {
+        alert("Por favor selecciona fechas y la tabla a exportar.");
+        return;
+    }
+
+    const exportarURL = `/admin/exportar_csv?fecha_inicio=${fechaInicio}&fecha_fin=${fechaFin}&tabla=${tabla}`;
+    
+    // Abre el archivo exportado en una nueva ventana
+    window.open(exportarURL, "_blank");
+
+    // 🔹 Limpia los campos del formulario después de exportar
+    document.getElementById("fecha_inicio").value = "";
+    document.getElementById("fecha_fin").value = "";
+    document.getElementById("selectTabla").value = "pqrs"; // O "" si quieres que quede vacío
+
+    // 🔹 Limpia visualmente los parámetros de la URL
+    window.history.replaceState({}, document.title, "/admin/menuAdmin");
+}
 </script>
+
+
+
+
 
 </body>
 

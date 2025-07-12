@@ -22,3 +22,8 @@ canvas#chartCanvas {
   width: 100% !important;
   height: auto !important;
 }
+
+.boton {
+  background-color: green;
+  color: white;
+}

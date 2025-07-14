@@ -37,12 +37,14 @@ def agregar_garantia():
         flash('¡Garantía agregada satisfactoriamente!')
     return redirect(url_for('modelo_garantias.insertar'))
 
-@modelo_garantias.route('/editar_garantia/<int:id>')
+# Mostrar el formulario de edición (GET)
+@modelo_garantias.route('/editar_garantia/<int:id>', methods=['GET'])
 @login_requerido
 def obtener_garantia(id):
     garantia = Garantias.query.get_or_404(id)
     return render_template('editar_garantias.html', garantia=garantia)
 
+# Procesar el formulario de edición (POST)
 @modelo_garantias.route('/actualizar_garantia/<int:id>', methods=['POST'])
 @login_requerido
 def actualizar_garantia(id):

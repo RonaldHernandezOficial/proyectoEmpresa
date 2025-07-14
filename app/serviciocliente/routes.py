@@ -87,16 +87,7 @@ def agregar_pqrs():
         flash("¡PQR'S registrado exitosamente!")
     return redirect(url_for('modelo_servicio.insertar_pqrs'))
 
-@modelo_servicio.route('/eliminar_servicio/<int:id>')
-@login_requerido
-def eliminar_pqrs(id):
-    pqrs = Pqrs.query.get_or_404(id)
-    db.session.delete(pqrs)
-    db.session.commit()
-    flash('Pqrs eliminado satisfactoriamente')
-    return redirect(url_for('modelo_servicio.insertar_pqrs'))
-
-@modelo_servicio.route('/editar_servicio/<int:id>')
+@modelo_servicio.route('/editar_servicio/<int:id>', methods=['GET'])
 @login_requerido
 def obtener_pqrs(id):
     pqrs = Pqrs.query.get_or_404(id)
@@ -110,4 +101,13 @@ def actualizar_pqrs(id):
     pqrs.descripcionPqrs = request.form['descripcionPqrs']
     db.session.commit()
     flash('Pqrs actualizado satisfactoriamente')
+    return redirect(url_for('modelo_servicio.insertar_pqrs'))
+
+@modelo_servicio.route('/eliminar_servicio/<int:id>')
+@login_requerido
+def eliminar_pqrs(id):
+    pqrs = Pqrs.query.get_or_404(id)
+    db.session.delete(pqrs)
+    db.session.commit()
+    flash('Pqrs eliminado satisfactoriamente')
     return redirect(url_for('modelo_servicio.insertar_pqrs'))

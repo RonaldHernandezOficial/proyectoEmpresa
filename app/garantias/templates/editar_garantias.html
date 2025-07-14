@@ -78,7 +78,8 @@
     <div class="container">
         <div class="card card-body">
             <div class="col-md-4 offset-md-4">
-                <form action="/garantias/actualizar_garantia/{{garantia.0}}" method="POST">
+                <form action="{{ url_for('modelo_garantias.actualizar_garantia', id=garantia.idGarantia) }}" method="POST">
+                    <div class="form-group">
                     <div class="form-group">
                     <input type="date" name="fechaGarantia" placeholder="Fecha Garantía" value="{{garantia.1}}" class="form-control">
                     </div>
@@ -98,7 +99,7 @@
                     <br>
                     <div class="form-group">
                     <button type="submit" class="btn btn-dark btn-block">
-                        Enviar
+                        Editar Garantia
                     </button>
                     </div>
                 </form>

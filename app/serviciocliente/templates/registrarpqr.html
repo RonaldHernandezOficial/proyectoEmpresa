@@ -82,6 +82,16 @@
             </div>
         </div>
     </nav>
+      {% with messages = get_flashed_messages() %}
+    {% if messages %}
+      {% for message in messages %}
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+      {% endfor %}
+    {% endif %}
+  {% endwith %}
     <div id="container">
         <h1>!Cuentanos que pasó con tu servicio¡</h1>
         <div class="underline">
@@ -129,8 +139,8 @@
                     <td>{{ pqr.idGarantiaFk }}</td>
                     <td>{{ pqr.idContratoFk }}</td>
                   <td>
-                    <a href="/servicio/editar_servicio/{{ pqr.id }}" class="btn btn-light">Editar</a>
-                    <a href="/servicio/eliminar_servicio/{{ pqr.id }}" class="btn btn-dark btn-delete">Eliminar</a>
+                    <a href="{{ url_for('modelo_servicio.obtener_pqrs', id=pqr.idPqrs) }}" class="btn btn-light">Editar</a>
+                    <a href="{{ url_for('modelo_servicio.eliminar_pqrs', id=pqr.idPqrs) }}" class="btn btn-dark btn-delete">Eliminar</a>
                 </tr>
               {% endfor %}
             </tbody>

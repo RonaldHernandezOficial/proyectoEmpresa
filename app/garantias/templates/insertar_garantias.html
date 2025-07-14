@@ -131,12 +131,12 @@
                 <h3>Mira las garantías ingresadas</h3>
                 </div>
                 <br>
-              <tr>
+              <tr> 
                 <td><strong>Fecha garantía</strong></td>
                 <td><strong>Descripción Garantía</strong></td>
                 <td><strong>Tipo Garantía</strong></td>
                 <td><strong>Estado Garantía</strong></td>
-                <td><strong>Operaciones</strong></td>
+                <td><strong>Operaciones</strong></td> 
               </tr>
               <tbody>
                 {% for garantia in garantias %}
@@ -146,10 +146,11 @@
                     <td>{{ garantia.tipoGarantia }}</td>
                     <td>{{ garantia.estadoGarantia }}</td>
                     <td>
-                      <a href="/garantias/editar_garantia/{{ garantia.id }}" class="btn btn-light">Editar</a>
+                      <a href="{{ url_for('modelo_garantias.obtener_garantia', id=garantia.idGarantia) }}" class="btn btn-light">Editar</a>
+                      <a href="{{ url_for('modelo_garantias.eliminar_garantia', id=garantia.idGarantia) }}" class="btn btn-dark btn-delete">Eliminar</a>
                     </td>
                   </tr>
-                {% endfor %}
+                {% endfor %}idPqrs
               </tbody>
             </thead>
           </table>

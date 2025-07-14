@@ -115,20 +115,19 @@
         <h1>!Cuentanos que pasó con tu servicio¡</h1>
         <div class="underline">
         </div>
-        <form action="/servicio/actualizar_servicio/{{servicio.0}}" method="post" id="contact_form">
+            <form action="{{ url_for('modelo_servicio.actualizar_pqrs', id=pqrs.idPqrs) }}" method="POST">
             <div class="subject">
                 <label for="lang">Tipo de Pqr's</label>
-                <select name="tipoPqrs" id="lang" value="{{servicio.1}}" required>
-                    <option>Peticion</option>
-                    <option>Queja</option>
-                    <option>Reclamo</option>
-                    <option>Sugerencia</option>
-                </select>
-              </select>
+            <select name="tipoPqrs" id="lang" required>
+                <option {% if pqrs.tipoPqrs == 'Peticion' %}selected{% endif %}>Peticion</option>
+                <option {% if pqrs.tipoPqrs == 'Queja' %}selected{% endif %}>Queja</option>
+                <option {% if pqrs.tipoPqrs == 'Reclamo' %}selected{% endif %}>Reclamo</option>
+                <option {% if pqrs.tipoPqrs == 'Sugerencia' %}selected{% endif %}>Sugerencia</option>
+            </select>
             </div>
           <div class="message">
             <label for="message"></label>
-            <textarea name="descripcionPqrs" value="{{servicio.2}}" id="message_input" cols="30" rows="5" required></textarea>
+            <textarea name="descripcionPqrs" id="message_input" cols="30" rows="5" required>{{ pqrs.descripcionPqrs }}</textarea>
           </div>
           <div class="submit">
             <input type="submit" value="Enviar" id="form_button" />

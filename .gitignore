@@ -14,4 +14,6 @@ app/serviciocliente/__pycache__/*
 app/terminosycondiciones/__pycache__/*
 __pycache__/*
 migrations/*
-app/serviciocliente/__pycache__/*
+app/serviciocliente/__pycache__/*proyecto.tar.gz
+firma.hash
+firma_proyecto.sig

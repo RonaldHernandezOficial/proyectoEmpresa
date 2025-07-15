@@ -3,5 +3,5 @@ THIS REPOSITORY IS CREATED SOLELY AS A COMMUNICATION HELP FOR THE CREATION OF A 
 
 # COSAS QUE FALTAN QUE RONALD NO VIO AUN TENIENDO GAFAS EL HP ESE
 - Falta full responsive en todo el programa.
-- Revisar lo de contratos para darle logica a esa parte por que no se pa que monda sirve.
+- Revisar lo de contratos para darle logica a esa parte por que no se pa que monda sirve..
 

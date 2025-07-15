@@ -24,4 +24,4 @@ firma.hash
 firma_proyecto.sig
 *.tar.gz
 *.sig
-*.hash
+*.hash 

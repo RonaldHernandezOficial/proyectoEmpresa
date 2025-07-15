@@ -33,7 +33,7 @@ body {
   background-color: whitesmoke;
   box-shadow: 10px 10px 10px #d1d9e6, -10px -10px 10px #f9f9f9;
   border-radius: 12px;
-  overflow: hidden;
+  overflow: visible;
 }
 @media (max-width: 1200px) {
   .main {
@@ -279,3 +279,30 @@ nav {
   .img{
     width: 50%;
   }
+
+  #flash-container {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 9999;
+}
+
+.alert {
+  padding: 15px 25px;
+  background-color: #fff3cd;
+  color: #856404;
+  border: 1px solid #ffeeba;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  text-align: center;
+  font-size: 14px;
+  max-width: 300px;
+}
+
+/* Cuando desaparece */
+.alert.hide {
+  opacity: 0;
+  transform: translateY(-20px);
+}

@@ -2,24 +2,13 @@
 		Designed by: SELECTO
 		Original image: https://dribbble.com/shots/5311359-Diprella-Login
 */
-function mostrar(){
-	var tipo = document.getElementById("password");
-
-	if(tipo.type == 'password'){
-		tipo.type = 'text';
-	}else{
-		tipo.type = 'password'
-	}
-}
-
-function mostrar2(){
-	var tipo2 = document.getElementById("password");
-
-	if(tipo2.type == 'password'){
-		tipo2.type = 'text';
-	}else{
-		tipo2.type = 'password'
-	}
+function mostrar(idCampo) {
+    var tipo = document.getElementById(idCampo);
+    if (tipo.type === 'password') {
+        tipo.type = 'text';
+    } else {
+        tipo.type = 'password';
+    }
 }
 
 let switchCtn = document.querySelector("#switch-cnt");

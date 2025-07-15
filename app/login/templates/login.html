@@ -16,6 +16,16 @@
 </head>
 
 <body>
+         <!-- ✅ AQUÍ mostramos el mensaje flash -->
+ <div id="flash-container">
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+      {% for category, message in messages %}
+        <div class="alert alert-{{ category }}">{{ message }}</div>
+      {% endfor %}
+    {% endif %}
+  {% endwith %}
+</div>
   <div class="main">
     <div class="container a-container" id="a-container">
       <form class="form" id="a-form" method="POST" action="/login/insertar">
@@ -29,24 +39,26 @@
         <input class="form__input" type="text" placeholder="Ingresa tu apellido" name="apellido" pattern="[a-zA-Z]+" required>
         <input class="form__input" type="email" placeholder="Ingresa tu email" name="email" required>
         <input class="form__input" type="tel" placeholder="Ingresa tu telefono" name="telefono" required>
-        <input class="form__input" type="password" placeholder="Ingresa tu contraseña" name="contrasena" id="password" required>
-        <input type="button" class="form__button" name="wf" onclick="mostrar()" value="Mostrar Contraseña">
+        <input class="form__input" type="password" placeholder="Ingresa tu contraseña" 
+              name="contrasena" id="password_registro" required>
+        <input type="button" class="form__button" onclick="mostrar('password_registro')" value="Mostrar Contraseña">
+
         <input class="form__button button" value="Registrate ahora" type="submit">
       </form>
     </div>
     <div class="container b-container" id="b-container">
       <form class="form" id="b-form" method="POST" action="/login/ingresar">
-        {% if mensaje %}
-        {{ mensaje }}
-        {%endif %}
+
         <h2 class="form_title title">Ingresa a nuestra web</h2>
         <div class="form__icons"><img class="form__icon"
             src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/PjxzdmcgaGVpZ2h0PSI1MHB4IiB2ZXJzaW9uPSIxLjEiIHZpZXdCb3g9IjAgMCA1MCA1MCIgd2lkdGg9IjUwcHgiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6c2tldGNoPSJodHRwOi8vd3d3LmJvaGVtaWFuY29kaW5nLmNvbS9za2V0Y2gvbnMiIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIj48dGl0bGUvPjxkZWZzLz48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGlkPSJQYWdlLTEiIHN0cm9rZT0ibm9uZSIgc3Ryb2tlLXdpZHRoPSIxIj48ZyBmaWxsPSIjMDAwMDAwIiBpZD0iRmFjZWJvb2siPjxwYXRoIGQ9Ik0yNSw1MCBDMzguODA3MTE5NCw1MCA1MCwzOC44MDcxMTk0IDUwLDI1IEM1MCwxMS4xOTI4ODA2IDM4LjgwNzExOTQsMCAyNSwwIEMxMS4xOTI4ODA2LDAgMCwxMS4xOTI4ODA2IDAsMjUgQzAsMzguODA3MTE5NCAxMS4xOTI4ODA2LDUwIDI1LDUwIFogTTI1LDQ3IEMzNy4xNTAyNjUxLDQ3IDQ3LDM3LjE1MDI2NTEgNDcsMjUgQzQ3LDEyLjg0OTczNDkgMzcuMTUwMjY1MSwzIDI1LDMgQzEyLjg0OTczNDksMyAzLDEyLjg0OTczNDkgMywyNSBDMywzNy4xNTAyNjUxIDEyLjg0OTczNDksNDcgMjUsNDcgWiBNMjYuODE0NTE5NywzNiBMMjYuODE0NTE5NywyNC45OTg3MTIgTDMwLjA2ODc0NDksMjQuOTk4NzEyIEwzMC41LDIxLjIwNzYwNzIgTDI2LjgxNDUxOTcsMjEuMjA3NjA3MiBMMjYuODIwMDQ4NiwxOS4zMTAxMjI3IEMyNi44MjAwNDg2LDE4LjMyMTM0NDIgMjYuOTIwNzIwOSwxNy43OTE1MzQxIDI4LjQ0MjU1MzgsMTcuNzkxNTM0MSBMMzAuNDc2OTYyOSwxNy43OTE1MzQxIEwzMC40NzY5NjI5LDE0IEwyNy4yMjIyNzY5LDE0IEMyMy4zMTI4NzU3LDE0IDIxLjkzNjg2NzgsMTUuODM5MDkzNyAyMS45MzY4Njc4LDE4LjkzMTg3MDkgTDIxLjkzNjg2NzgsMjEuMjA4MDM2NiBMMTkuNSwyMS4yMDgwMzY2IEwxOS41LDI0Ljk5OTE0MTMgTDIxLjkzNjg2NzgsMjQuOTk5MTQxMyBMMjEuOTM2ODY3OCwzNiBMMjYuODE0NTE5NywzNiBaIE0yNi44MTQ1MTk3LDM2IiBpZD0iT3ZhbC0xIi8+PC9nPjwvZz48L3N2Zz4="
             alt="">
         </div><span class="form__span">O utilice el correo electrónico para registrarse</span>
         <input name="correo" class="form__input" type="text" placeholder="Ingresa tu correo">
-        <input name="contrasena" class="form__input" type="password" id="password" placeholder="Ingresa tu contraseña" >
-        <input type="button" class="form__input button" name="wf" onclick="mostrar2()" value="Mostrar Contraseña">
+        <input class="form__input" type="password" placeholder="Ingresa tu contraseña" 
+              name="contrasena" id="password_login" required>
+        <input type="button" class="form__input button" onclick="mostrar('password_login')" value="Mostrar Contraseña">
+
 
         <a class="form__link" href="/login/olvidar_contraseña">¿Olvidaste tu
           contraseña?</a>
@@ -87,6 +99,18 @@
     </div>
   </footer>
   <script src="../../static/Js/script4.js"></script>
+  
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const alerts = document.querySelectorAll(".alert");
+    alerts.forEach(function(alert) {
+      setTimeout(() => {
+        alert.classList.add("hide");
+        setTimeout(() => alert.remove(), 500);
+      }, 5000); // ⬅️ 5 segundos antes de quitarse
+    });
+  });
+</script>
 </body>
 
 </html>

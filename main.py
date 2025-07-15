@@ -20,5 +20,6 @@ app.register_blueprint(modelo_menu)
 def redirigir_a_menu():
     return redirect(url_for('modelo_menu.menu'))  # <- redirige al blueprint
 
+
 if __name__ == "__main__":
     app.run(debug=True)

@@ -10,11 +10,26 @@ def login_requerido(f):
         return f(*args, **kwargs)
     return decorada
 
+
 def solo_admin(f):
     @wraps(f)
     def decorada(*args, **kwargs):
-        if session.get('idRolFk') != 1:
-            flash("Acceso restringido solo para administradores.")
-            return redirect(url_for('modelo_menu.menu'))
+        # Si no está logueado o no es admin, se saca inmediatamente
+        if not session.get('logueado') or session.get('idRolFk') != 1:
+            session.clear()  # 🔥 Limpia por seguridad si algo raro queda en sesión
+            flash("Acceso restringido. Inicia sesión como administrador.")
+            return redirect(url_for('modelo_login.login'))
+        return f(*args, **kwargs)
+    return decorada
+
+def solo_clientes(f):
+    @wraps(f)
+    def decorada(*args, **kwargs):
+        if not session.get('logueado'):
+            flash("Debes iniciar sesión primero.")
+            return redirect(url_for('modelo_login.login'))
+        if session.get('idRolFk') != 2:  # Solo clientes
+            flash("Acceso restringido solo para clientes.")
+            return redirect(url_for('modelo_login.login'))
         return f(*args, **kwargs)
     return decorada

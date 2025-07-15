@@ -1,4 +1,4 @@
-from flask import render_template, request, redirect, url_for, flash
+from flask import render_template, request, redirect, url_for, flash, session
 from . import modelo_admin
 from app.models import Garantias, Usuario, Reseñas, Pqrs
 from app import db
@@ -6,24 +6,24 @@ from app.decoradores import solo_admin
 from sqlalchemy import func
 from datetime import datetime, timedelta
 import csv, io
-from flask import make_response, request
+from flask import make_response, request, render_template
 import pandas as pd
 import io
 
 @modelo_admin.route('/perfilAdmin')
+@solo_admin
 def perfil_admin():
     usuario = Usuario.query.first()
     return render_template('admin.html', usuario=usuario)
-from flask import render_template, request
-from datetime import datetime, timedelta
-from sqlalchemy import func
-from . import modelo_admin
-from app.models import Usuario, Reseñas, Garantias, Pqrs
-from app.decoradores import solo_admin
+
 
 @modelo_admin.route("/menuAdmin")
 @solo_admin
 def menu():
+    if "idUsu" not in session:
+        flash("Debe iniciar sesión para acceder a esta página.", "warning")
+        return redirect(url_for("modelo_login.login"))  # Ajusta al nombre de tu login
+
     # Filtro por fechas (rango personalizado o últimos 14 días por defecto)
     fecha_inicio_str = request.args.get("fecha_inicio")
     fecha_fin_str = request.args.get("fecha_fin")
@@ -108,7 +108,7 @@ def menu():
     garantias_dia = [Garantias.query.filter(func.date(Garantias.fecha_creacion) == f.date()).count() for f in fechas]
     pqrs_dia = [Pqrs.query.filter(func.date(Pqrs.fecha_creacion) == f.date()).count() for f in fechas]
 
-    return render_template(
+    response = make_response(render_template(
         "indexadmin.html",
         total_usuarios=total_usuarios,
         total_reseñas=total_reseñas,
@@ -134,7 +134,11 @@ def menu():
         pqrs_dia=pqrs_dia,
         fecha_inicio=fecha_inicio.strftime('%Y-%m-%d'),
         fecha_fin=(fecha_fin - timedelta(days=1)).strftime('%Y-%m-%d')
-    )
+    ))
+    response.headers["Cache-Control"] = "no-cache, no-store, must-revalidate"
+    response.headers["Pragma"] = "no-cache"
+    response.headers["Expires"] = "0"
+    return response
 
 
 @modelo_admin.route("/exportar_csv")
@@ -295,16 +299,19 @@ def exportar_csv():
     return response
 
 @modelo_admin.route('/insertar')
+@solo_admin
 def insertar():
     garantias = Garantias.query.all()
     return render_template('garantiasadmin.html', garantias=garantias)
 
 @modelo_admin.route('/editar_garantia/<int:id>')
+@solo_admin
 def obtener_garantia(id):
     garantia = Garantias.query.get_or_404(id)
     return render_template('editar.html', garantia=garantia)
 
 @modelo_admin.route('/actualizar_garantia/<int:id>', methods=['POST'])
+@solo_admin
 def actualizar_garantia(id):
     garantia = Garantias.query.get_or_404(id)
     if request.method == 'POST':
@@ -317,6 +324,7 @@ def actualizar_garantia(id):
         return redirect(url_for('modelo_admin.insertar'))
 
 @modelo_admin.route('/eliminar/<int:id>')
+@solo_admin
 def eliminar_garantia(id):
     garantia = Garantias.query.get_or_404(id)
     db.session.delete(garantia)
@@ -325,26 +333,31 @@ def eliminar_garantia(id):
     return redirect(url_for('modelo_admin.insertar'))
 
 @modelo_admin.route('/consultar')
+@solo_admin
 def consultar():
     usuarios = Usuario.query.all()
     return render_template('usuariosAdmin.html', usuario=usuarios)
 
 @modelo_admin.route('/consultarR')
+@solo_admin
 def consultarR():
     reseñas = Reseñas.query.all()
     return render_template('reseñasAdmin.html', reseñas=reseñas)
 
 @modelo_admin.route('/consultarP')
+@solo_admin
 def consultarP():
     pqrs = Pqrs.query.all()
     return render_template('responderPqr.html', pqrs=pqrs)
 
 @modelo_admin.route('/editar_pqrs/<int:id>')
+@solo_admin
 def obtener_pqrs(id):
     pqrs = Pqrs.query.get_or_404(id)
     return render_template('respuesta.html', pqrs=pqrs)
 
 @modelo_admin.route('/actualizar_pqrs/<int:id>', methods=['POST'])
+@solo_admin
 def responderPqrs(id):
     pqrs = Pqrs.query.get_or_404(id)
     if request.method == 'POST':

@@ -21,7 +21,7 @@ def agregar_usuario():
             emailUsuario=request.form['email'],
             telefonoUsuario=request.form['telefono'],
             contrasenaUsuario=request.form['contrasena'],
-            idRolFk=2
+            idRolFk=2  # Los nuevos siempre son clientes
         )
         db.session.add(nuevo)
         db.session.commit()
@@ -49,15 +49,6 @@ def ingresar():
 
 @modelo_login.route('/logout')
 def logout():
-    session.clear()
-    flash("Sesión cerrada correctamente.")
+    session.clear()  # ✅ Elimina TODA la sesión (clientes y admins)
+    flash("Has cerrado sesión correctamente.")
     return redirect(url_for('modelo_login.login'))
-
-def login_requerido(f):
-    @wraps(f)
-    def decorated_function(*args, **kwargs):
-        if 'usuario_id' not in session:
-            flash('Debes iniciar sesión para acceder a esta página.')
-            return redirect(url_for('login.login'))  # Asegúrate que 'login.login' coincide con tu nombre de blueprint y ruta
-        return f(*args, **kwargs)
-    return decorated_function

@@ -1,9 +1,8 @@
 # Modelo para los roles de usuario
-from . import db #El punto se reconoce como el archivo "__init__.py" igual el app
+from . import db #El punto se reconoce como el archivo "__init__.py" igual el application
 
 #dependencia para fecha y hora
 from datetime import datetime
-
 
 #crear los modelos 
 from sqlalchemy import create_engine, Column, Integer, String, ForeignKey, Date, Text, DECIMAL

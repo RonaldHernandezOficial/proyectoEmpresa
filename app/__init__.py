@@ -6,15 +6,16 @@ from flask_migrate import Migrate
 db = SQLAlchemy()
 migrate = Migrate()
 
-def create_app():
-    app = Flask(__name__)
-    app.config.from_object(Config)
+def create_application():
+    application = Flask(__name__)  # Cambiado de 'app' a 'application'
+    application.config.from_object(Config)
 
-    db.init_app(app)
-    migrate.init_app(app, db)
+    db.init_app(application)  # Corregido: init_app (no init_application)
+    migrate.init_app(application, db)
 
     from .models import Rol, Usuario, Contrato, Pqrs, Garantias
 
+    # Importa los blueprints (ajusta las rutas según tu estructura)
     from app.menu import modelo_menu
     from app.garantias import modelo_garantias
     from app.login import modelo_login
@@ -24,16 +25,19 @@ def create_app():
     from app.terminosycondiciones import modelo_terminos
     from app.contactanos_not_client import modelo_contacto_not_cliente
     from app.contrato import modelo_contratos
-    
 
-    app.register_blueprint(modelo_menu)
-    app.register_blueprint(modelo_login)
-    app.register_blueprint(modelo_admin)
-    app.register_blueprint(modelo_contacto)
-    app.register_blueprint(modelo_servicio)
-    app.register_blueprint(modelo_terminos)
-    app.register_blueprint(modelo_garantias)
-    app.register_blueprint(modelo_contacto_not_cliente)
-    app.register_blueprint(modelo_contratos)
+    # Registra los blueprints usando 'application' (no 'app')
+    application.register_blueprint(modelo_menu)
+    application.register_blueprint(modelo_login)
+    application.register_blueprint(modelo_admin)
+    application.register_blueprint(modelo_contacto)
+    application.register_blueprint(modelo_servicio)
+    application.register_blueprint(modelo_terminos)
+    application.register_blueprint(modelo_garantias)
+    application.register_blueprint(modelo_contacto_not_cliente)
+    application.register_blueprint(modelo_contratos)
 
-    return app
+    return application  # Cambiado de 'app' a 'application'
+
+# Crea la instancia que PythonAnywhere buscará
+application = create_application()  # ¡Esta línea es clave!

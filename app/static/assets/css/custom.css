@@ -3,7 +3,66 @@ Custom Css
  * Este Custom Css esta metido en una carpeta diferente, debido a que al descargarlo salía así y fue mejor que 
  * Causar un error.
 */
+/* Ajustes para el carrusel principal */
+.carousel-item .container {
+    padding: 1rem;
+}
 
+.carousel-item .row {
+    align-items: center;
+}
+
+/* Títulos responsive */
+.carousel-item .h1 {
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
+    margin-bottom: 1rem;
+}
+
+.carousel-item .h2 {
+    font-size: clamp(1.2rem, 3vw, 2rem);
+    margin-bottom: 0.8rem;
+}
+
+.carousel-item p {
+    font-size: clamp(0.9rem, 2vw, 1.1rem);
+}
+
+/* Imagen responsive */
+.carousel-item img.img-fluid {
+    max-height: 400px;
+    width: auto;
+    margin: 0 auto;
+    display: block;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* Reorganización para móviles */
+@media (max-width: 768px) {
+    .carousel-item .row {
+        flex-direction: column-reverse; /* Imagen arriba, texto abajo */
+    }
+    
+    .carousel-item .text-align-left {
+        text-align: center !important;
+        padding: 1rem 0;
+    }
+    
+    .carousel-item img.img-fluid {
+        max-height: 250px;
+        margin-bottom: 1.5rem;
+    }
+}
+
+@media (min-width: 769px) and (max-width: 992px) {
+    .carousel-item .h1 {
+        font-size: 1.8rem;
+    }
+    
+    .carousel-item .h2 {
+        font-size: 1.5rem;
+    }
+}
 
 .metric-message {
   min-height: 40px; /* ajusta según lo que veas que quede mejor */
@@ -26,4 +85,305 @@ canvas#chartCanvas {
 .boton {
   background-color: green;
   color: white;
+}
+
+/* Contenedor principal del menú de usuario */
+.user-menu-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+/* Versión desktop (horizontal) */
+.user-menu-desktop {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+/* Versión móvil (mejor organizada) */
+.user-menu-mobile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+}
+
+/* Estilos comunes */
+.user-menu-link {
+    color: var(--bs-success);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+.user-menu-link:hover {
+    color: #198754;
+    text-decoration: underline;
+}
+
+.login-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
+/* Icono de usuario */
+.user-icon {
+    font-size: 1.3rem;
+    color: inherit;
+}
+
+/* Media queries para responsive */
+@media (max-width: 991px) {
+    .user-menu-desktop {
+        display: none;
+    }
+    
+    .user-menu-mobile {
+        display: flex;
+    }
+    
+    .login-badge {
+        padding: 0.35rem 0.75rem;
+    }
+}
+
+@media (min-width: 992px) {
+    .user-menu-desktop {
+        display: flex;
+    }
+    
+    .user-menu-mobile {
+        display: none;
+    }
+}
+
+.img
+/* Estilos Responsive Globales */
+/* Contenedor principal del logo y títulos */
+.navbar-brand {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+/* Estilos para la imagen del logo */
+.imgFab {
+    max-height: 40px; /* Altura máxima para desktop */
+    width: auto;
+    transition: all 0.3s ease;
+}
+
+/* Estilos para los títulos */
+.navbar-brand .h1 {
+    margin: 0;
+    font-size: clamp(1.2rem, 3vw, 1.8rem); /* Tamaño responsive */
+    line-height: 1.2;
+    white-space: nowrap;
+}
+
+/* Ajustes para móviles */
+@media (max-width: 768px) {
+    .navbar-brand {
+        justify-content: center;
+        width: 100%;
+        margin-bottom: 10px;
+    }
+    
+    .imgFab {
+        max-height: 40px; /* Más pequeño en móviles */
+    }
+    
+    .navbar-brand .h1 {
+        white-space: normal; /* Permite que el texto se ajuste */
+        font-size: 1.3rem; /* Tamaño fijo para móviles */
+    }
+}
+
+/* Ajustes para tablets */
+@media (min-width: 769px) and (max-width: 992px) {
+    .imgFab {
+        max-height: 45px;
+    }
+}
+
+h1{
+  max-width: 100%;
+}
+
+/* Corrección para el menú de usuario */
+.navbar .d-flex.flex-column {
+    margin-left: 0 !important; /* Elimina el margen negativo */
+    text-align: right;
+}
+
+@media (max-width: 992px) {
+    .navbar .d-flex.flex-column {
+        text-align: center;
+        margin-top: 15px;
+    }
+    
+    /* Ajuste para el texto de login */
+    .text-login.badge {
+        display: inline-block;
+        margin-top: 5px;
+    }
+}
+
+/* Ajustes para el carrusel */
+.carousel-item .row {
+    flex-direction: column;
+}
+
+.carousel-item .order-lg-last {
+    order: -1; /* Imagen arriba en móviles */
+    margin-bottom: 20px;
+}
+
+/* Tarjetas Quienes Somos */
+.hover-container {
+    position: relative;
+    margin-bottom: 30px;
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+.hover-container img {
+    width: 100%;
+    height: auto;
+    transition: transform 0.3s;
+}
+
+.hover-text {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    opacity: 0;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 15px;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    transform: translateY(100%);
+    transition: transform 0.3s;
+}
+
+.hover-container:hover .hover-text {
+    transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+    .hover-text {
+        position: static;
+        transform: none;
+        background: #f8f9fa;
+        color: #333;
+    }
+    
+    /* Ajuste para las columnas */
+    .col-md-4 {
+        margin-bottom: 30px;
+    }
+}
+
+/* Hover SOLO en desktop */
+@media (hover: hover) and (pointer: fine) {
+    .hover-container:hover .hover-text {
+        opacity: 1;
+        pointer-events: auto;
+    }
+}
+
+/* Mostrar texto cuando esté activo (móvil) */
+.hover-container.active .hover-text {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* Footer responsive */
+@media (max-width: 768px) {
+    #tempaltemo_footer .col-md-4 {
+        margin-bottom: 30px;
+        text-align: center;
+    }
+    
+    #tempaltemo_footer .text-left {
+        text-align: center !important;
+    }
+}
+
+/* Contenedor principal */
+.terminos-container {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+}
+
+/* Título principal */
+.terminos-container h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 32px;
+    color: #222;
+}
+
+/* Caja general */
+.terminos-box {
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+/* Cada término */
+.termino {
+    margin-bottom: 25px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+/* Quitar línea al último */
+.termino:last-child {
+    border-bottom: none;
+}
+
+/* Subtítulos */
+.termino h3 {
+    font-size: 20px;
+    margin-bottom: 8px;
+    color: #7d0c0c;
+}
+
+/* Texto */
+.termino p {
+    font-size: 15px;
+    line-height: 1.7;
+    color: #444;
+    text-align: justify;
+}
+
+/* Botón */
+.button-container {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.button {
+    padding: 12px 25px;
+    background: #7d0c0c;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 15px;
+    transition: background 0.3s;
+}
+
+.button:hover {
+    background: #7d0c0c;
 }

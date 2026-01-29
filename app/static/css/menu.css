@@ -1,9 +1,33 @@
-.imagenfabri {
-    width: 100px; /* Cambia el valor a un porcentaje menor para hacer la imagen más pequeña */
-    margin-left: -100px;
-    margin-top: -13px;
-};
+/* Mobile First (default) */
+body { font-size: 14px; }
 
+/* Tablet (768px en adelante) */
+@media (min-width: 768px) {
+  body { font-size: 16px; }
+}
+
+/* Desktop (1024px en adelante) */
+@media (min-width: 1024px) {
+  body { font-size: 18px; }
+}
+
+/* TV/Pantallas grandes (1440px+) */
+@media (min-width: 1440px) {
+  .container { max-width: 1400px; }
+}
+
+img, video {
+  max-width: 100%;
+  height: auto;
+}
+
+.nav-desktop { display: none; }
+.hamburger-btn { display: block; }
+
+@media (min-width: 768px) {
+  .nav-desktop { display: flex; }
+  .hamburger-btn { display: none; }
+}
 
 .mantenimiento{
     text-align: center;
@@ -162,10 +186,40 @@
             font-size: 0.9rem;
         }
 
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap; /* Para que los elementos se ajusten */
+        }
+
         /* Video (nuevo) */
         .portfolio-video {
             grid-column: 1 / -1; /* Ocupa todo el ancho */
             margin: 30px 0;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        .portfolio-video1 {
+            margin: 0;
+            width: 690px;
+            height: 490px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        .portfolio-video2 {
+            margin: 0;
+            width: 690px;
+            left: 106%;
+            height: 490px;
             border-radius: 10px;
             overflow: hidden;
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
@@ -180,6 +234,7 @@
         }
 
         .video-container {
+            position: absolute;
             width:100%;
             height: 1000px;
             aspect-ratio: 21/9; /* Proporción clásica de video (ajústala si es necesario!!) */
@@ -208,3 +263,93 @@
         .portfolio-item:nth-child(4) { animation-delay: 0.4s; }
         .portfolio-item:nth-child(5) { animation-delay: 0.5s; }
         .portfolio-item:nth-child(6) { animation-delay: 0.6s; }
+
+/* Botón que te sigue WhatsApp */
+.whatsapp-float {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+
+    width: 60px;
+    height: 60px;
+
+    background-color: #25D366;
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    z-index: 9999;
+
+    transition: transform 0.3s ease;
+}
+
+/* Icono */
+.whatsapp-float img {
+    width: 32px;
+    height: 32px;
+}
+
+/* Efecto hover */
+.whatsapp-float:hover {
+    transform: scale(1.1);
+}
+
+.whatsapp-float i {
+    font-size: 32px;
+    color: white;
+}
+
+
+/* Contenedor grid para los videos*/
+.portafolio-videos {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 columnas */
+    gap: 20px;
+    max-width: 1400px;
+    margin: auto;
+    padding: 30px;
+}
+
+/* Videos */
+.portafolio-videos video {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+}
+
+/* Responsive para celular */
+@media (max-width: 600px) {
+    .portafolio-videos {
+        grid-template-columns: 1fr; /* 1 columna */
+    }
+}
+
+.video-box {
+    width: 100%;
+    aspect-ratio: 18 / 9;
+    overflow: hidden;
+    border-radius: 12px;
+    background: black;
+}
+
+.video-box video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+@media (max-width: 600px) {
+    .portafolio-videos {
+        max-width: 100%;
+        padding: 15px;
+    }
+
+    .video-box {
+        aspect-ratio: 16 / 9;
+    }
+}

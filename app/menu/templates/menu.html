@@ -4,7 +4,7 @@
 <head>
     <title>Fabriautomaticas SAS</title>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="apple-touch-icon" href="../../static/Img/logo.png">
     <link rel="shortcut icon" type="image/x-icon" href="../../static/Img/logo.png">
@@ -30,7 +30,7 @@
                     <i class="fa fa-envelope mx-2"></i>
                     <a class="navbar-sm-brand text-light text-decoration-none">fabriautomaticas@hotmail.com</a>
                     <i class="fa fa-phone mx-2"></i>
-                    <a class="navbar-sm-brand text-light text-decoration-none">315-300-9936</a>
+                    <a class="navbar-sm-brand text-light text-decoration-none">3153009936</a>
                 </div>
                 <div>
                     <a class="text-light" href="https://fb.com/templatemo" target="_blank" rel="sponsored"><i
@@ -52,9 +52,12 @@
         <nav class="navbar navbar-expand-lg navbar-light shadow">
             <div class="container d-flex justify-content-between align-items-center">
 
-                <a class="navbar-brand text-success logo h1 align-self-center" href="/">
-                    <img src="../../static/img/logo.png" class="imagenfabri">
-                    Fabriautomaticas SAS
+                <a class="navbar-brand text-success logo d-flex align-items-center flex-nowrap" href="/">
+                    <img src="../../static/img/logo.png" class="imgFab me-2" alt="Logo Fabriautomaticas">
+                    <div class="d-flex flex-column flex-sm-row align-items-baseline">
+                        <h1 class="m-0"><b>Fabriautomaticas</b></h1>
+                        <h1 class="m-0 ms-sm-2"><b>SAS</b></h1>
+                    </div>
                 </a>
 
                 <button class="navbar-toggler border-10" type="button" data-bs-toggle="collapse"
@@ -74,14 +77,30 @@
                         </div>
                     </div>
                 </div>
-                <div class="navbar align-self-center d-flex flex-column text-center">
-                    <i class="fa fa-fw fa-user text-login" style="margin-bottom: 2px; font-size: 1.3rem;"></i>
-                    <a href="/nuestrosTrabajos" class="text-decoration-none " style="margin-left: -500px; margin-top: 10px;">
-                        <span class="text-success ">Nuestros trabajos</span>
-                    </a>
-                    <a href="/login/login" class="text-decoration-none">
-                        <span class="text-login badge rounded-pill bg-light px-3 py-2">Iniciar Sesión</span>
-                    </a>
+                <div class="user-menu-container">
+                    <!-- Versión para celulares -->
+                    <div class="user-menu-mobile d-lg-none">
+                        <a href="/nuestrosTrabajos" class="user-menu-link mb-2">
+                            Nuestros trabajos
+                        </a>
+                        <!--
+                        <a href="/login/login" class="login-badge text-decoration-none badge rounded-pill bg-light px-3 py-2">
+                            <i class="fa fa-fw fa-user user-icon text-login"></i>
+                            <span class="text-login">Iniciar Sesión</span>
+                        </a>-->
+                    </div>
+                    
+                    <!-- Versión para desktop -->
+                    <div class="user-menu-desktop d-none d-lg-flex">
+                        <a href="/nuestrosTrabajos" class="user-menu-link text-success">
+                            Nuestros trabajos
+                        </a>
+                        <!--
+                        <a href="/login/login" class="login-badge text-decoration-none badge rounded-pill bg-light px-3 py-2">
+                            <i class="fa fa-fw fa-user user-icon text-login"></i>
+                            <span class="text-login">Iniciar Sesión</span>
+                        </a>-->
+                    </div>
                 </div>
             </div>
 
@@ -166,7 +185,7 @@
                         </div>
                         <div class="col-lg-6 mb-0 d-flex align-items-center">
                             <div class="text-align-left">
-                                <h1 class="h1">Mira este producto</h1>
+                                <h1 class="h1 text-success"><b>Mira este producto</b></h1>
                                 <h3 class="h2">Pistón para puertas batientes/abatibles de hasta 550Kg o 6 metros de
                                     ancho. Incluye 2 pistones. FENIX600</h3>
                                 <p>
@@ -189,7 +208,7 @@
                         </div>
                         <div class="col-lg-6 mb-0 d-flex align-items-center">
                             <div class="text-align-left">
-                                <h1 class="h1">Mira este producto</h1>
+                                <h1 class="h1 text-success"><b>Mira este producto</b></h1>
                                 <h3 class="h2">Sistema de apertura para puertas de garaje seccionales de hasta 100Kg.
                                     24V. 1/2 Hp (900N). SCORPION901</h3>
                                 <p>
@@ -342,7 +361,7 @@
                             </a>
                         </li>
                         <i class="fa fa-phone fa-fw"></i>
-                        <a class="text-decoration-none" href="https://wa.me/573107740229"
+                        <a class="text-decoration-none" href="https://wa.me/573153009936"
                             target="_blank">315-300-9936</a>
                         </li>
                         <li>
@@ -364,30 +383,30 @@
                 </div>
 
                 <div class="col-md-4 pt-5">
-                    <h2 class="h2 text-light border-bottom pb-3 border-light">Navega através de esta</h2>
+                    <h2 class="h2 text-light border-bottom pb-3 border-light">Navega através de la página</h2>
                     <ul class="list-unstyled text-light footer-link-list">
                         <li><a class="text-decoration-none"
                                 href="/contactanosnotclient/contactanosnotclient">Contactanos</a></li>
-                        <li>
+                        <li> <!--
                             {% if 'usuario' in session %}
-                            <!-- Si ha iniciado sesión, se muestra el link a la garantía -->
+                            Si ha iniciado sesión, se muestra el link a la garantía 
                             <a class="text-decoration-none" id="linkReseñas"
                                 href="/servicio/insertar_reseña">Reseñas</a>
-                            {% else %}
-                            <!-- Si NO ha iniciado sesión, muestra un botón que activa el toast -->
+                            {% else %}-->
+                            <!-- Si NO ha iniciado sesión, muestra un botón que activa el toast 
                             <a href="#" class="text-decoration-none" onclick="mostrarReseña()">Reseñas</a>
                             {% endif %}
                         </li>
                         <li>
-                            {% if 'usuario' in session %}
-                            <!-- Si ha iniciado sesión, se muestra el link a la garantía -->
+                            {% if 'usuario' in session %}-->
+                            <!-- Si ha iniciado sesión, se muestra el link a la garantía
                             <a class="text-decoration-none" id="linkGarantia"
                                 href="/garantia/insertar_garantia">Garantías</a>
-                            {% else %}
-                            <!-- Si NO ha iniciado sesión, muestra un botón que activa el toast -->
+                            {% else %} -->
+                            <!-- Si NO ha iniciado sesión, muestra un botón que activa el toast
                             <a href="#" class="text-decoration-none" onclick="mostrarToast()">Garantías</a>
                             {% endif %}
-                        </li>
+                        </li> -->
                     </ul>
                 </div>
 
@@ -434,12 +453,18 @@
                     </div>
                 </div>
 
+            <!-- para el copy -->
+    <script type="text/javascript">
+        copyright = new Date();
+        update = copyright.getFullYear();
+        document.write('<span style="color: red;">© 2023 - ' + update + ' Fabriautomaticas sas</span>');
+    </script>
     </footer>
     <!-- End Footer -->
 
 
 
-    <!--RESEÑAS MENSAJE EMERGENTE-->
+    <!--RESEÑAS MENSAJE EMERGENTE
     <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
         <div id="alertaReseña" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
             <div class="toast-header bg-success text-white">
@@ -451,8 +476,8 @@
                 Para ingresar una reseña, debes iniciar sesión...
             </div>
         </div>
-    </div>
-    <!--GARANTIAS MENSAJE EMERGENTE-->
+    </div>-->
+    <!--GARANTIAS MENSAJE EMERGENTE
     <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
         <div id="alertaGarantia" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
             <div class="toast-header bg-success text-white">
@@ -464,7 +489,7 @@
                 Para ingresar una garantía, debes iniciar sesión...
             </div>
         </div>
-    </div>
+    </div>-->
 
     <!-- Start Script -->
     <script src="../../static/assets/js/jquery-1.11.0.min.js"></script>
@@ -537,8 +562,65 @@
             }, 5000);
         });
     </script>
+
+    <script>
+        // Ajustar altura del carrusel en móviles
+        function adjustCarouselHeight() {
+            if (window.innerWidth < 768) {
+                const carouselItems = document.querySelectorAll('.carousel-item');
+                carouselItems.forEach(item => {
+                    const img = item.querySelector('img');
+                    if (img) {
+                        item.style.minHeight = img.offsetHeight + 'px';
+                    }
+                });
+            }
+        }
+
+        window.addEventListener('resize', adjustCarouselHeight);
+        window.addEventListener('load', adjustCarouselHeight);
+    </script>
+
+
+
+    <script>
+    document.getElementById("menu-button").addEventListener("click", function() {
+        window.location.href = "/"; // Reemplaza "url-del-menu-principal.html" con la URL real de tu página principal
+    });
+    </script>  
+
+            <script>
+        document.querySelectorAll('.hover-container').forEach(card => {
+
+            card.addEventListener('click', function (e) {
+
+                // Evita que todos se abran a la vez
+                e.stopPropagation();
+
+                // Cierra otros
+                document.querySelectorAll('.hover-container.active')
+                    .forEach(el => {
+                        if (el !== this) el.classList.remove('active');
+                    });
+
+                // Toggle actual
+                this.classList.toggle('active');
+            });
+
+        });
+
+        // Cerrar al tocar fuera
+        document.addEventListener('click', function () {
+            document.querySelectorAll('.hover-container.active')
+                .forEach(el => el.classList.remove('active'));
+        });
+        </script>
     <!-- End Script -->
     <!-- End Script -->
+         <!-- Botón flotante WhatsApp -->
+<a href="https://wa.me/573153009936?text=Hola%20quiero%20más%20información" class="whatsapp-float">
+    <i class="fab fa-whatsapp"></i>
+</a>
 </body>
 
 </html>

@@ -2,16 +2,17 @@ from flask import Flask, render_template, redirect, url_for
 from flask_mysqldb import MySQL
 from flask_caching import Cache
 import psutil
+import os
 cache = Cache(config={'CACHE_TYPE': 'SimpleCache'})
 
 # Creación de la aplicación Flask
 application = Flask(__name__)
 
 # Configuración de MySQL
-application.config['MYSQL_HOST'] = 'localhost'
-application.config['MYSQL_USER'] = 'root'
-application.config['MYSQL_PASSWORD'] = ''  # ¡Cuidado! No deberías tener contraseña vacía en producción
-application.config['MYSQL_DB'] = 'post_sale'
+application.config['MYSQL_HOST'] = os.environ.get("MYSQL_HOST")
+application.config['MYSQL_USER'] = os.environ.get("MYSQL_USER")
+application.config['MYSQL_PASSWORD'] = os.environ.get("MYSQL_PASSWORD")  # ¡Cuidado! No deberías tener contraseña vacía en producción
+application.config['MYSQL_DB'] = os.environ.get("post_sale")
 application.secret_key = 'mysecretkey'  # Deberías usar una clave más segura en producción
 
 # Inicialización de MySQL

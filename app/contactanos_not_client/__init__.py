@@ -4,7 +4,7 @@ from flask import Blueprint
 modelo_contacto_not_cliente = Blueprint('modelo_contacto_not_cliente',
                         __name__,
                         static_folder="static",
-                        url_prefix="/contactanosnotclient",
+                        url_prefix="/contactanos",
                         template_folder="templates"
                         )
 

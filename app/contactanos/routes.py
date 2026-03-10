@@ -3,7 +3,7 @@ from . import modelo_contacto
 
 from app.decoradores import login_requerido
 
-@modelo_contacto.route("/contactanos")
+@modelo_contacto.route("/contactanoss")
 @login_requerido
 def contacto():
     return render_template("contactanos.html")

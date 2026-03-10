@@ -3,6 +3,6 @@ from . import modelo_contacto_not_cliente
 
 from app.decoradores import login_requerido
 
-@modelo_contacto_not_cliente.route("/contactanosnotclient")
+@modelo_contacto_not_cliente.route("/")
 def contacto():
     return render_template("contactanos_not_client.html")

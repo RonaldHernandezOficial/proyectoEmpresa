@@ -6,3 +6,4 @@
 - Se arreglo el apartado de contactanos para que quedara mas bonito, presentable y profesional.
 - Se arreglo la parte de terminos y condiciones, estaba muy fea.
 - Se agregan botones para devolverse al menú en diversos apartados, quedando enlazados y funcionando al 100.
+- Se terminan de corregir bugs y errores de imagenes que se presentaban, quedando todo en perfecto funcionamiento.

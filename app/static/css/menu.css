@@ -533,65 +533,115 @@ color:#951e1e;
     background-color: #ffffff;
 }
 
-/* LOGO */
+/* HEADER */
+.custom-navbar{
+    background-color: #ffffff;
+    padding: 12px 0;
+}
+
+/* CONTENEDOR */
+.custom-header-container{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+/* LOGO + TEXTO */
+.custom-brand{
+    display: flex;
+    align-items: center;
+    text-decoration: none !important;
+    gap: 15px;
+}
+
+/* IMAGEN */
 .imgFab{
-    width: 95px;
+    width: 105px;
     height: auto;
     object-fit: contain;
 }
 
-/* TITULO */
+/* TEXTO */
+.brand-text{
+    display: flex;
+    flex-direction: column;
+    line-height: 1.05;
+}
+
 .brand-title{
-    color: #8B0000; /* rojo oscuro */
+    color: #801111 !important;
     font-size: 1.7rem;
-    font-weight: 700;
-    line-height: 1.1;
+    font-weight: 800;
+    text-decoration: none !important;
 }
 
 /* LINKS */
+.custom-nav-links{
+    display: flex;
+    align-items: center;
+    gap: 70px;
+    margin-right: 20px;
+}
+
+/* QUITAR AZUL DE BOOTSTRAP */
 .nav-custom-link{
-    text-decoration: none;
-    color: #8B0000;
-    font-weight: 600;
-    margin-left: 35px;
+    color: #801111 !important;
+    text-decoration: none !important;
+    font-weight: 700;
+    font-size: 1rem;
     transition: 0.3s;
-    white-space: nowrap;
 }
 
 .nav-custom-link:hover{
-    color: #b30000;
+    color: #b30000 !important;
 }
 
 /* RESPONSIVE */
 @media (max-width: 768px){
 
-    .custom-navbar .container{
+    .custom-header-container{
         flex-direction: column;
-        align-items: center;
-    }
-
-    .navbar-brand{
-        margin-bottom: 10px;
-    }
-
-    .nav-mobile{
-        width: 100%;
         justify-content: center;
-        flex-wrap: wrap;
-        gap: 12px;
-    }
-
-    .nav-custom-link{
-        margin-left: 0;
-        font-size: 0.95rem;
-    }
-
-    .brand-title{
-        font-size: 1.3rem;
         text-align: center;
     }
 
-    .imgFab{
-        width: 85px;
+    .custom-brand{
+        flex-direction: column;
+        gap: 8px;
     }
+
+    .imgFab{
+        width: 95px;
+    }
+
+    .brand-title{
+        font-size: 1.45rem;
+    }
+
+    .custom-nav-links{
+        width: 100%;
+        justify-content: center;
+        gap: 20px;
+        flex-wrap: wrap;
+        margin-top: 8px;
+    }
+
+    .nav-custom-link{
+        font-size: 0.95rem;
+        padding: 6px 10px;
+    }
+}
+
+/* PANTALLAS GRANDES */
+@media (min-width: 992px){
+
+    .custom-nav-links{
+        gap: 90px;
+    }
+
+    .nav-custom-link{
+        font-size: 1.05rem;
+    }
+
 }

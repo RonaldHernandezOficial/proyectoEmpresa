@@ -18,15 +18,6 @@ html, body {
   max-width: 200px;
 }
 
-h2, h3 {
-  font-family: "RobotoCondensed", sans-serif;
-  font-size: 24px;
-  font-weight: bold;
-  margin-top: 40px;
-  margin-bottom: 20px;
-  text-align: center;
-  color: rgb(148, 25, 25);
-}
 
 .image-container {
   text-align: center;
@@ -69,4 +60,19 @@ h1 {
 
 .button:hover {
   background-color: #800020;
+}
+
+
+#templatemo_footer .container{
+    max-width: 1320px !important;
+    width: 100% !important;
+}
+
+#templatemo_footer .row{
+    display: flex !important;
+    flex-wrap: wrap !important;
+}
+
+#templatemo_footer .col-md-4{
+    width: 33.333333% !important;
 }

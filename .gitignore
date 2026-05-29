@@ -17,6 +17,8 @@ env/
 .env/
 venv/
 ENV/
+.env
+.venv
 
 # Ignorar archivos de firma y comprimidos
 proyecto.tar.gz

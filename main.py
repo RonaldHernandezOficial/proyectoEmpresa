@@ -13,7 +13,7 @@ application.config['MYSQL_HOST'] = os.environ.get("MYSQL_HOST")
 application.config['MYSQL_USER'] = os.environ.get("MYSQL_USER")
 application.config['MYSQL_PASSWORD'] = os.environ.get("MYSQL_PASSWORD")  # ¡Cuidado! No deberías tener contraseña vacía en producción
 application.config['MYSQL_DB'] = os.environ.get("post_sale")
-application.secret_key = 'mysecretkey'  # Deberías usar una clave más segura en producción
+application.secret_key = os.environ.get("s8f7as8f7as8f7a8s7f8as7f8as7")  # Deberías usar una clave más segura en producción
 
 # Inicialización de MySQL
 mysql = MySQL(application)

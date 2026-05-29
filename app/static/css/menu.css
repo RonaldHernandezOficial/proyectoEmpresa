@@ -528,3 +528,70 @@ color:#333;
 .contact-item a:hover{
 color:#951e1e;
 }
+
+.custom-navbar{
+    background-color: #ffffff;
+}
+
+/* LOGO */
+.imgFab{
+    width: 95px;
+    height: auto;
+    object-fit: contain;
+}
+
+/* TITULO */
+.brand-title{
+    color: #8B0000; /* rojo oscuro */
+    font-size: 1.7rem;
+    font-weight: 700;
+    line-height: 1.1;
+}
+
+/* LINKS */
+.nav-custom-link{
+    text-decoration: none;
+    color: #8B0000;
+    font-weight: 600;
+    margin-left: 35px;
+    transition: 0.3s;
+    white-space: nowrap;
+}
+
+.nav-custom-link:hover{
+    color: #b30000;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px){
+
+    .custom-navbar .container{
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .navbar-brand{
+        margin-bottom: 10px;
+    }
+
+    .nav-mobile{
+        width: 100%;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 12px;
+    }
+
+    .nav-custom-link{
+        margin-left: 0;
+        font-size: 0.95rem;
+    }
+
+    .brand-title{
+        font-size: 1.3rem;
+        text-align: center;
+    }
+
+    .imgFab{
+        width: 85px;
+    }
+}

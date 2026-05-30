@@ -40,4 +40,4 @@ def create_application():
     return application  # Cambiado de 'app' a 'application'
 
 # Crea la instancia que PythonAnywhere buscará
-application = create_application()  # ¡Esta línea es clave!
+application = create_application() 

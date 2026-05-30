@@ -6,6 +6,7 @@ modelo_terminos = Blueprint('modelo_terminos',
                     __name__,
                     static_folder='static',
                     url_prefix='/terminos',
-                    template_folder='templates')
+                    template_folder='templates'
+                    )
 
 from  . import routes

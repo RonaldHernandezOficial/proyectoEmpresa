@@ -1,38 +1,17 @@
-from flask import Flask, render_template, redirect, url_for
+from flask import Flask, render_template, redirect, url_for, Response
 from flask_mysqldb import MySQL
 from flask_caching import Cache
 import psutil
 import os
-from flask import Response
 cache = Cache(config={'CACHE_TYPE': 'SimpleCache'})
 
 # Creación de la aplicación Flask
 application = Flask(__name__)
 
-@application.route('/sitemap.xml')
-def sitemap():
-    xml = """<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
-    <url>
-        <loc>https://www.fabriautomaticassas.com/</loc>
-    </url>
-
-    <url>
-        <loc>https://www.fabriautomaticassas.com/contactanos</loc>
-    </url>
-
-    <url>
-        <loc>https://www.fabriautomaticassas.com/nuestrosTrabajos</loc>
-    </url>
-
-    <url>
-        <loc>https://www.fabriautomaticassas.com/terminos</loc>
-    </url>
-
-</urlset>
-"""
-    return Response(xml, mimetype="application/xml")
+@application.route('/prueba-site')
+def prueba_site():
+    return "RUTA NUEVA FUNCIONANDO"
 
 @application.route('/robots.txt')
 def robots():

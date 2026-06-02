@@ -3,6 +3,7 @@ from flask_mysqldb import MySQL
 from flask_caching import Cache
 import psutil
 import os
+from flask import Response
 cache = Cache(config={'CACHE_TYPE': 'SimpleCache'})
 
 # Creación de la aplicación Flask
@@ -32,6 +33,41 @@ def server_status():
         "cpu": f"{psutil.cpu_percent()}%",
         "ram": f"{psutil.virtual_memory().percent}%"
     }
+
+
+
+@application.route('/sitemap.xml')
+def sitemap():
+    xml = """<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+    <url>
+        <loc>https://www.fabriautomaticassas.com/</loc>
+    </url>
+
+    <url>
+        <loc>https://www.fabriautomaticassas.com/contactanos</loc>
+    </url>
+
+    <url>
+        <loc>https://www.fabriautomaticassas.com/nuestrosTrabajos</loc>
+    </url>
+
+    <url>
+        <loc>https://www.fabriautomaticassas.com/terminos</loc>
+    </url>
+
+</urlset>
+"""
+    return Response(xml, mimetype="application/xml")
+
+@application.route('/robots.txt')
+def robots():
+    return """User-agent: *
+Allow: /
+
+Sitemap: https://www.fabriautomaticassas.com/sitemap.xml
+""", 200, {'Content-Type': 'text/plain'}
 
 if __name__ == "__main__":
     application.run()

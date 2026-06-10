@@ -644,4 +644,72 @@ color:#951e1e;
         font-size: 1.05rem;
     }
 
+.brands {
+    overflow: hidden;
+    width: 100%;
+    padding: 30px 0;
+    background: #f5f5f5;
+}
+
+.brands-track {
+    display: flex;
+    align-items: center;
+    width: max-content;
+    animation: scrollBrands 25s linear infinite;
+}
+
+.brands-track img {
+    width: 180px;
+    height: 90px;
+    object-fit: contain;
+    margin: 0 40px;
+}
+
+}
+
+.brands {
+    overflow: hidden;
+    width: 100%;
+    padding: 30px 0;
+    background: #f5f5f5;
+}
+
+.brands-track {
+    display: flex;
+    align-items: center;
+    width: max-content;
+    animation: scrollBrands 25s linear infinite;
+}
+
+.brands-track img {
+    width: 180px;
+    height: 90px;
+    object-fit: contain;
+    margin: 0 40px;
+}
+
+@keyframes scrollBrands {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(-50%);
+    }
+}
+
+@media (max-width: 768px) {
+
+    .brands-track img {
+        width: 120px;
+        height: 60px;
+        margin: 0 20px;
+    }
+
+}
+
+.logo-marca{
+    width: 180px;
+    height: 90px;
+    object-fit: contain;
 }
